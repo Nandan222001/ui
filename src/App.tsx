@@ -1,9 +1,15 @@
 import React, { useState } from "react";
-import { ViewMode, AgentModule } from "./types";
+import { ViewMode } from "./types";
 import { Navbar } from "./components/Navbar";
-import { HeroSection } from "./components/HeroSection";
-import { FeaturedAgentsGrid } from "./components/FeaturedAgentsGrid";
-import { InvertedDarkSection } from "./components/InvertedDarkSection";
+import { HeroHome } from "./components/home/HeroHome";
+import { ManifestoColumns } from "./components/home/ManifestoColumns";
+import { RevolutionStatement } from "./components/home/RevolutionStatement";
+import { IntroducingHero } from "./components/home/IntroducingHero";
+import { SolutionsEntry } from "./components/home/SolutionsEntry";
+import { UseCaseCarousel } from "./components/home/UseCaseCarousel";
+import { IntegrationsGrid } from "./components/home/IntegrationsGrid";
+import { DepartmentsShowcase } from "./components/home/DepartmentsShowcase";
+import { DemoCta } from "./components/home/DemoCta";
 import { AgentSandboxView } from "./components/AgentSandboxView";
 import { RoiCalculatorView } from "./components/RoiCalculatorView";
 import { ReadinessAssessmentView } from "./components/ReadinessAssessmentView";
@@ -13,12 +19,7 @@ import { Footer } from "./components/Footer";
 
 export default function App() {
   const [activeView, setActiveView] = useState<ViewMode>("showroom");
-  const [selectedAgent, setSelectedAgent] = useState<AgentModule | undefined>(undefined);
   const [isDemoOpen, setIsDemoOpen] = useState<boolean>(false);
-
-  const handleSelectAgent = (agent: AgentModule) => {
-    setSelectedAgent(agent);
-  };
 
   return (
     <div className="min-h-screen bg-[#e5e5e5] text-[#000000] flex flex-col font-neo antialiased">
@@ -36,29 +37,20 @@ export default function App() {
       <main className="flex-1">
         {activeView === "showroom" && (
           <>
-            <HeroSection
-              onSelectView={(view) => {
-                setActiveView(view);
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-              onOpenDemo={() => setIsDemoOpen(true)}
-            />
-            <FeaturedAgentsGrid
-              onSelectAgent={handleSelectAgent}
-              onSelectView={(view) => {
-                setActiveView(view);
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-            />
-            <InvertedDarkSection
-              onOpenDemo={() => setIsDemoOpen(true)}
-            />
+            <HeroHome />
+            <ManifestoColumns />
+            <RevolutionStatement />
+            <IntroducingHero onOpenDemo={() => setIsDemoOpen(true)} />
+            <SolutionsEntry />
+            <UseCaseCarousel />
+            <IntegrationsGrid />
+            <DepartmentsShowcase />
+            <DemoCta onOpenDemo={() => setIsDemoOpen(true)} />
           </>
         )}
 
         {activeView === "agent-sandbox" && (
           <AgentSandboxView
-            initialAgent={selectedAgent}
             onOpenDemo={() => setIsDemoOpen(true)}
           />
         )}

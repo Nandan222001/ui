@@ -14,7 +14,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenDemo,
 }) => {
   return (
-    <header className="w-full h-32 bg-[#e5e5e5] px-4 sm:px-8 flex items-center justify-between sticky top-0 z-40 transition-colors">
+    <header className="w-full h-32 bg-[#e5e5e5] px-6 sm:px-20 flex items-center justify-between sticky top-0 z-40 transition-colors">
       {/* Brand Logo */}
       <div 
         onClick={() => onSelectView("showroom")}

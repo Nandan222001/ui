@@ -1,5 +1,6 @@
 import React from "react";
 import { ViewMode } from "../types";
+import { ArrowUpRight } from "lucide-react";
 
 interface FooterProps {
   onSelectView: (view: ViewMode) => void;
@@ -8,113 +9,91 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onSelectView, onOpenDemo }) => {
   return (
-    <footer className="w-full bg-[#000000] text-[#ffffff] pt-16 pb-12 px-4 sm:px-8 border-t border-[#2f2f2f] mt-20">
-      <div className="max-w-[1240px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-[#2f2f2f]">
-          {/* Col 1: Brand Logo & Email Highlight */}
-          <div className="md:col-span-6 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#ffffff] text-[#000000] flex items-center justify-center font-condensed text-2xl font-bold rounded-lg">
-                D
-              </div>
-              <span className="font-condensed text-4xl font-bold tracking-tight text-[#ffffff]">
-                DAYOS
-              </span>
-              <span className="w-2.5 h-2.5 rounded-full bg-[#d1ffca] inline-block"></span>
-            </div>
-
-            <p className="font-neo text-sm text-[#979797] max-w-sm leading-relaxed">
-              Autonomous enterprise AI agents engineered for deterministic ERP, CRM, and SCM execution with zero-shadow security.
-            </p>
-
-            <div className="pt-2">
-              <span className="font-mono text-xs text-[#979797] uppercase block mb-1">
-                DIRECT ARCHITECT INQUIRIES
-              </span>
-              <a
-                href="mailto:contact@dayos.ai"
-                className="voltage-highlight font-mono text-sm tracking-wide hover:underline inline-block"
-              >
-                contact@dayos.ai
-              </a>
-            </div>
+    <footer className="w-full bg-[#000000] text-[#ffffff]">
+      <div className="site-grid pt-16 pb-10">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-8 pb-12 border-b border-[#2f2f2f]">
+          <div>
+            <button
+              onClick={onOpenDemo}
+              className="type-h2 text-left hover:text-[#d1ffca] transition-colors cursor-pointer"
+            >
+              Let's transform the
+              <br />
+              way work works.
+            </button>
           </div>
+          <button
+            onClick={onOpenDemo}
+            className="inline-flex items-center gap-2 bg-[#ffffff] text-[#000000] px-6 py-3.5 rounded-lg font-neo font-medium text-sm shrink-0 cursor-pointer hover:bg-[#e5e5e5] transition-colors"
+          >
+            Schedule a Demo
+            <ArrowUpRight className="w-4 h-4" />
+          </button>
+        </div>
 
-          {/* Col 2: Navigation Links */}
-          <div className="md:col-span-3 space-y-2">
-            <span className="font-mono text-xs text-[#d1ffca] uppercase block font-semibold mb-3">
-              PLATFORM NAVIGATION
-            </span>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 py-12 border-b border-[#2f2f2f]">
+          <div>
+            <span className="font-mono-tag text-[#979797] block mb-4">Platform</span>
             <ul className="space-y-2 font-neo text-sm text-[#979797]">
               <li>
-                <button
-                  onClick={() => onSelectView("showroom")}
-                  className="hover:text-[#ffffff] transition-colors"
-                >
-                  System Showroom
+                <button onClick={() => onSelectView("showroom")} className="hover:text-[#ffffff] transition-colors cursor-pointer">
+                  Showroom
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => onSelectView("agent-sandbox")}
-                  className="hover:text-[#ffffff] transition-colors flex items-center gap-1.5"
-                >
-                  <span>Agent Sandbox</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#fff100]"></span>
+                <button onClick={() => onSelectView("agent-sandbox")} className="hover:text-[#ffffff] transition-colors cursor-pointer">
+                  Hero Actions
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => onSelectView("roi-calculator")}
-                  className="hover:text-[#ffffff] transition-colors"
-                >
+                <button onClick={() => onSelectView("use-cases")} className="hover:text-[#ffffff] transition-colors cursor-pointer">
+                  Solutions
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <span className="font-mono-tag text-[#979797] block mb-4">Resources</span>
+            <ul className="space-y-2 font-neo text-sm text-[#979797]">
+              <li>
+                <button onClick={() => onSelectView("roi-calculator")} className="hover:text-[#ffffff] transition-colors cursor-pointer">
                   ROI Estimator
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => onSelectView("readiness-assessment")}
-                  className="hover:text-[#ffffff] transition-colors"
-                >
+                <button onClick={() => onSelectView("readiness-assessment")} className="hover:text-[#ffffff] transition-colors cursor-pointer">
                   Readiness Assessment
                 </button>
               </li>
-              <li>
-                <button
-                  onClick={() => onSelectView("use-cases")}
-                  className="hover:text-[#ffffff] transition-colors"
-                >
-                  Solutions Catalogue
-                </button>
-              </li>
             </ul>
           </div>
 
-          {/* Col 3: Compliance & Security */}
-          <div className="md:col-span-3 space-y-2">
-            <span className="font-mono text-xs text-[#d1ffca] uppercase block font-semibold mb-3">
-              COMPLIANCE & GOVERNANCE
-            </span>
-            <ul className="space-y-2 font-mono text-xs text-[#979797]">
-              <li>SOC2 TYPE II VERIFIED</li>
-              <li>ISO27001 AUDITED</li>
-              <li>DETERMINISTIC GUARDRAILS</li>
-              <li>ROLE-BASED API POLICIES</li>
+          <div>
+            <span className="font-mono-tag text-[#979797] block mb-4">Company</span>
+            <ul className="space-y-2 font-neo text-sm text-[#979797]">
+              <li className="hover:text-[#ffffff] transition-colors">Why Dayos</li>
+              <li className="hover:text-[#ffffff] transition-colors">Careers</li>
             </ul>
+          </div>
 
-            <button
-              onClick={onOpenDemo}
-              className="mt-4 bg-[#ffffff] hover:bg-[#e5e5e5] text-[#000000] px-4 py-2.5 rounded-lg font-neo text-xs font-medium cursor-pointer"
+          <div>
+            <span className="font-mono-tag text-[#979797] block mb-4">Have questions or want to chat?</span>
+            <a
+              href="mailto:hello@dayos.com"
+              className="voltage-highlight font-mono text-sm tracking-wide hover:underline inline-block mb-4"
             >
-              Request Security Whitepaper
-            </button>
+              hello@dayos.com
+            </a>
+            <p className="font-neo text-xs text-[#979797] leading-relaxed">
+              Join our Slack community for support.
+            </p>
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between font-mono text-xs text-[#979797] gap-4">
-          <span>© 2026 DAYOS INC. ALL RIGHTS RESERVED.</span>
-          <span className="text-[#d1ffca]">BUILT ON BRUTALIST EDITORIAL DESIGN SYSTEM</span>
+          <span>Dayos © 2026 — All rights reserved</span>
+          <span>3 Temasek Ave, Level 18, Centennial Tower, Singapore 039190</span>
         </div>
       </div>
     </footer>
