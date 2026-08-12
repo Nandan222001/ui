@@ -170,7 +170,7 @@
   /* Layout (per token extraction) */
   --nav-height: 8rem;
   --page-max-width: 1200px;
-  --section-gap: 80px;
+  --section-gap: 96px; /* measured live on dayos.com; token doc said 80px but production uses 9.6rem */
   --card-padding: 24px;
 
   /* Named Radii */

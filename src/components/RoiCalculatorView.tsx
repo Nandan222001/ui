@@ -52,15 +52,15 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
   };
 
   return (
-    <div className="w-full bg-[#e5e5e5] py-8 px-4 sm:px-8 max-w-[1240px] mx-auto min-h-[calc(100vh-8rem)]">
+    <div className="site-grid py-12 min-h-[calc(100vh-8rem)]">
       {/* Header Annotation */}
       <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#c6c6c6]">
         <div>
           <span className="mint-tag mb-2">
             AI WORKFLOW ARCHITECT & ROI ESTIMATOR
           </span>
-          <h1 className="font-condensed text-4xl sm:text-6xl font-bold text-[#000000] uppercase tracking-tight">
-            CALCULATE ENTERPRISE AGENT SAVINGS
+          <h1 className="type-h3">
+            Calculate enterprise agent savings
           </h1>
         </div>
       </div>
@@ -68,19 +68,19 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Column (5 cols): Input Form */}
         <div className="lg:col-span-5 bg-[#ffffff] rounded-[24px] p-6 sm:p-8 border border-[#c6c6c6] h-fit">
-          <h2 className="font-condensed text-2xl font-bold text-[#000000] uppercase mb-4">
-            INPUT WORKFLOW PARAMETERS
+          <h2 className="font-neo font-bold uppercase tracking-tight text-xl text-[#000000] mb-4">
+            Input workflow parameters
           </h2>
 
           <form onSubmit={handleCalculateRoi} className="space-y-4">
             <div>
-              <label className="font-mono text-xs text-[#000000] uppercase block mb-1 font-semibold">
+              <label className="font-mono-tag text-[#000000] block mb-1">
                 INDUSTRY SECTOR
               </label>
               <select
                 value={industry}
                 onChange={(e) => setIndustry(e.target.value)}
-                className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 font-neo text-sm text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000]"
+                className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 type-body-medium text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000]"
               >
                 <option>Financial Services & Banking</option>
                 <option>Healthcare & Life Sciences</option>
@@ -92,13 +92,13 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
             </div>
 
             <div>
-              <label className="font-mono text-xs text-[#000000] uppercase block mb-1 font-semibold">
+              <label className="font-mono-tag text-[#000000] block mb-1">
                 TARGET DEPARTMENT
               </label>
               <select
                 value={department}
                 onChange={(e) => setDepartment(e.target.value)}
-                className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 font-neo text-sm text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000]"
+                className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 type-body-medium text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000]"
               >
                 <option>Finance & Treasury</option>
                 <option>Supply Chain & Operations</option>
@@ -109,40 +109,40 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
             </div>
 
             <div>
-              <label className="font-mono text-xs text-[#000000] uppercase block mb-1 font-semibold">
+              <label className="font-mono-tag text-[#000000] block mb-1">
                 CURRENT WORKFLOW & PAIN POINTS
               </label>
               <textarea
                 value={workflowDescription}
                 onChange={(e) => setWorkflowDescription(e.target.value)}
                 rows={3}
-                className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 font-neo text-sm text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000] resize-none"
+                className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 type-body-medium text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000] resize-none"
                 placeholder="Describe manual tasks, bottleneck frequency, and tool stack..."
               />
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="font-mono text-xs text-[#000000] uppercase block mb-1 font-semibold">
+                <label className="font-mono-tag text-[#000000] block mb-1">
                   TEAM SIZE
                 </label>
                 <input
                   type="text"
                   value={teamSize}
                   onChange={(e) => setTeamSize(e.target.value)}
-                  className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 font-neo text-sm text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000]"
+                  className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 type-body-medium text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000]"
                 />
               </div>
 
               <div>
-                <label className="font-mono text-xs text-[#000000] uppercase block mb-1 font-semibold">
+                <label className="font-mono-tag text-[#000000] block mb-1">
                   EST. MONTHLY COST
                 </label>
                 <input
                   type="text"
                   value={currentCost}
                   onChange={(e) => setCurrentCost(e.target.value)}
-                  className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 font-neo text-sm text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000]"
+                  className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 type-body-medium text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000]"
                 />
               </div>
             </div>
@@ -175,13 +175,13 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
               <div className="flex items-center justify-between pb-4 border-b border-[#f3f3f3]">
                 <div>
                   <span className="mint-tag mb-1">AUDIT COMPLETE</span>
-                  <h3 className="font-condensed text-3xl font-bold text-[#000000] uppercase">
+                  <h3 className="font-neo font-bold uppercase tracking-tight text-2xl text-[#000000]">
                     {auditResult.title}
                   </h3>
                 </div>
                 <div className="text-right">
-                  <span className="font-mono text-[10px] text-[#979797] uppercase block">READINESS SCORE</span>
-                  <span className="font-condensed text-3xl font-bold text-[#000000]">
+                  <span className="font-mono-tag text-[#979797] block">READINESS SCORE</span>
+                  <span className="font-neo font-bold text-2xl text-[#000000]">
                     {auditResult.readinessScore}/100
                   </span>
                 </div>
@@ -190,20 +190,20 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
               {/* Highlight Cards */}
               <div className="grid grid-cols-3 gap-4 bg-[#f3f3f3] p-4 rounded-2xl border border-[#c6c6c6]/50">
                 <div>
-                  <span className="font-mono text-[10px] text-[#979797] uppercase block">PROJECTED ROI</span>
-                  <span className="font-condensed text-3xl font-bold text-[#000000]">
+                  <span className="font-mono-tag text-[#979797] block">PROJECTED ROI</span>
+                  <span className="font-neo font-bold text-2xl text-[#000000]">
                     {auditResult.roiPercentage}%
                   </span>
                 </div>
                 <div>
-                  <span className="font-mono text-[10px] text-[#979797] uppercase block">EST. MONTHLY SAVINGS</span>
-                  <span className="font-condensed text-3xl font-bold text-[#000000]">
+                  <span className="font-mono-tag text-[#979797] block">EST. MONTHLY SAVINGS</span>
+                  <span className="font-neo font-bold text-2xl text-[#000000]">
                     {auditResult.monthlySavingsEst}
                   </span>
                 </div>
                 <div>
-                  <span className="font-mono text-[10px] text-[#979797] uppercase block">WEEKLY TIME SAVED</span>
-                  <span className="font-condensed text-3xl font-bold text-[#000000]">
+                  <span className="font-mono-tag text-[#979797] block">WEEKLY TIME SAVED</span>
+                  <span className="font-neo font-bold text-2xl text-[#000000]">
                     {auditResult.timeSavedPerWeekHours} hrs
                   </span>
                 </div>
@@ -211,32 +211,32 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
 
               {/* Executive Summary */}
               <div>
-                <span className="font-mono text-xs text-[#000000] font-bold uppercase block mb-2">
+                <span className="font-mono-tag text-[#000000] block mb-2">
                   EXECUTIVE SUMMARY
                 </span>
-                <p className="font-neo text-sm text-[#444444] leading-relaxed">
+                <p className="type-body-medium text-[#444444]">
                   {auditResult.executiveSummary}
                 </p>
               </div>
 
               {/* Recommended Agent Modules */}
               <div>
-                <span className="font-mono text-xs text-[#000000] font-bold uppercase block mb-3">
+                <span className="font-mono-tag text-[#000000] block mb-3">
                   RECOMMENDED AGENT ARCHITECTURE
                 </span>
                 <div className="space-y-3">
                   {auditResult.agentModules.map((m, idx) => (
                     <div key={idx} className="bg-[#f3f3f3] p-4 rounded-xl border border-[#c6c6c6]/40">
                       <div className="flex justify-between items-center mb-1">
-                        <span className="font-condensed text-lg font-bold text-[#000000]">{m.name}</span>
-                        <span className="font-mono text-[10px] bg-[#000000] text-[#ffffff] px-2 py-0.5 rounded">
+                        <span className="font-neo font-bold text-base text-[#000000]">{m.name}</span>
+                        <span className="font-mono-tag bg-[#000000] text-[#ffffff] px-2 py-0.5 rounded">
                           {m.autonomyLevel}
                         </span>
                       </div>
-                      <p className="font-neo text-xs text-[#444444] mb-2">{m.description}</p>
+                      <p className="type-body-medium text-[#444444] mb-2">{m.description}</p>
                       <div className="flex flex-wrap gap-1">
                         {m.connectors.map((c, cIdx) => (
-                          <span key={cIdx} className="font-mono text-[10px] bg-[#ffffff] text-[#000000] px-2 py-0.5 rounded border border-[#c6c6c6]">
+                          <span key={cIdx} className="font-mono-tag bg-[#ffffff] text-[#000000] px-2 py-0.5 rounded border border-[#c6c6c6]">
                             {c}
                           </span>
                         ))}
@@ -248,17 +248,17 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
 
               {/* Timeline Milestones */}
               <div>
-                <span className="font-mono text-xs text-[#000000] font-bold uppercase block mb-3">
+                <span className="font-mono-tag text-[#000000] block mb-3">
                   IMPLEMENTATION TIMELINE
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {auditResult.milestones.map((ms, idx) => (
                     <div key={idx} className="bg-[#f3f3f3] p-3.5 rounded-xl border border-[#c6c6c6]/40">
-                      <div className="flex justify-between font-mono text-xs font-bold text-[#000000] mb-1">
+                      <div className="flex justify-between font-mono-tag text-[#000000] mb-1">
                         <span>{ms.phase}</span>
                         <span className="text-[#979797]">{ms.duration}</span>
                       </div>
-                      <p className="font-neo text-xs text-[#444444]">{ms.deliverables}</p>
+                      <p className="type-body-medium text-[#444444]">{ms.deliverables}</p>
                     </div>
                   ))}
                 </div>
@@ -266,12 +266,12 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
 
               {/* CTA */}
               <div className="pt-4 border-t border-[#f3f3f3] flex justify-between items-center">
-                <span className="font-mono text-xs text-[#979797]">
+                <span className="font-mono-tag text-[#979797]">
                   DAYOS ENTERPRISE DEPLOYMENT READY
                 </span>
                 <button
                   onClick={onOpenDemo}
-                  className="bg-[#000000] hover:bg-[#2f2f2f] text-[#ffffff] px-5 py-2.5 rounded-lg font-neo text-xs font-medium flex items-center gap-2 cursor-pointer"
+                  className="bg-[#000000] hover:bg-[#2f2f2f] text-[#ffffff] px-5 py-2.5 rounded-lg font-neo text-sm font-medium flex items-center gap-2 cursor-pointer"
                 >
                   <span>Schedule Deployment Call</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-[#d1ffca]" />
@@ -281,10 +281,10 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
           ) : (
             <div className="bg-[#ffffff] rounded-[24px] p-8 border border-[#c6c6c6] flex flex-col items-center justify-center text-center h-full min-h-[420px]">
               <Calculator className="w-12 h-12 text-[#979797] mb-4" />
-              <h3 className="font-condensed text-3xl font-bold text-[#000000] uppercase mb-2">
-                AWAITING AUDIT PARAMETERS
+              <h3 className="font-neo font-bold uppercase tracking-tight text-2xl text-[#000000] mb-2">
+                Awaiting audit parameters
               </h3>
-              <p className="font-neo text-sm text-[#444444] max-w-md leading-relaxed mb-6">
+              <p className="type-body-medium text-[#444444] max-w-md mb-6">
                 Fill out your department's workflow specifications on the left to generate a personalized AI agent architecture report with cost savings and implementation roadmap.
               </p>
               <div className="mint-tag">

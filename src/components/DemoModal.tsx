@@ -36,10 +36,10 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
             <div className="w-12 h-12 rounded-full bg-[#d1ffca] text-[#000000] flex items-center justify-center mx-auto font-bold text-xl">
               ✓
             </div>
-            <h3 className="font-condensed text-3xl font-bold text-[#000000] uppercase">
-              DEMO CONFIRMED
+            <h3 className="type-h4 text-[#000000]">
+              Demo confirmed
             </h3>
-            <p className="font-neo text-sm text-[#444444] leading-relaxed max-w-xs mx-auto">
+            <p className="type-body-medium text-[#444444] max-w-xs mx-auto">
               Our enterprise solution engineering team will reach out to <span className="voltage-highlight">{email}</span> within 2 hours.
             </p>
             <button
@@ -47,7 +47,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                 setSubmitted(false);
                 onClose();
               }}
-              className="bg-[#000000] text-[#ffffff] px-6 py-3 rounded-lg font-neo text-xs font-medium cursor-pointer"
+              className="bg-[#000000] text-[#ffffff] px-6 py-3 rounded-lg font-neo text-sm font-medium cursor-pointer"
             >
               Close Window
             </button>
@@ -56,17 +56,17 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
           <div>
             <div className="mb-6">
               <span className="mint-tag mb-2">SCHEDULE ENTERPRISE DEMO</span>
-              <h3 className="font-condensed text-3xl sm:text-4xl font-bold text-[#000000] uppercase">
-                SCHEDULE ARCHITECTURE AUDIT
+              <h3 className="type-h4 text-[#000000]">
+                Schedule architecture audit
               </h3>
-              <p className="font-neo text-xs text-[#444444] mt-1">
+              <p className="type-body-medium text-[#444444] mt-1">
                 Direct 30-minute consultation with a Dayos system architect.
               </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="font-mono text-xs text-[#000000] uppercase block mb-1 font-semibold">
+                <label className="font-mono-tag text-[#000000] block mb-1">
                   FULL NAME
                 </label>
                 <input
@@ -75,12 +75,12 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="e.g. Marcus Vance"
-                  className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 font-neo text-sm text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000]"
+                  className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 type-body-medium text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000]"
                 />
               </div>
 
               <div>
-                <label className="font-mono text-xs text-[#000000] uppercase block mb-1 font-semibold">
+                <label className="font-mono-tag text-[#000000] block mb-1">
                   WORK EMAIL
                 </label>
                 <input
@@ -89,12 +89,12 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="m.vance@enterprise.com"
-                  className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 font-neo text-sm text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000]"
+                  className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 type-body-medium text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000]"
                 />
               </div>
 
               <div>
-                <label className="font-mono text-xs text-[#000000] uppercase block mb-1 font-semibold">
+                <label className="font-mono-tag text-[#000000] block mb-1">
                   ORGANIZATION / COMPANY
                 </label>
                 <input
@@ -103,18 +103,18 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
                   placeholder="Acme Global Logistics"
-                  className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 font-neo text-sm text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000]"
+                  className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 type-body-medium text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000]"
                 />
               </div>
 
               <div>
-                <label className="font-mono text-xs text-[#000000] uppercase block mb-1 font-semibold">
+                <label className="font-mono-tag text-[#000000] block mb-1">
                   PRIMARY ERP / CRM SYSTEM
                 </label>
                 <select
                   value={erpStack}
                   onChange={(e) => setErpStack(e.target.value)}
-                  className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 font-neo text-sm text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000]"
+                  className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 type-body-medium text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000]"
                 >
                   <option>SAP S/4HANA</option>
                   <option>Oracle Fusion GL</option>
