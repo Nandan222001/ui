@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
+import { Reveal } from "./Reveal";
 
 interface IntroducingHeroProps {
   onOpenDemo: () => void;
@@ -19,9 +20,11 @@ export const IntroducingHero: React.FC<IntroducingHeroProps> = ({ onOpenDemo }) 
         </div>
 
         <div className="lg:col-span-7">
-          <h2 className="type-h2 mb-8 max-w-3xl">
-            Built to do the work, not simply recommend it.
-          </h2>
+          <Reveal>
+            <h2 className="type-h2 mb-8 max-w-3xl">
+              Built to do the work, not simply recommend it.
+            </h2>
+          </Reveal>
 
           <p className="type-body-large text-[#444444] mb-6 max-w-2xl">
             Hero deploys AI agents that connect directly to your ERP through

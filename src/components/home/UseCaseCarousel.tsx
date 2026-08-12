@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { Reveal } from "./Reveal";
 
 const CASE_STUDIES = [
   {
@@ -40,7 +41,7 @@ export const UseCaseCarousel: React.FC = () => {
     <section className="w-full bg-[#e5e5e5] text-[#000000]">
       <div className="site-grid section-block">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
-          <div>
+          <Reveal>
             <h2 className="type-quote max-w-2xl mb-3">
               Explore our Use Case Library.
             </h2>
@@ -48,7 +49,7 @@ export const UseCaseCarousel: React.FC = () => {
               Deploy AI quickly with our use case library. No more worries
               about where or how to start.
             </p>
-          </div>
+          </Reveal>
 
           <div className="flex items-center gap-2">
             <button

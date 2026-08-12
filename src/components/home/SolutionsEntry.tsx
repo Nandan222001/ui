@@ -1,4 +1,5 @@
 import React from "react";
+import { Reveal } from "./Reveal";
 
 const SOLUTIONS = [
   {
@@ -26,21 +27,25 @@ export const SolutionsEntry: React.FC = () => {
     <section className="w-full bg-[#000000] text-[#ffffff]">
       <div className="site-grid section-block">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 items-end">
-          <h2 className="lg:col-span-8 type-quote">
-            Supercharge your ERP and HCM with Agentic AI
-          </h2>
+          <Reveal className="lg:col-span-8">
+            <h2 className="type-quote">
+              Supercharge your ERP and HCM with Agentic AI
+            </h2>
+          </Reveal>
           <p className="lg:col-span-4 type-body-large text-[#979797]">
             Hero executes real work inside your ERP. Multiple entry points.
             Same outcome: the work gets done.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-16 lg:gap-24">
           {SOLUTIONS.map((sol) => (
             <div key={sol.name} className="group cursor-pointer">
-              <div className="w-full aspect-square rounded-[24px] overflow-hidden bg-[#2f2f2f] mb-6">
+              {/* Real site: media-wrap has overflow:visible — the clip is
+                  shifted -20% and spills past its own square, not clipped */}
+              <div className="w-full aspect-square overflow-visible mb-6">
                 <video
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  className="w-full h-full object-contain -translate-x-[20%] transition-transform duration-300 ease-in-out group-hover:-translate-x-[20%] group-hover:scale-125"
                   src={sol.video}
                   autoPlay
                   muted

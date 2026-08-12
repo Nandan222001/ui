@@ -1,4 +1,5 @@
 import React from "react";
+import { Reveal } from "./Reveal";
 
 const COLUMNS = [
   {
@@ -22,13 +23,13 @@ export const ManifestoColumns: React.FC = () => {
   return (
     <section className="w-full bg-[#e5e5e5] text-[#000000]">
       <div className="site-grid section-block grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-16">
-        {COLUMNS.map((col) => (
-          <div key={col.title}>
+        {COLUMNS.map((col, idx) => (
+          <Reveal key={col.title} delay={idx * 0.1}>
             <h2 className="type-h2 mb-6">{col.title}</h2>
             <p className="type-body-large text-[#444444] max-w-sm">
               {col.description}
             </p>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

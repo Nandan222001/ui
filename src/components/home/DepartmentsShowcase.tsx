@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { Reveal } from "./Reveal";
 
 const DEPARTMENTS = [
   {
@@ -49,7 +50,7 @@ export const DepartmentsShowcase: React.FC = () => {
     <section className="w-full bg-[#e5e5e5] text-[#000000]">
       <div className="site-grid section-block">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
-          <div>
+          <Reveal>
             <h2 className="type-h2 mb-4 max-w-3xl">
               Run a better business with Dayos.
             </h2>
@@ -59,7 +60,7 @@ export const DepartmentsShowcase: React.FC = () => {
               platforms can't solve out of the box, across Accounting, HR,
               Procurement, IT, and Finance.
             </p>
-          </div>
+          </Reveal>
 
           <div className="flex items-center gap-2 shrink-0">
             <button
