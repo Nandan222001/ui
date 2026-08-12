@@ -129,7 +129,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
   }, []);
 
   return (
-    <header className="w-full fixed top-0 left-0 z-40">
+    <header className="w-full sticky top-0 z-40">
       <div
         ref={barRef}
         className="h-20 sm:h-24 lg:h-32 px-4 sm:px-6 lg:px-20 flex items-center justify-between gap-3"

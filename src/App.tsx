@@ -53,11 +53,9 @@ export default function App() {
       {/* Top Floating Navbar */}
       <Navbar onOpenDemo={onOpenDemo} />
 
-      {/* Main Content Area, padded to clear the fixed navbar on every route
-          (including the homepage — the hero heading must never sit under
-          the nav's hit-testing/visual area, even though its background
-          color matches the canvas behind the nav). */}
-      <main className="flex-1 pt-20 sm:pt-24 lg:pt-32">
+      {/* Main Content Area. Navbar is sticky, so it reserves its own space
+          in normal flow — no manual offset needed here. */}
+      <main className="flex-1">
         <Routes>
           <Route
             path="/"
