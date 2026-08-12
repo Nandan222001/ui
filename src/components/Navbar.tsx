@@ -6,12 +6,60 @@ interface NavbarProps {
   onOpenDemo: () => void;
 }
 
-const NAV_ITEMS: { to: string; label: string; pulse?: boolean }[] = [
+type NavItem = { to: string; label: string; pulse?: boolean };
+
+// Desktop pill only shows this core set — the app's own interactive tools.
+const NAV_ITEMS: NavItem[] = [
   { to: "/", label: "SHOWROOM" },
   { to: "/agent-sandbox", label: "AGENT SANDBOX", pulse: true },
   { to: "/roi-calculator", label: "ROI ESTIMATOR" },
   { to: "/readiness-assessment", label: "READINESS DIAGNOSTIC" },
-  { to: "/use-cases", label: "SOLUTIONS" },
+  { to: "/use-cases", label: "USE CASES" },
+];
+
+// Mobile menu shows everything, grouped the same way as the footer, so the
+// rest of the site (Platform, Solutions, Resources, Company) isn't only
+// reachable by scrolling all the way down.
+const MOBILE_NAV_GROUPS: { title: string | null; items: NavItem[] }[] = [
+  { title: null, items: NAV_ITEMS },
+  {
+    title: "PLATFORM",
+    items: [
+      { to: "/platform/hero-answers", label: "Hero Answers" },
+      { to: "/platform/hero-actions", label: "Hero Actions" },
+      { to: "/platform/hero-experts", label: "Hero Experts" },
+    ],
+  },
+  {
+    title: "SOLUTIONS",
+    items: [
+      { to: "/solutions/ai-it-management-software", label: "IT Management" },
+      { to: "/solutions/ai-accounting-software", label: "Accounting" },
+      { to: "/solutions/ai-hr-software", label: "Human Resources" },
+      { to: "/solutions/ai-finance-software", label: "Finance" },
+      { to: "/solutions/ai-procurement-software", label: "Procurement" },
+    ],
+  },
+  {
+    title: "RESOURCES",
+    items: [
+      { to: "/case-studies", label: "Case Studies" },
+      { to: "/blog", label: "Blog" },
+      { to: "/news", label: "News" },
+      { to: "/support", label: "Support Hub" },
+      { to: "/releases", label: "Release Notes" },
+    ],
+  },
+  {
+    title: "COMPANY",
+    items: [
+      { to: "/company", label: "Why Dayos" },
+      { to: "/partners", label: "Our Partners" },
+      { to: "/careers", label: "Careers" },
+      { to: "/plans", label: "Plans & Pricing" },
+      { to: "/partnership", label: "Partnership" },
+    ],
+  },
 ];
 
 // Reads the background color directly behind the floating nav bar and
@@ -165,26 +213,37 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
 
       {/* Mobile Menu Panel */}
       {isMenuOpen && (
-        <div className="lg:hidden px-4 sm:px-6 pb-6 flex flex-col gap-1.5 bg-[#e5e5e5] border-t border-[#c6c6c6]/60">
-          {NAV_ITEMS.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              end={item.to === "/"}
-              onClick={() => setIsMenuOpen(false)}
-              className={({ isActive }) =>
-                `mt-1.5 first:mt-4 px-4 py-3.5 rounded-xl text-left text-sm font-neo font-medium flex items-center justify-between transition-colors ${
-                  isActive
-                    ? "bg-[#000000] text-[#ffffff]"
-                    : "bg-[#ffffff] text-[#444444] border border-[#c6c6c6]/40"
-                }`
-              }
-            >
-              <span>{item.label}</span>
-              {item.pulse && (
-                <span className="w-1.5 h-1.5 rounded-full bg-[#fff100] animate-pulse"></span>
+        <div className="lg:hidden px-4 sm:px-6 pb-6 bg-[#e5e5e5] border-t border-[#c6c6c6]/60 max-h-[calc(100dvh-5rem)] overflow-y-auto">
+          {MOBILE_NAV_GROUPS.map((group, groupIdx) => (
+            <div key={group.title ?? "primary"} className={groupIdx === 0 ? "mt-4" : "mt-6"}>
+              {group.title && (
+                <span className="font-mono-tag text-[#979797] block mb-2 px-1">
+                  {group.title}
+                </span>
               )}
-            </NavLink>
+              <div className="flex flex-col gap-1.5">
+                {group.items.map((item) => (
+                  <NavLink
+                    key={item.to}
+                    to={item.to}
+                    end={item.to === "/"}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={({ isActive }) =>
+                      `px-4 py-3.5 rounded-xl text-left text-sm font-neo font-medium flex items-center justify-between transition-colors ${
+                        isActive
+                          ? "bg-[#000000] text-[#ffffff]"
+                          : "bg-[#ffffff] text-[#444444] border border-[#c6c6c6]/40"
+                      }`
+                    }
+                  >
+                    <span>{item.label}</span>
+                    {item.pulse && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#fff100] animate-pulse"></span>
+                    )}
+                  </NavLink>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       )}
