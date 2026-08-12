@@ -28,20 +28,22 @@ export const UseCasesView: React.FC<UseCasesViewProps> = ({ onOpenDemo }) => {
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex gap-2 bg-[#ffffff] p-1.5 rounded-full border border-[#c6c6c6] self-start md:self-auto">
-          {["ALL", "FINANCE", "SUPPLY CHAIN", "HR & TALENT"].map((tag) => (
-            <button
-              key={tag}
-              onClick={() => setSelectedTag(tag)}
-              className={`px-4 py-1.5 rounded-full font-neo text-sm font-medium transition-colors cursor-pointer ${
-                selectedTag === tag
-                  ? "bg-[#000000] text-[#ffffff]"
-                  : "text-[#444444] hover:text-[#000000]"
-              }`}
-            >
-              {tag}
-            </button>
-          ))}
+        <div className="max-w-full overflow-x-auto no-scrollbar self-start md:self-auto">
+          <div className="flex gap-2 bg-[#ffffff] p-1.5 rounded-full border border-[#c6c6c6] w-max">
+            {["ALL", "FINANCE", "SUPPLY CHAIN", "HR & TALENT"].map((tag) => (
+              <button
+                key={tag}
+                onClick={() => setSelectedTag(tag)}
+                className={`px-4 py-1.5 rounded-full font-neo text-sm font-medium transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                  selectedTag === tag
+                    ? "bg-[#000000] text-[#ffffff]"
+                    : "text-[#444444] hover:text-[#000000]"
+                }`}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 

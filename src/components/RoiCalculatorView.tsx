@@ -121,7 +121,7 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="font-mono-tag text-[#000000] block mb-1">
                   TEAM SIZE
@@ -188,7 +188,7 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
               </div>
 
               {/* Highlight Cards */}
-              <div className="grid grid-cols-3 gap-4 bg-[#f3f3f3] p-4 rounded-2xl border border-[#c6c6c6]/50">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-[#f3f3f3] p-4 rounded-2xl border border-[#c6c6c6]/50">
                 <div>
                   <span className="font-mono-tag text-[#979797] block">PROJECTED ROI</span>
                   <span className="font-neo font-bold text-2xl text-[#000000]">
@@ -197,7 +197,7 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
                 </div>
                 <div>
                   <span className="font-mono-tag text-[#979797] block">EST. MONTHLY SAVINGS</span>
-                  <span className="font-neo font-bold text-2xl text-[#000000]">
+                  <span className="font-neo font-bold text-2xl text-[#000000] break-words">
                     {auditResult.monthlySavingsEst}
                   </span>
                 </div>
