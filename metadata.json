@@ -1,0 +1,6 @@
+{
+  "name": "Dayos — AI for Business",
+  "description": "Brutalist editorial platform and interactive AI system showcase for enterprise agent deployment, readiness assessment, and ROI calculation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

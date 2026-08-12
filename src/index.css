@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-carbon-black: #000000;
+  --color-paper-white: #ffffff;
+  --color-warm-canvas: #e5e5e5;
+  --color-mist-gray: #f3f3f3;
+  --color-ash: #c6c6c6;
+  --color-smoke: #979797;
+  --color-slate: #444444;
+  --color-graphite: #2f2f2f;
+  --color-mint-chip: #d1ffca;
+  --color-voltage-yellow: #fff100;
+
+  /* Typography — Fonts */
+  --font-suisseintlcond: 'Barlow Condensed', 'SuisseIntlCond', sans-serif;
+  --font-suisseintl: 'Inter', 'SuisseIntl', sans-serif;
+  --font-suisseintlmono: 'JetBrains Mono', 'SuisseIntlMono', monospace;
+
+  /* Font Aliases */
+  --font-display: var(--font-suisseintlcond);
+  --font-body: var(--font-suisseintl);
+  --font-mono: var(--font-suisseintlmono);
+
+  /* Spacing */
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-40: 40px;
+  --spacing-64: 64px;
+  --spacing-80: 80px;
+  --spacing-96: 96px;
+
+  /* Border Radius */
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
+  --radius-3xl-2: 32px;
+  --radius-full: 48px;
+  --radius-full-2: 64px;
+  --radius-full-3: 9999px;
+}
+
+:root {
+  /* Colors */
+  --color-carbon-black: #000000;
+  --color-paper-white: #ffffff;
+  --color-warm-canvas: #e5e5e5;
+  --color-mist-gray: #f3f3f3;
+  --color-ash: #c6c6c6;
+  --color-smoke: #979797;
+  --color-slate: #444444;
+  --color-graphite: #2f2f2f;
+  --color-mint-chip: #d1ffca;
+  --color-voltage-yellow: #fff100;
+
+  /* Typography — Font Families */
+  --font-suisseintlcond: 'Barlow Condensed', 'SuisseIntlCond', sans-serif;
+  --font-suisseintl: 'Inter', 'SuisseIntl', sans-serif;
+  --font-suisseintlmono: 'JetBrains Mono', 'SuisseIntlMono', monospace;
+
+  /* Surfaces */
+  --surface-canvas: #e5e5e5;
+  --surface-card: #ffffff;
+  --surface-inverted: #000000;
+  --surface-mist: #f3f3f3;
+}
+
+/* Custom Utilities for Brutalist Editorial Design System */
+.font-condensed {
+  font-family: var(--font-suisseintlcond);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+}
+
+.font-neo {
+  font-family: var(--font-suisseintl);
+}
+
+.font-mono-tag {
+  font-family: var(--font-suisseintlmono);
+  font-size: 12px;
+  letter-spacing: -0.03em;
+}
+
+/* Top Arc Card Dome Shape */
+.card-top-arc {
+  border-radius: 64px 64px 0 0;
+}
+
+/* Mint Tag Pill */
+.mint-tag {
+  background-color: #d1ffca;
+  color: #000000;
+  border-radius: 64px;
+  padding: 4px 12px;
+  font-family: var(--font-suisseintlmono);
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+}
+
+/* Voltage Yellow Highlight */
+.voltage-highlight {
+  background-color: #fff100;
+  color: #000000;
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+/* Hide scrollbar for clean horizontal scrollable components */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
