@@ -95,7 +95,7 @@ export const SolutionDetailView: React.FC<SolutionDetailViewProps> = ({ onOpenDe
               running on your data.
             </h3>
             <span className="inline-flex items-center gap-2 bg-[#ffffff] text-[#000000] px-5 py-3 rounded-lg font-neo font-medium text-sm shrink-0">
-              Schedule a Demo
+              Get a Free Quote
               <ArrowUpRight className="w-4 h-4" />
             </span>
           </button>

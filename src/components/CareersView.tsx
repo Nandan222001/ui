@@ -10,42 +10,42 @@ interface CareersViewProps {
 
 const VALUES = [
   {
-    title: "Optimize for flow, not hours.",
+    title: "Original work, no shortcuts.",
     description:
-      "We measure work by the quality of what ships, not by time logged. If an agent can absorb the repetitive half of a job, we'd rather our people spend their hours on the half that actually needs a human.",
+      "Every project ships as custom, original work built for that client's requirement, whether it's a production system or a student's final-year project. Recycled templates aren't part of how we operate.",
   },
   {
-    title: "Small teams, real ownership.",
+    title: "Business and academic, both real work.",
     description:
-      "Every hire works close to production, close to customers, and close to the outcome. There's no layer of process between you and the systems Dayos runs inside.",
+      "We take student and academic projects as seriously as business engagements. Different audience, same bar for craftsmanship and originality.",
   },
   {
-    title: "Built by people who'd use it.",
+    title: "Hands-on, not just advisory.",
     description:
-      "We're a team that has sat inside enterprise close cycles and reconciliations ourselves, and built the product we wished existed back then.",
+      "We build the thing, not just a slide deck about the thing. Engineers here write code, ship features, and stay close to what actually goes live.",
   },
 ];
 
 const BENEFITS = [
   {
-    title: "Compounding AI exposure",
+    title: "Hands-on AI project exposure",
     description:
-      "Everyone works directly on production agents deployed inside real enterprise systems, not on internal prototypes shelved after a demo.",
+      "Work directly on chatbots, virtual assistants, and LLM integrations built with OpenAI, Anthropic, and Google's models, deployed to real clients.",
   },
   {
-    title: "Profit-sharing",
+    title: "Fast-growing specialty tracks",
     description:
-      "When our agents save a customer real money, the team behind that work shares in the upside, not just the base salary line.",
+      "AI and LLM work is the newest and fastest-growing part of what we do, which means real room to grow into it as the team scales past 100+ engineers.",
   },
   {
-    title: "Healthcare, worldwide",
+    title: "Genuinely varied project work",
     description:
-      "Coverage designed for a distributed team, wherever in the world our people choose to be based.",
+      "One week it's a business automation platform, the next a mobile app or an academic ML project. The range stays wide on purpose.",
   },
   {
-    title: "Async by default",
+    title: "Support to keep growing",
     description:
-      "We're spread across time zones on purpose. Meetings are the exception, and documentation is how decisions actually travel.",
+      "Competitive benefits and real support for professional development, so engineers keep building skills alongside the projects.",
   },
 ];
 
@@ -58,14 +58,14 @@ export const CareersView: React.FC<CareersViewProps> = () => {
           <Reveal>
             <span className="mint-tag mb-6">CAREERS</span>
             <h1 className="type-h1 max-w-4xl">
-              Help us change how good work actually gets done.
+              Join a growing team building real AI, software, and IT projects.
             </h1>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="type-body-headline text-[#444444] max-w-2xl mt-8">
-              We're a small team building the agents that take over the
-              repetitive core of enterprise work, so the people inside those
-              companies get their time back for the work only they can do.
+              NMT Solutions is a 100+ engineer team delivering AI integrations,
+              custom software, academic projects, business IT solutions, and
+              mobile apps for clients who expect original work, not templates.
             </p>
           </Reveal>
         </div>
@@ -101,7 +101,7 @@ export const CareersView: React.FC<CareersViewProps> = () => {
           <Reveal className="mb-12">
             <span className="font-mono-tag text-[#000000]/60 block mb-4">WHY JOIN</span>
             <h2 className="type-h2 max-w-3xl">
-              We pay in growth, ownership, and coverage that travels with you.
+              We pay in real AI exposure, growth, and genuinely varied work.
             </h2>
           </Reveal>
 
@@ -128,18 +128,17 @@ export const CareersView: React.FC<CareersViewProps> = () => {
                 Nothing posted right now.
               </h3>
               <p className="type-body-large text-[#444444] max-w-2xl">
-                We don't have any open positions at the moment. We're a
-                small team, so we hire in bursts rather than running a
-                constant pipeline. Check back later, or send us a note
-                below if you think you'd be a strong fit whenever a role
-                does open up.
+                We don't have any open positions listed at the moment. We hire
+                as the team's project load grows rather than running a
+                constant pipeline. Check back later, or reach out directly if
+                you think you'd be a strong fit whenever a role does open up.
               </p>
               <a
-                href="mailto:hello@dayos.com"
+                href="mailto:info@nmtsolution.com"
                 className="inline-flex items-center gap-2 mt-8 font-neo font-medium text-base underline underline-offset-4"
               >
                 <Mail className="w-4 h-4" />
-                hello@dayos.com
+                info@nmtsolution.com
               </a>
             </div>
           </Reveal>
@@ -160,7 +159,7 @@ export const CareersView: React.FC<CareersViewProps> = () => {
                 as="span"
                 className="bg-[#ffffff] text-[#000000] px-5 py-3 rounded-lg font-neo font-medium text-sm"
               >
-                <span>Learn more about Dayos</span>
+                <span>Learn more about NMT Solutions</span>
                 <ArrowUpRight className="w-4 h-4" />
               </HoverLoopButton>
             </Link>

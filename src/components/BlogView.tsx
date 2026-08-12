@@ -9,76 +9,74 @@ interface Post {
 
 const POSTS: Post[] = [
   {
-    title: "New Oracle & Workday modules, built by AI — up to 50% funded.",
+    title: "5 Signs Your Business Is Ready for an AI Chatbot",
     excerpt:
-      "A Singapore government co-funding program will cover up to half the cost of agentic AI delivery work for eligible enterprises.",
-    date: "Jul 1, 2026",
-    category: "Company",
+      "If your team is answering the same questions over and over, or support tickets pile up after hours, an AI chatbot trained on your own data can carry more of the load than you'd expect.",
+    date: "2025",
+    category: "AI & LLM",
   },
   {
-    title: "Athena is live.",
+    title: "RAG vs. Fine-Tuning: Which Fits Your Project",
     excerpt:
-      "Hero v2.0 is generally available: governed Oracle and Workday support that resolves tickets end-to-end, answers data questions in plain English, and configures systems by conversation.",
-    date: "Jun 18, 2026",
-    category: "Product",
+      "Two common ways to make an LLM 'know' your business, and why we default to retrieval-augmented generation for most client projects before reaching for fine-tuning.",
+    date: "2025",
+    category: "AI & LLM",
   },
   {
-    title:
-      "Singapore Just Defined Agentic AI. The Economics Behind the Definition Are What Matter.",
+    title: "Why We Build Chatbots on Top of Your Own Data, Not the Open Internet",
     excerpt:
-      "Singapore's tech regulator published a technical definition of agentic AI, citing Dayos as one of several industry case studies.",
-    date: "May 22, 2026",
-    category: "Finance",
+      "A general-purpose model answers general questions. A useful support or sales assistant needs to be grounded in your docs, your policies, and your product, not the wider web.",
+    date: "2025",
+    category: "AI & LLM",
   },
   {
-    title: "The Configuration Collapse: Why Legacy ERP Falls Next.",
+    title: "Inside an AI Automation Agent: What It Can and Can't Do Yet",
     excerpt:
-      "A look at why configuration-bound enterprise software is running out of road as agentic systems take over the work around it.",
-    date: "May 13, 2026",
-    category: "IT Management",
+      "AI agents can now chain together steps, call tools, and handle multi-step workflows, but they still need guardrails. Here's an honest look at where the line sits today.",
+    date: "2025",
+    category: "AI & LLM",
   },
   {
-    title: "Dayos AI Agent Passes All 10 OWASP Agentic Security Checks.",
+    title: "Picking Between GPT, Claude, and Gemini for Your Product",
     excerpt:
-      "How Hero was evaluated against the OWASP framework for agentic AI security, and what passing all ten checks actually means.",
-    date: "Apr 27, 2026",
-    category: "IT Management",
+      "There's no single 'best' model. We walk through how cost, latency, context length, and task type usually decide which provider fits a given feature.",
+    date: "Jan 2026",
+    category: "AI & LLM",
   },
   {
-    title:
-      "Building Persistent Memory for an Enterprise AI Agent: How We Went From Mem0 to LangMem.",
+    title: "The Real Cost of a Custom Software Build (And Why Templates Don't Cut It)",
     excerpt:
-      "The engineering story behind Hero's memory layer, and why we migrated from Mem0 to LangMem to keep long-running agent context reliable.",
-    date: "Apr 20, 2026",
-    category: "Finance",
+      "Off-the-shelf tools are cheap until they aren't. A look at when a custom build actually pays for itself versus stretching a template past its limits.",
+    date: "2025",
+    category: "Custom Software",
   },
   {
-    title: "The Glasswing Gap.",
+    title: "Cross-Platform vs. Native: Choosing the Right Mobile App Approach",
     excerpt:
-      "Enterprise applications turned out to be undefended, not just overlooked, once agentic AI started probing them at scale.",
-    date: "Apr 20, 2026",
-    category: "IT Management",
+      "Cross-platform frameworks get you to market faster; native still wins on performance-heavy features. How we help clients decide which trade-off actually matters for their app.",
+    date: "2025",
+    category: "Mobile Apps",
   },
   {
-    title: "MCP is a Convenience, Not an Architecture.",
+    title: "5 Business Processes You Didn't Know Could Be Automated",
     excerpt:
-      "Why the Model Context Protocol is a useful connector standard, but not, on its own, a substitute for a real agent architecture.",
-    date: "Apr 4, 2026",
-    category: "IT Management",
+      "From invoice matching to internal approvals, a lot of manual busywork is more automatable than teams assume, often with tools they already have.",
+    date: "Jan 2026",
+    category: "Business IT",
   },
   {
-    title: "Every Enterprise System Has AI Agents Now. None of Them Work Together.",
+    title: "What Makes a Final-Year AI Project Actually Original",
     excerpt:
-      "Vendors have shipped agents into every corner of the enterprise stack independently, leaving orchestration as the unsolved problem.",
-    date: "Mar 27, 2026",
-    category: "Human Resources",
+      "We see a lot of student project ideas built around the same three tutorials. Here's how we help students scope something original enough to defend confidently.",
+    date: "2025",
+    category: "Academic Projects",
   },
   {
-    title: "Can AI Rebuild Your Enterprise UI? Try It.",
+    title: "How We Scope an Academic AI Project From a Rough Idea",
     excerpt:
-      "Legacy enterprise platforms predate AI's ability to generate better interfaces quickly. Our 'Vibecode Test' puts that gap on display.",
-    date: "Mar 16, 2026",
-    category: "Accounting",
+      "Most students come to us with a topic, not a spec. A look at how a vague idea like 'an AI app for X' turns into a buildable, gradeable final-year project.",
+    date: "2025",
+    category: "Academic Projects",
   },
 ];
 
@@ -90,11 +88,12 @@ export const BlogView: React.FC = () => {
         <div className="site-grid section-block">
           <span className="mint-tag mb-6">BLOG</span>
           <h1 className="type-h1 max-w-4xl">
-            Thoughts on the future of work, from the people building it.
+            Notes from the people building your next project.
           </h1>
           <p className="type-body-headline text-[#444444] max-w-2xl mt-8">
-            Notes on agentic AI, enterprise systems, and what changes when
-            software starts doing the work instead of just recording it.
+            Thoughts on AI, custom software, and mobile apps, written by the
+            engineers who actually ship them, for founders, businesses, and
+            students alike.
           </p>
         </div>
       </section>

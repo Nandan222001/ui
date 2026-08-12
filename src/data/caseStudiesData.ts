@@ -17,75 +17,76 @@ export interface CaseStudy {
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
-    slug: "agent-orchestrated-workflows",
-    title: "Streamline Manual Processes with Agentic Workflows",
+    slug: "ai-chatbot-support-deflection",
+    title: "AI Chatbot Cuts Support Ticket Volume in Half",
     description:
-      "A leading analyst firm named agentic AI the top strategic enterprise technology trend for 2025. Dayos has spent the year turning that forecast into deployed infrastructure, and now leads the category for enterprise business applications.",
-    industry: "Tech",
-    platformType: "Hero Actions",
+      "An e-commerce client's support inbox was drowning in the same shipping and returns questions every day. We built an LLM-powered chatbot grounded in their own policies and live order data, and cut ticket volume in half within a month.",
+    industry: "E-commerce",
+    platformType: "AI & LLM Integration",
     image: "/images/it-integrate.webp",
-    date: "January 2025",
+    date: "2025",
+    metric: { label: "Support Tickets Deflected", value: "50%" },
     sections: [
       {
         heading: "The challenge",
-        body: "A mid-market technology company had automated the easy parts of its back office years earlier, but a long tail of manual, judgment-heavy workflows remained stuck between systems: reconciling exception reports by hand, re-keying data across a patchwork of point tools, and routing approvals over email because no workflow engine covered the edge case. Every one of these tasks was too irregular to script with traditional RPA, but too repetitive to keep paying skilled staff to do by hand.",
+        body: "The client's small support team was fielding dozens of near-identical questions every day: where's my order, can I change my address, what's the return policy. Peak season made it worse, with response times stretching past a day and customer satisfaction sliding as a result.",
       },
       {
         heading: "The approach",
-        body: "Dayos deployed Hero Actions directly against the company's core systems rather than building a separate automation layer on top. Instead of scripting each exception path in advance, Hero was given the underlying business context and left to reason through the actual workflow the way a trained analyst would: reading the exception, checking it against policy, and either resolving it or routing it with a clear explanation attached. Within the first deployment cycle, Hero was handling the majority of the routine workflow volume end to end, with a human reviewing only the cases that fell outside its confidence threshold.",
+        body: "We built a chatbot on top of an LLM backend, grounded in the client's actual policy documents and connected live to their order-management system through retrieval-augmented generation, so answers reflected real data instead of a static script. We deployed it as a website widget and a WhatsApp integration, with a clean handoff to a human agent whenever a question fell outside its scope, full conversation history attached.",
       },
       {
         heading: "The outcome",
-        body: "Within a single fiscal quarter, the manual backlog that had accumulated for years was cleared and stayed clear, with new exceptions resolved same-day instead of queuing for a weekly batch review. The operations team redirected the hours it recovered toward process improvement work instead of process execution, and leadership pointed to the deployment internally as the proof point that justified expanding Hero Actions into two additional departments the following year.",
+        body: "Within a month of launch, the bot was resolving half of all incoming questions without a human touching them, and first-response time dropped from hours to under two seconds for anything it could handle directly. The support team redirected the time they got back toward the harder cases that actually needed a person, and customer satisfaction scores rose alongside the faster responses.",
       },
     ],
   },
   {
-    slug: "beyond-ktlo",
-    title: "Go Beyond KTLO with Hero Pro",
+    slug: "custom-software-inventory-system",
+    title: "Custom Software Replaces a Six-Spreadsheet Mess",
     description:
-      "Keeping the lights on has long been treated as the ceiling for enterprise application support. Hero Pro treats it as the floor: every twelve months, an autonomous agent-build process ships a brand-new custom agent aimed at whatever manual workflow is currently costing the customer the most.",
-    industry: "Manufacturing, Tech, Healthcare",
-    platformType: "Hero Experts",
-    image: "/images/accounting-generalLedger.webp",
-    date: "January 2025",
+      "A logistics client was tracking inventory, orders, and vendor invoices across six disconnected spreadsheets. We built a single custom system around their actual workflow instead of forcing them into a generic off-the-shelf platform.",
+    industry: "Logistics",
+    platformType: "Custom Software Development",
+    image: "/images/image_3.webp",
+    date: "2025",
+    metric: { label: "Manual Data Entry Reduced", value: "-65%" },
     sections: [
       {
         heading: "The challenge",
-        body: "Across manufacturing, technology, and healthcare, a common pattern kept showing up: enterprises were paying standing support contracts just to keep existing ERP and HR systems running, with no path for that spend to ever produce new capability. Support headcount held steady or grew even as the underlying systems matured, because maintenance work doesn't shrink on its own, and every year of deferred modernization added another layer of manual workaround.",
+        body: "Inventory counts lived in one spreadsheet, purchase orders in another, and vendor invoices in a third, maintained by different people with no shared source of truth. Reconciling them at month-end regularly took days and still produced errors that rippled into the next cycle.",
       },
       {
         heading: "The approach",
-        body: "Hero Pro replaced the standing support arrangement with a structure built around continuous improvement rather than flat maintenance. A Hero Experts team of specialists paired with the platform's autonomous agent-build pipeline to identify, each year, the single manual workflow costing the customer the most in labor and error-correction, then designed and shipped a purpose-built agent against exactly that workflow, on top of handling the day-to-day support load the old contract used to cover.",
+        body: "Rather than recommending an off-the-shelf ERP that would have required the client to change how they actually operate, we mapped their existing workflow in detail and built a custom web application around it: one system for inventory, orders, and invoicing, with role-based access so each team only saw what was relevant to them, and automated reports replacing the manual month-end roll-up.",
       },
       {
         heading: "The outcome",
-        body: "Customers across all three industries saw their support footprint shrink with each passing year, even as the number of automated workflows grew, because each new custom agent absorbed work a human support team used to have to do manually. One healthcare deployment reached a state where routine ticket volume had fallen by more than half within eighteen months, while the manufacturing and technology cohorts reported comparable reductions in the recurring maintenance hours billed against their support budgets.",
+        body: "Manual data entry dropped by roughly two-thirds once information only had to be entered once instead of copied between spreadsheets, and reconciliation errors fell by a similar margin. The client's ops team went from spending the first week of every month untangling the prior month's numbers to reviewing a report that was already correct.",
       },
     ],
   },
   {
-    slug: "guaranteed-close-earlier",
-    title: "Reduce Month-End Close Time by 20% with Agentic AI",
+    slug: "mobile-app-ai-assistant",
+    title: "A Mobile App With a Built-In AI Assistant",
     description:
-      "An AI-driven close agent gave one Oracle-based finance organization an accelerated month-end close cycle and cost savings that reached beyond what the underlying ERP system alone could deliver.",
-    industry: "Tech",
-    platformType: "Hero Actions",
-    image: "/images/accounting-accountsReceivable.webp",
-    date: "January 2025",
-    metric: { label: "Month-End Close Time", value: "-20%" },
+      "A wellness startup needed a mobile app fast, and wanted an AI assistant baked in from day one rather than bolted on after launch. We delivered both together, on iOS and Android, in a single build.",
+    industry: "Health & Wellness",
+    platformType: "Mobile App Development",
+    image: "/images/image_2.webp",
+    date: "2025",
     sections: [
       {
         heading: "The challenge",
-        body: "A technology company running its finance operations on an Oracle ERP stack had a close process that, while functional, still leaned heavily on a finance team manually matching transactions, chasing down unreconciled line items, and re-checking entries before books could be finalized each month. The close reliably finished, but only after long hours in the final week of every cycle, and the team had little room left over to spend on analysis instead of assembly.",
+        body: "The client wanted a consumer app that could answer users' wellness questions conversationally, not just serve static content, but had no in-house mobile or AI engineering team to build it, and a launch date that didn't leave room for two separate build phases.",
       },
       {
         heading: "The approach",
-        body: "Dayos deployed a close-focused Hero Actions agent inside the existing Oracle environment, configured to pre-match transactions against source documents automatically, flag likely discrepancies before a human ever looked at them, and stage routine adjusting entries for accountant review rather than manual entry. Because the agent worked from the same ledger data the finance team already trusted, adoption didn't require a parallel system or a change in the underlying chart of accounts.",
+        body: "We built the app cross-platform to cover iOS and Android from one codebase, with an in-app assistant powered by an LLM backend from the start, integrated with the app's own content library through a retrieval pipeline so its answers stayed grounded in the client's actual wellness guidance rather than generic advice.",
       },
       {
         heading: "The outcome",
-        body: "Month-end close time fell by 20%, driven almost entirely by the hours no longer spent on manual matching and first-pass reconciliation. The finance team also reported cost savings beyond what the base ERP system had delivered on its own, since the close agent's pre-matching work reduced the need for outside reconciliation support the team had previously relied on during peak close weeks.",
+        body: "The app shipped to both app stores on schedule with the AI assistant fully working at launch, not added as a later update. We've continued supporting the app post-launch, handling OS updates and new features as the client's user base has grown.",
       },
     ],
   },

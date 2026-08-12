@@ -1,21 +1,9 @@
-export type ViewMode = 
-  | "showroom" 
-  | "agent-sandbox" 
-  | "roi-calculator" 
-  | "readiness-assessment" 
-  | "use-cases";
-
-export interface DemoModalState {
-  isOpen: boolean;
-  selectedAgent?: string;
-}
-
 export interface AgentModule {
   id: string;
   code: string;
   name: string;
   role: string;
-  category: "Finance & GL" | "Supply Chain" | "HR & Talent" | "Core System";
+  category: "Customer Support" | "Software Development" | "Academic Projects" | "IT Operations";
   connectors: string[];
   autonomyLevel: "L3 - Supervised" | "L4 - Autonomous" | "L5 - Fully Delegated";
   description: string;

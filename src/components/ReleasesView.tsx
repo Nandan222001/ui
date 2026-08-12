@@ -10,14 +10,14 @@ export const ReleasesView: React.FC = () => {
       <section className="w-full bg-[#e5e5e5] text-[#000000]">
         <div className="site-grid section-block">
           <Reveal>
-            <span className="mint-tag mb-6">RELEASE NOTES</span>
+            <span className="mint-tag mb-6">MILESTONES</span>
             <h1 className="type-h1 max-w-4xl">
-              What's shipped, and what's next for Hero.
+              Where we've been, and where we're headed.
             </h1>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="type-body-headline text-[#444444] max-w-2xl mt-8">
-              A running record of what changed in Hero, version by version.
+              A running record of how NMT Solutions has grown, service by service.
             </p>
           </Reveal>
         </div>

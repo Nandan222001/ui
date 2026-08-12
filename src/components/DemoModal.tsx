@@ -10,7 +10,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
-  const [erpStack, setErpStack] = useState("SAP S/4HANA");
+  const [projectType, setProjectType] = useState("AI Chatbot / LLM Integration");
   const [submitted, setSubmitted] = useState(false);
 
   if (!isOpen) return null;
@@ -37,10 +37,10 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
               ✓
             </div>
             <h3 className="type-h4 text-[#000000]">
-              Demo confirmed
+              Request received
             </h3>
             <p className="type-body-medium text-[#444444] max-w-xs mx-auto">
-              Our enterprise solution engineering team will reach out to <span className="voltage-highlight">{email}</span> within 2 hours.
+              Our team will reach out to <span className="voltage-highlight">{email}</span> within 24 hours to discuss your project.
             </p>
             <button
               onClick={() => {
@@ -55,12 +55,12 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
         ) : (
           <div>
             <div className="mb-6">
-              <span className="mint-tag mb-2">SCHEDULE ENTERPRISE DEMO</span>
+              <span className="mint-tag mb-2">GET A FREE QUOTE</span>
               <h3 className="type-h4 text-[#000000]">
-                Schedule architecture audit
+                Tell us about your project
               </h3>
               <p className="type-body-medium text-[#444444] mt-1">
-                Direct 30-minute consultation with a Dayos system architect.
+                A free 30-minute consultation with our team, no obligation.
               </p>
             </div>
 
@@ -109,19 +109,19 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
 
               <div>
                 <label className="font-mono-tag text-[#000000] block mb-1">
-                  PRIMARY ERP / CRM SYSTEM
+                  PROJECT TYPE
                 </label>
                 <select
-                  value={erpStack}
-                  onChange={(e) => setErpStack(e.target.value)}
+                  value={projectType}
+                  onChange={(e) => setProjectType(e.target.value)}
                   className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 type-body-medium text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000]"
                 >
-                  <option>SAP S/4HANA</option>
-                  <option>Oracle Fusion GL</option>
-                  <option>Workday Human Capital</option>
-                  <option>Salesforce Enterprise CRM</option>
-                  <option>NetSuite / Microsoft Dynamics</option>
-                  <option>Custom / Legacy REST</option>
+                  <option>AI Chatbot / LLM Integration</option>
+                  <option>Custom Software Development</option>
+                  <option>Academic / Final-Year Project</option>
+                  <option>Business Website or Web App</option>
+                  <option>Mobile App Development</option>
+                  <option>Other</option>
                 </select>
               </div>
 
@@ -129,7 +129,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                 type="submit"
                 className="w-full bg-[#000000] hover:bg-[#2f2f2f] text-[#ffffff] py-4 rounded-xl font-neo text-sm font-medium flex items-center justify-center gap-2 transition-colors cursor-pointer mt-4"
               >
-                <span>Confirm Demo Appointment</span>
+                <span>Send My Request</span>
                 <ArrowUpRight className="w-4 h-4 text-[#d1ffca]" />
               </button>
             </form>

@@ -20,7 +20,7 @@ export const UseCasesView: React.FC<UseCasesViewProps> = ({ onOpenDemo }) => {
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-[#c6c6c6] gap-4">
         <div>
           <span className="mint-tag mb-2">
-            ENTERPRISE DEPLOYMENT ARCHITECTURES
+            REAL PROJECT EXAMPLES
           </span>
           <h1 className="type-h3">
             Proven use case showcase
@@ -30,7 +30,7 @@ export const UseCasesView: React.FC<UseCasesViewProps> = ({ onOpenDemo }) => {
         {/* Filter Tabs */}
         <div className="max-w-full overflow-x-auto no-scrollbar self-start md:self-auto">
           <div className="flex gap-2 bg-[#ffffff] p-1.5 rounded-full border border-[#c6c6c6] w-max">
-            {["ALL", "FINANCE", "SUPPLY CHAIN", "HR & TALENT"].map((tag) => (
+            {["ALL", "AI & LLM", "CUSTOM SOFTWARE", "ACADEMIC"].map((tag) => (
               <button
                 key={tag}
                 onClick={() => setSelectedTag(tag)}
@@ -92,7 +92,7 @@ export const UseCasesView: React.FC<UseCasesViewProps> = ({ onOpenDemo }) => {
 
               <div>
                 <span className="font-mono-tag text-[#000000] block mb-2">
-                  THE DAYOS SOLUTION
+                  THE NMT SOLUTION
                 </span>
                 <p className="type-body-medium font-medium text-[#000000]">
                   {uc.solution}
@@ -115,7 +115,7 @@ export const UseCasesView: React.FC<UseCasesViewProps> = ({ onOpenDemo }) => {
                 onClick={onOpenDemo}
                 className="bg-[#000000] hover:bg-[#2f2f2f] text-[#ffffff] px-5 py-3 rounded-lg font-neo text-sm font-medium flex items-center gap-2 cursor-pointer transition-colors"
               >
-                <span>Request Custom Architecture</span>
+                <span>Request a Similar Project</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-[#d1ffca]" />
               </button>
             </div>

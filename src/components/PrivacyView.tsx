@@ -7,12 +7,12 @@ interface PrivacySection {
 
 const PRIVACY_SECTIONS: PrivacySection[] = [
   {
-    heading: "About Dayos Privacy",
-    body: "Dayos is an AI technology company that builds autonomous agents for enterprise workflows. This statement explains what personal information we collect, why we collect it, and how it's shared — and we don't sell or monetize user data as a business model.",
+    heading: "About NMT Solutions Privacy",
+    body: "NMT Solutions is an IT services company that builds custom software, AI-powered features, and academic and business projects. This statement explains what personal information we collect, why we collect it, and how it's shared — and we don't sell or monetize user data as a business model.",
   },
   {
     heading: "Scope of This Privacy Statement",
-    body: "This statement applies when Dayos determines how and why personal information is processed, such as on our marketing sites or during a sales relationship. It does not cover cases where Dayos processes data purely on a customer's behalf and under that customer's instructions.",
+    body: "This statement applies when NMT Solutions determines how and why personal information is processed, such as on our marketing sites or during a sales relationship. It does not cover cases where NMT Solutions processes data purely on a client's behalf and under that client's instructions for a specific project.",
   },
   {
     heading: "How We Collect and Use Personal Information",
@@ -20,7 +20,7 @@ const PRIVACY_SECTIONS: PrivacySection[] = [
   },
   {
     heading: "AI-Specific Data Handling",
-    body: "Our agent platform is designed so customer data stays within the customer's own environment and is not used to train, fine-tune, or otherwise improve underlying models. Additional technical and contractual safeguards apply to data processed through autonomous workflows.",
+    body: "Where a project involves AI or LLM integration, we design the implementation so client data stays within the client's own environment wherever possible and is not used to train, fine-tune, or otherwise improve third-party models. Additional technical and contractual safeguards apply to data processed through AI features and automation agents we build.",
   },
   {
     heading: "Cookies and Tracking Technologies",
@@ -57,10 +57,10 @@ export const PrivacyView: React.FC = () => {
     <div className="site-grid py-16 sm:py-24 max-w-3xl mx-auto">
       <span className="font-mono-tag text-[#979797] block mb-4">LEGAL</span>
       <h1 className="type-h2 mb-3">Privacy Statement</h1>
-      <p className="font-mono-tag text-[#979797] mb-12">Last updated: March 10, 2026</p>
+      <p className="font-mono-tag text-[#979797] mb-12">Last updated: August 12, 2026</p>
 
       <p className="type-body-large text-[#444444] mb-12">
-        This statement describes how Dayos collects, uses, and protects personal information
+        This statement describes how NMT Solutions collects, uses, and protects personal information
         across our websites and products. This page is a condensed, plain-language overview
         provided for demonstration purposes and is not a binding legal document.
       </p>
@@ -80,10 +80,10 @@ export const PrivacyView: React.FC = () => {
       <p className="type-body-large text-[#444444] mt-12">
         Questions about this statement or your personal information can be sent to{" "}
         <a
-          href="mailto:hello@dayos.com"
+          href="mailto:hr@nmtsolution.com"
           className="text-[#000000] underline hover:no-underline"
         >
-          hello@dayos.com
+          hr@nmtsolution.com
         </a>
         .
       </p>

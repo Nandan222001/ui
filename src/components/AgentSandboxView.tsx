@@ -72,10 +72,10 @@ export const AgentSandboxView: React.FC<AgentSandboxViewProps> = ({
       <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#c6c6c6]">
         <div>
           <span className="mint-tag mb-2">
-            INTERACTIVE AGENT SANDBOX
+            AI CHATBOT SANDBOX
           </span>
           <h1 className="type-h3">
-            Simulate autonomous workflow execution
+            Try our AI chatbots and assistants live
           </h1>
         </div>
 
@@ -83,7 +83,7 @@ export const AgentSandboxView: React.FC<AgentSandboxViewProps> = ({
           onClick={onOpenDemo}
           className="hidden sm:flex bg-[#000000] text-[#ffffff] px-4 py-2.5 rounded-lg font-neo text-sm font-medium items-center gap-2"
         >
-          <span>Deploy to Enterprise</span>
+          <span>Get a Free Quote</span>
           <ArrowUpRight className="w-3.5 h-3.5 text-[#d1ffca]" />
         </button>
       </div>
@@ -94,7 +94,7 @@ export const AgentSandboxView: React.FC<AgentSandboxViewProps> = ({
           {/* Agent Selection Cards */}
           <div className="bg-[#ffffff] rounded-[24px] p-6 border border-[#c6c6c6]">
             <span className="font-mono-tag text-[#979797] block mb-4">
-              SELECT TARGET AGENT MODULE
+              SELECT AN AI ASSISTANT
             </span>
 
             <div className="space-y-3">
@@ -135,7 +135,7 @@ export const AgentSandboxView: React.FC<AgentSandboxViewProps> = ({
           {/* Active Agent Meta */}
           <div className="bg-[#ffffff] rounded-[24px] p-6 border border-[#c6c6c6]">
             <span className="font-mono-tag text-[#979797] block mb-2">
-              NATIVE CONNECTOR BINDINGS
+              INTEGRATIONS
             </span>
             <div className="flex flex-wrap gap-2 mb-4">
               {activeAgent.connectors.map((c, idx) => (
@@ -165,7 +165,7 @@ export const AgentSandboxView: React.FC<AgentSandboxViewProps> = ({
             <div className="flex items-center justify-between mb-3">
               <span className="font-mono-tag text-[#000000] flex items-center gap-2">
                 <Terminal className="w-4 h-4 text-[#000000]" />
-                ENTERPRISE EVENT QUERY
+                YOUR MESSAGE / QUERY
               </span>
               <button
                 onClick={() => setUserQuery(activeAgent.samplePrompt)}
@@ -242,7 +242,7 @@ export const AgentSandboxView: React.FC<AgentSandboxViewProps> = ({
                   <Terminal className="w-8 h-8 mb-2 opacity-50" />
                   <p className="font-mono-tag mb-1">AWAITING AGENT COMMAND</p>
                   <p className="type-body-medium text-[#979797] max-w-sm">
-                    Click 'Execute Agent Task' above to run autonomous GL reconciliation, logistics routing, or workforce synthesis.
+                    Click 'Execute Agent Task' above to test an AI support reply, a code review, academic project help, or an IT ticket triage.
                   </p>
                 </div>
               )}

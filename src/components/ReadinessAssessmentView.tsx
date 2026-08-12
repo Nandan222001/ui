@@ -55,10 +55,10 @@ export const ReadinessAssessmentView: React.FC<ReadinessAssessmentViewProps> = (
       <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#c6c6c6]">
         <div>
           <span className="mint-tag mb-2">
-            ENTERPRISE AI DIAGNOSTIC
+            AI READINESS QUIZ
           </span>
           <h1 className="type-h3">
-            Organizational readiness audit
+            How ready is your business for AI?
           </h1>
         </div>
       </div>
@@ -112,11 +112,11 @@ export const ReadinessAssessmentView: React.FC<ReadinessAssessmentViewProps> = (
             {isLoading ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin text-[#d1ffca]" />
-                <span>EVALUATING READINESS MATRIX...</span>
+                <span>EVALUATING YOUR READINESS...</span>
               </>
             ) : (
               <>
-                <span>Submit Diagnostic Questionnaire</span>
+                <span>Get My Readiness Score</span>
                 <Award className="w-4 h-4 text-[#d1ffca]" />
               </>
             )}
@@ -129,7 +129,7 @@ export const ReadinessAssessmentView: React.FC<ReadinessAssessmentViewProps> = (
             <div className="bg-[#ffffff] rounded-[24px] p-6 sm:p-8 border border-[#c6c6c6] space-y-6 sticky top-36">
               <div className="flex items-center justify-between pb-4 border-b border-[#f3f3f3]">
                 <div>
-                  <span className="mint-tag mb-1">DIAGNOSTIC COMPLETE</span>
+                  <span className="mint-tag mb-1">RESULTS READY</span>
                   <h3 className="font-neo font-bold uppercase tracking-tight text-2xl text-[#000000]">
                     Tier: {auditResponse.tier}
                   </h3>
@@ -144,7 +144,7 @@ export const ReadinessAssessmentView: React.FC<ReadinessAssessmentViewProps> = (
 
               <div>
                 <span className="font-mono-tag text-[#000000] block mb-1">
-                  EXECUTIVE ASSESSMENT
+                  SUMMARY
                 </span>
                 <p className="type-body-medium text-[#444444]">
                   {auditResponse.summary}
@@ -153,7 +153,7 @@ export const ReadinessAssessmentView: React.FC<ReadinessAssessmentViewProps> = (
 
               <div>
                 <span className="font-mono-tag text-[#000000] block mb-2">
-                  ORGANIZATIONAL STRENGTHS
+                  YOUR STRENGTHS
                 </span>
                 <div className="space-y-1.5">
                   {auditResponse.strengths.map((s, idx) => (
@@ -167,7 +167,7 @@ export const ReadinessAssessmentView: React.FC<ReadinessAssessmentViewProps> = (
 
               <div>
                 <span className="font-mono-tag text-[#000000] block mb-2">
-                  CRITICAL BOTTLENECKS
+                  AREAS TO ADDRESS
                 </span>
                 <div className="space-y-1.5">
                   {auditResponse.vulnerabilities.map((v, idx) => (
@@ -188,7 +188,7 @@ export const ReadinessAssessmentView: React.FC<ReadinessAssessmentViewProps> = (
                 onClick={onOpenDemo}
                 className="w-full bg-[#000000] hover:bg-[#2f2f2f] text-[#ffffff] py-3 rounded-lg font-neo text-sm font-medium flex items-center justify-center gap-2 cursor-pointer"
               >
-                <span>Discuss Results with Dayos Engineers</span>
+                <span>Discuss Results With Our Team</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-[#d1ffca]" />
               </button>
             </div>
@@ -199,10 +199,10 @@ export const ReadinessAssessmentView: React.FC<ReadinessAssessmentViewProps> = (
                 Readiness scorecard
               </h3>
               <p className="type-body-medium text-[#444444] max-w-xs mb-4">
-                Select your current enterprise practices on the left to receive a governance and deployment diagnostic score.
+                Answer the questions on the left to get your AI readiness score and a recommended first project.
               </p>
               <span className="mint-tag">
-                GEMINI DIAGNOSTIC ENGINE READY
+                GEMINI READINESS ENGINE READY
               </span>
             </div>
           )}

@@ -5,38 +5,38 @@ import { Reveal } from "./Reveal";
 
 const DEPARTMENTS = [
   {
-    name: "Accounting",
-    slug: "ai-accounting-software",
+    name: "AI & LLM Integration",
+    slug: "ai-llm-integration",
     description:
-      "Empower your team with AI to reduce manual workloads, manage month-end close, and achieve more with fewer resources.",
+      "Chatbots, virtual assistants, and custom AI features built on OpenAI, Anthropic, and Google models, with RAG pipelines and automation agents grounded in your own data.",
     image: "/images/image_3.webp",
   },
   {
-    name: "Human Resources",
-    slug: "ai-hr-software",
+    name: "Custom Software Development",
+    slug: "custom-software-development",
     description:
-      "Simplify HR with employee self-service powered by AI. Answer policy questions, manage benefits, and ensure satisfaction across the board.",
+      "End-to-end software built around how your business actually works, from concept to completion, not forced into a generic off-the-shelf mold.",
     image: "/images/image_2.webp",
   },
   {
-    name: "Procurement",
-    slug: "ai-procurement-software",
+    name: "Academic Projects",
+    slug: "academic-projects",
     description:
-      "Prevent costly errors before they happen. Agentic AI analyzes procurement data, flags duplicates, and connects the dots between contracts, invoices, and payments.",
+      "Final-year student projects built to your exact brief, with original, custom code you can defend with confidence.",
     image: "/images/image_8.webp",
   },
   {
-    name: "Information Technology",
-    slug: "ai-it-management-software",
+    name: "Business IT Solutions",
+    slug: "business-it-solutions",
     description:
-      "Reduce rising SaaS and labor costs with efficient agentic workflows that deliver quality support and help you be a better business partner.",
+      "IT consulting, web design and development, and business automation that move your digital transformation forward.",
     image: "/images/image_4.webp",
   },
   {
-    name: "Finance",
-    slug: "ai-finance-software",
+    name: "Mobile App Development",
+    slug: "mobile-app-development",
     description:
-      "Agentic AI eliminates errors by integrating headcount, cost centers, and product data into a reliable, repeatable process—no more manual data collection or spreadsheets.",
+      "Native and cross-platform mobile apps designed, built, and managed for iOS and Android from a single team.",
     image: "/images/image_7.webp",
   },
 ];
@@ -58,13 +58,13 @@ export const DepartmentsShowcase: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <Reveal>
             <h2 className="type-h2 mb-4 max-w-3xl">
-              Run a better business with Dayos.
+              Five ways we turn ideas into digital reality.
             </h2>
             <p className="type-body-large text-[#444444] max-w-2xl">
-              Every department runs on systems engineering. Configuration,
-              reporting, compliance, and close. Hero automates the 30% that
-              platforms can't solve out of the box, across Accounting, HR,
-              Procurement, IT, and Finance.
+              From AI-powered products to final-year student projects, our
+              100+ engineers bridge the gap between an idea and a working
+              system, across AI & LLM Integration, Custom Software, Academic
+              Projects, Business IT, and Mobile Apps.
             </p>
           </Reveal>
 

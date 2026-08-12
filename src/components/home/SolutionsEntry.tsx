@@ -4,24 +4,24 @@ import { Reveal } from "./Reveal";
 
 const SOLUTIONS = [
   {
-    name: "Answers",
-    slug: "hero-answers",
+    name: "Chatbots",
+    slug: "ai-chatbots-assistants",
     description:
-      "Agents that provide real-time, analyst-level insights across your critical business data without waiting for reports or manual analysis.",
+      "Custom-built chatbots and virtual assistants that understand your business context, trained on your data, and deployed across web, mobile, or messaging channels.",
     video: "/media/ai_solutions-loop.webm",
   },
   {
-    name: "Actions",
-    slug: "hero-actions",
+    name: "Automation",
+    slug: "ai-automation-agents",
     description:
-      "AI agents that take action inside your ERP. Configuration changes, journal entries, procurement matching, and month-end close. Hero doesn't recommend what to do. It does it.",
+      "AI agents that automate repetitive workflows and multi-step processes across your business, so your team spends time on the work that actually needs a human.",
     video: "/media/x_as_a_service-loop.webm",
   },
   {
-    name: "Experts",
-    slug: "hero-experts",
+    name: "LLM Integration",
+    slug: "llm-integration",
     description:
-      "AI handles the repetitive work. We route the rest to the best engineers globally. Human-assisted tickets are billed based on complexity on a sliding scale. Replace or extend your current AMS provider.",
+      "Deep integration of OpenAI, Anthropic, and Google's models into your existing product, including retrieval-augmented pipelines that ground answers in your own data.",
     video: "/media/professional_services-loop.webm",
   },
 ];
@@ -33,12 +33,12 @@ export const SolutionsEntry: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 items-end">
           <Reveal className="lg:col-span-8">
             <h2 className="type-quote">
-              Supercharge your ERP and HCM with Agentic AI
+              Supercharge your product with AI, from chatbots to full LLM integration
             </h2>
           </Reveal>
           <p className="lg:col-span-4 type-body-large text-[#979797]">
-            Hero executes real work inside your ERP. Multiple entry points.
-            Same outcome: the work gets done.
+            From conversational interfaces to autonomous automation, NMT
+            builds the AI layer that fits your product.
           </p>
         </div>
 

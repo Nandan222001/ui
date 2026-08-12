@@ -7,32 +7,32 @@ const RESOURCE_LINKS = [
   {
     label: "Use Case Library",
     to: "/use-cases",
-    description: "Browse the specific workflows Hero automates, department by department.",
+    description: "Browse the kinds of projects we build, from AI chatbots to academic final-year builds.",
   },
   {
     label: "Case Studies",
     to: "/case-studies",
-    description: "See how real teams put Hero into production, and what changed for them.",
+    description: "See how student and business clients have worked with NMT Solutions, project by project.",
   },
   {
     label: "Blog",
     to: "/blog",
-    description: "Perspective from our team on agentic AI, enterprise systems, and the work of closing the gap.",
+    description: "Perspective from our team on AI integration, custom software, and building for real requirements.",
   },
   {
     label: "News",
     to: "/news",
-    description: "Announcements, coverage, and milestones from Dayos as they happen.",
+    description: "Announcements and milestones from NMT Solutions as they happen.",
   },
   {
     label: "Partnership Program",
     to: "/partnership",
-    description: "How systems integrators and consultancies build and deploy Hero alongside us.",
+    description: "How agencies, consultancies, and institutions collaborate with NMT Solutions on client work.",
   },
   {
-    label: "Release Notes",
+    label: "Milestones",
     to: "/releases",
-    description: "The changelog for Hero: what shipped, what improved, and what's next.",
+    description: "A running log of what we've shipped and improved across our services.",
   },
 ];
 
@@ -45,13 +45,13 @@ export const ResourcesView: React.FC = () => {
           <Reveal>
             <span className="mint-tag mb-6">RESOURCES</span>
             <h1 className="type-h1 max-w-4xl">
-              Everything you need to see how Hero runs in production.
+              Everything you need to see how NMT Solutions works.
             </h1>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="type-body-headline text-[#444444] max-w-2xl mt-8">
-              Use cases, customer stories, product updates, and the partners
-              helping deploy Hero across the enterprise, all in one place.
+              Use cases, client stories, updates, and the partners we
+              collaborate with, all in one place.
             </p>
           </Reveal>
         </div>

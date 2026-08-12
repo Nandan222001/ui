@@ -8,7 +8,7 @@ interface TermsSection {
 const TERMS_SECTIONS: TermsSection[] = [
   {
     heading: "Eligibility",
-    body: "You must be at least 16 years old to use Dayos sites and products. If you're using the service on behalf of a company or another person, you're confirming you have the authority to do so, and you accept responsibility for any violations that result.",
+    body: "You must be at least 16 years old to use NMT Solutions sites and products. If you're using the service on behalf of a company or another person, you're confirming you have the authority to do so, and you accept responsibility for any violations that result.",
   },
   {
     heading: "Prohibited Conduct and Content",
@@ -16,11 +16,11 @@ const TERMS_SECTIONS: TermsSection[] = [
   },
   {
     heading: "Ownership; Limited License",
-    body: "Everything on our sites — text, design, software, and underlying models — belongs to Dayos or our licensors. Your agreement with us grants a limited, non-transferable license to use our products for evaluation or ordinary business purposes, and nothing here transfers ownership to you.",
+    body: "Everything on our sites — text, design, software, and underlying models — belongs to NMT Solutions or our licensors. Your agreement with us grants a limited, non-transferable license to use our products for evaluation or ordinary business purposes, and nothing here transfers ownership to you.",
   },
   {
     heading: "Trademarks",
-    body: "The Dayos name, logo, and related marks are ours, and you may not use them without written permission. Any other company or product names referenced on our sites belong to their respective owners.",
+    body: "The NMT Solutions name, logo, and related marks are ours, and you may not use them without written permission. Any other company or product names referenced on our sites belong to their respective owners.",
   },
   {
     heading: "Repeat Infringer Policy; Copyright Complaints",
@@ -32,7 +32,7 @@ const TERMS_SECTIONS: TermsSection[] = [
   },
   {
     heading: "Feedback",
-    body: "If you send us suggestions, ideas, or feedback about our products, you agree we can use it to improve Dayos without owing you compensation or credit, and any resulting improvements belong to us.",
+    body: "If you send us suggestions, ideas, or feedback about our products, you agree we can use it to improve NMT Solutions without owing you compensation or credit, and any resulting improvements belong to us.",
   },
   {
     heading: "Third-Party Content",
@@ -40,11 +40,11 @@ const TERMS_SECTIONS: TermsSection[] = [
   },
   {
     heading: "Credentialing",
-    body: "Any digital badges, certificates, or completion credentials issued through our platform are recognitions of activity only — they don't constitute a job offer, guarantee, or binding contractual relationship with Dayos or any employer.",
+    body: "Any digital badges, certificates, or completion credentials issued through our platform are recognitions of activity only — they don't constitute a job offer, guarantee, or binding contractual relationship with NMT Solutions or any employer.",
   },
   {
     heading: "Indemnification",
-    body: "You agree to cover reasonable costs and damages Dayos incurs from claims arising out of your misuse of the site, violation of these terms, or conduct that harms another party.",
+    body: "You agree to cover reasonable costs and damages NMT Solutions incurs from claims arising out of your misuse of the site, violation of these terms, or conduct that harms another party.",
   },
   {
     heading: "Disclaimers",
@@ -52,11 +52,11 @@ const TERMS_SECTIONS: TermsSection[] = [
   },
   {
     heading: "Limitation of Liability",
-    body: "To the extent permitted by law, Dayos isn't liable for indirect, incidental, or consequential damages arising from your use of the service, and our total liability for any claim is capped at a modest, defined amount.",
+    body: "To the extent permitted by law, NMT Solutions isn't liable for indirect, incidental, or consequential damages arising from your use of the service, and our total liability for any claim is capped at a modest, defined amount.",
   },
   {
     heading: "Release",
-    body: "You release Dayos from claims related to disputes you have with other users or with third parties whose products or services you access through our platform.",
+    body: "You release NMT Solutions from claims related to disputes you have with other users or with third parties whose products or services you access through our platform.",
   },
   {
     heading: "Processing Data",
@@ -68,11 +68,11 @@ const TERMS_SECTIONS: TermsSection[] = [
   },
   {
     heading: "Governing Law; Dispute Resolution; Binding Arbitration",
-    body: "Most disputes between you and Dayos are resolved through individual binding arbitration rather than in court or as part of a class action. You may have a limited window after accepting these terms to opt out of arbitration in writing.",
+    body: "Most disputes between you and NMT Solutions are resolved through individual binding arbitration rather than in court or as part of a class action. You may have a limited window after accepting these terms to opt out of arbitration in writing.",
   },
   {
     heading: "Governing Law",
-    body: "These terms are governed by the laws of the jurisdiction in which Dayos is headquartered, and any claims not subject to arbitration are handled exclusively in the courts local to that jurisdiction.",
+    body: "These terms are governed by the laws of the jurisdiction in which NMT Solutions operates, and any claims not subject to arbitration are handled exclusively in the courts local to that jurisdiction.",
   },
   {
     heading: "Modifying and Terminating Our Sites",
@@ -97,10 +97,10 @@ export const TermsView: React.FC = () => {
     <div className="site-grid py-16 sm:py-24 max-w-3xl mx-auto">
       <span className="font-mono-tag text-[#979797] block mb-4">LEGAL</span>
       <h1 className="type-h2 mb-3">Terms of Service</h1>
-      <p className="font-mono-tag text-[#979797] mb-12">Last updated: January 16, 2024</p>
+      <p className="font-mono-tag text-[#979797] mb-12">Last updated: August 12, 2026</p>
 
       <p className="type-body-large text-[#444444] mb-12">
-        These terms govern your access to and use of Dayos websites, products, and services. By
+        These terms govern your access to and use of NMT Solutions websites, products, and services. By
         using our sites, you agree to the terms summarized below. This page is a condensed,
         plain-language overview provided for demonstration purposes and is not a binding legal
         document.
@@ -121,10 +121,10 @@ export const TermsView: React.FC = () => {
       <p className="type-body-large text-[#444444] mt-12">
         Questions about these terms can be sent to{" "}
         <a
-          href="mailto:hello@dayos.com"
+          href="mailto:hr@nmtsolution.com"
           className="text-[#000000] underline hover:no-underline"
         >
-          hello@dayos.com
+          hr@nmtsolution.com
         </a>
         .
       </p>

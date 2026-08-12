@@ -6,13 +6,32 @@ interface PartnersViewProps {
   onOpenDemo: () => void;
 }
 
-const PRIMARY_PARTNERS = [
-  { name: "Oracle", detail: "Cloud Build & Cloud Service Partner" },
-  { name: "SAP", detail: "Service Partner" },
-  { name: "Workday", detail: "Silver Innovation & Sales Partner" },
+const AI_PLATFORMS = [
+  {
+    name: "OpenAI",
+    detail:
+      "GPT models power most of our conversational chatbot and virtual assistant builds.",
+  },
+  {
+    name: "Anthropic",
+    detail:
+      "Claude is our default choice for tasks that need careful, nuanced reasoning and long-context work.",
+  },
+  {
+    name: "Google",
+    detail:
+      "Gemini covers our multimodal features and cost-sensitive, high-volume integrations.",
+  },
 ];
 
-const CONNECTED_SYSTEMS = ["NetSuite", "Microsoft Dynamics", "ServiceNow"];
+const TOOLS_WE_BUILD_WITH = [
+  "LangChain",
+  "React",
+  "Node.js",
+  "AWS",
+  "PostgreSQL",
+  "Slack",
+];
 
 export const PartnersView: React.FC<PartnersViewProps> = ({ onOpenDemo }) => {
   return (
@@ -21,43 +40,43 @@ export const PartnersView: React.FC<PartnersViewProps> = ({ onOpenDemo }) => {
       <section className="w-full bg-[#e5e5e5] text-[#000000]">
         <div className="site-grid section-block">
           <Reveal>
-            <span className="mint-tag mb-6">OUR PARTNERS</span>
+            <span className="mint-tag mb-6">TECHNOLOGIES WE USE</span>
             <h1 className="type-h1 max-w-4xl">
-              Built alongside the systems of record we run inside.
+              The AI models, frameworks, and tools behind everything we build.
             </h1>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="type-body-headline text-[#444444] max-w-2xl mt-8">
-              Hero is deployed directly inside the enterprise platforms our
-              customers already run, backed by formal partnerships with the
-              vendors themselves.
+              NMT Solutions builds on the leading LLM providers and a modern,
+              proven engineering stack, so every chatbot, automation, and
+              product we ship is fast, reliable, and easy to maintain.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* Primary partners */}
+      {/* AI / LLM platforms */}
       <section className="w-full bg-[#000000] text-[#ffffff]">
         <div className="site-grid section-block">
           <Reveal className="mb-12">
             <span className="font-mono-tag text-[#979797] block mb-4">
-              STRATEGIC PARTNERS
+              AI &amp; LLM PLATFORMS
             </span>
             <h2 className="type-h2 max-w-3xl">
-              Formal partnerships with the platforms enterprises run on.
+              The model providers we integrate into our AI work.
             </h2>
           </Reveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {PRIMARY_PARTNERS.map((partner, idx) => (
-              <Reveal key={partner.name} delay={idx * 0.08}>
+            {AI_PLATFORMS.map((platform, idx) => (
+              <Reveal key={platform.name} delay={idx * 0.08}>
                 <div className="bg-[#2f2f2f] rounded-[24px] p-6 sm:p-8 h-full">
                   <span className="font-mono-tag text-[#d1ffca] block mb-3">
                     0{idx + 1}
                   </span>
-                  <h3 className="type-h4 mb-3">{partner.name}</h3>
+                  <h3 className="type-h4 mb-3">{platform.name}</h3>
                   <p className="type-body-medium text-[#979797]">
-                    {partner.detail}
+                    {platform.detail}
                   </p>
                 </div>
               </Reveal>
@@ -66,24 +85,25 @@ export const PartnersView: React.FC<PartnersViewProps> = ({ onOpenDemo }) => {
         </div>
       </section>
 
-      {/* Connected systems */}
+      {/* Frameworks & infra */}
       <section className="w-full bg-[#e5e5e5] text-[#000000]">
         <div className="site-grid section-block">
           <Reveal className="mb-12">
             <span className="font-mono-tag text-[#979797] block mb-4">
-              ECOSYSTEM
+              FRAMEWORKS &amp; INFRASTRUCTURE
             </span>
             <h2 className="type-h2 max-w-3xl">
-              Plus the systems Hero natively connects to.
+              Plus the frameworks and infrastructure we build with.
             </h2>
             <p className="type-body-large text-[#444444] max-w-2xl mt-4">
-              Beyond our formal partnerships, Hero integrates directly with
-              additional systems enterprises rely on day to day.
+              Beyond the AI layer, our engineers rely on a battle-tested set of
+              frameworks and infrastructure to ship custom software, mobile
+              apps, and business systems.
             </p>
           </Reveal>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-            {CONNECTED_SYSTEMS.map((name) => (
+            {TOOLS_WE_BUILD_WITH.map((name) => (
               <div
                 key={name}
                 className="aspect-[302/140] rounded-[24px] bg-[#000000] flex items-center justify-center p-6"
@@ -105,12 +125,12 @@ export const PartnersView: React.FC<PartnersViewProps> = ({ onOpenDemo }) => {
             className="w-full text-left bg-[#000000] text-[#ffffff] rounded-[24px] p-8 sm:p-12 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 hover:bg-[#2f2f2f] transition-colors cursor-pointer"
           >
             <h3 className="type-h3">
-              See it running
+              Want this stack
               <br />
-              on your data.
+              working for you?
             </h3>
             <span className="inline-flex items-center gap-2 bg-[#ffffff] text-[#000000] px-5 py-3 rounded-lg font-neo font-medium text-sm shrink-0">
-              Schedule a Demo
+              Get a Free Quote
               <ArrowUpRight className="w-4 h-4" />
             </span>
           </button>

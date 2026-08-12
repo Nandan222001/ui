@@ -10,10 +10,10 @@ type NavItem = { to: string; label: string; pulse?: boolean };
 
 // Desktop pill only shows this core set — the app's own interactive tools.
 const NAV_ITEMS: NavItem[] = [
-  { to: "/", label: "SHOWROOM" },
-  { to: "/agent-sandbox", label: "AGENT SANDBOX", pulse: true },
-  { to: "/roi-calculator", label: "ROI ESTIMATOR" },
-  { to: "/readiness-assessment", label: "READINESS DIAGNOSTIC" },
+  { to: "/", label: "HOME" },
+  { to: "/agent-sandbox", label: "AI CHATBOT SANDBOX", pulse: true },
+  { to: "/roi-calculator", label: "COST ESTIMATOR" },
+  { to: "/readiness-assessment", label: "AI READINESS QUIZ" },
   { to: "/use-cases", label: "USE CASES" },
 ];
 
@@ -25,19 +25,19 @@ const MOBILE_NAV_GROUPS: { title: string | null; items: NavItem[] }[] = [
   {
     title: "PLATFORM",
     items: [
-      { to: "/platform/hero-answers", label: "Hero Answers" },
-      { to: "/platform/hero-actions", label: "Hero Actions" },
-      { to: "/platform/hero-experts", label: "Hero Experts" },
+      { to: "/platform/ai-chatbots-assistants", label: "AI Chatbots & Assistants" },
+      { to: "/platform/ai-automation-agents", label: "AI Automation & Agents" },
+      { to: "/platform/llm-integration", label: "LLM Integration & Custom AI" },
     ],
   },
   {
     title: "SOLUTIONS",
     items: [
-      { to: "/solutions/ai-it-management-software", label: "IT Management" },
-      { to: "/solutions/ai-accounting-software", label: "Accounting" },
-      { to: "/solutions/ai-hr-software", label: "Human Resources" },
-      { to: "/solutions/ai-finance-software", label: "Finance" },
-      { to: "/solutions/ai-procurement-software", label: "Procurement" },
+      { to: "/solutions/ai-llm-integration", label: "AI & LLM Integration" },
+      { to: "/solutions/custom-software-development", label: "Custom Software Development" },
+      { to: "/solutions/academic-projects", label: "Academic Projects" },
+      { to: "/solutions/business-it-solutions", label: "Business IT Solutions" },
+      { to: "/solutions/mobile-app-development", label: "Mobile App Development" },
     ],
   },
   {
@@ -47,17 +47,17 @@ const MOBILE_NAV_GROUPS: { title: string | null; items: NavItem[] }[] = [
       { to: "/blog", label: "Blog" },
       { to: "/news", label: "News" },
       { to: "/support", label: "Support Hub" },
-      { to: "/releases", label: "Release Notes" },
+      { to: "/releases", label: "Milestones" },
     ],
   },
   {
     title: "COMPANY",
     items: [
-      { to: "/company", label: "Why Dayos" },
-      { to: "/partners", label: "Our Partners" },
+      { to: "/company", label: "Why NMT Solutions" },
+      { to: "/partners", label: "Technologies We Use" },
       { to: "/careers", label: "Careers" },
       { to: "/plans", label: "Plans & Pricing" },
-      { to: "/partnership", label: "Partnership" },
+      { to: "/partnership", label: "Partner With Us" },
     ],
   },
 ];
@@ -140,7 +140,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
           className="cursor-pointer flex items-center gap-2 sm:gap-3 group shrink-0"
         >
           <div className="w-9 h-9 sm:w-10 sm:h-10 bg-[#000000] text-[#ffffff] flex items-center justify-center font-condensed text-xl sm:text-2xl font-bold rounded-lg group-hover:bg-[#2f2f2f] transition-colors">
-            D
+            N
           </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5">
@@ -150,7 +150,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
                   onDark ? "text-[#ffffff]" : "text-[#000000]"
                 }`}
               >
-                DAYOS
+                NMT
               </span>
               <span className="w-2.5 h-2.5 rounded-full bg-[#d1ffca] inline-block"></span>
             </div>
@@ -159,7 +159,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
                 onDark ? "text-[#979797]" : "text-[#444444]"
               }`}
             >
-              AI FOR BUSINESS
+              AI-FIRST IT SOLUTIONS
             </span>
           </div>
         </div>
@@ -189,13 +189,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
 
         {/* Right Side */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          {/* Schedule Demo Button (Filled Dark Button) */}
+          {/* Get a Free Quote Button (Filled Dark Button) */}
           <button
             onClick={onOpenDemo}
             className="bg-[#000000] hover:bg-[#2f2f2f] text-[#ffffff] px-3.5 sm:px-5 py-2.5 sm:py-3 rounded-lg text-xs sm:text-sm font-neo font-medium flex items-center gap-1.5 sm:gap-2 transition-colors cursor-pointer whitespace-nowrap"
           >
-            <span className="sm:hidden">Demo</span>
-            <span className="hidden sm:inline">Schedule a Demo</span>
+            <span className="sm:hidden">Quote</span>
+            <span className="hidden sm:inline">Get a Free Quote</span>
             <ArrowUpRight className="w-4 h-4 text-[#d1ffca] shrink-0" />
           </button>
 

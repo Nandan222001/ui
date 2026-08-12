@@ -92,12 +92,12 @@ export const CaseStudyDetailView: React.FC<CaseStudyDetailViewProps> = ({ onOpen
             className="w-full text-left bg-[#000000] text-[#ffffff] rounded-[24px] p-8 sm:p-12 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 hover:bg-[#2f2f2f] transition-colors cursor-pointer"
           >
             <h3 className="type-h3">
-              See what Hero
+              See what NMT Solutions
               <br />
               could do for you.
             </h3>
             <span className="inline-flex items-center gap-2 bg-[#ffffff] text-[#000000] px-5 py-3 rounded-lg font-neo font-medium text-sm shrink-0">
-              Schedule a Demo
+              Get a Free Quote
               <ArrowUpRight className="w-4 h-4" />
             </span>
           </button>

@@ -16,16 +16,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDemo }) => {
               onClick={onOpenDemo}
               className="type-h2 text-left hover:text-[#d1ffca] transition-colors cursor-pointer"
             >
-              Let's transform the
+              Let's build your
               <br />
-              way work works.
+              next project.
             </button>
           </div>
           <button
             onClick={onOpenDemo}
             className="inline-flex items-center gap-2 bg-[#ffffff] text-[#000000] px-6 py-3.5 rounded-lg font-neo font-medium text-sm shrink-0 cursor-pointer hover:bg-[#e5e5e5] transition-colors"
           >
-            Schedule a Demo
+            Get a Free Quote
             <ArrowUpRight className="w-4 h-4" />
           </button>
         </div>
@@ -35,18 +35,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDemo }) => {
             <span className="font-mono-tag text-[#979797] block mb-4">Platform</span>
             <ul className="space-y-2 font-neo text-sm font-medium text-[#979797]">
               <li>
-                <Link to="/platform/hero-answers" className="hover:text-[#ffffff] transition-colors">
-                  Hero Answers
+                <Link to="/platform/ai-chatbots-assistants" className="hover:text-[#ffffff] transition-colors">
+                  AI Chatbots & Assistants
                 </Link>
               </li>
               <li>
-                <Link to="/platform/hero-actions" className="hover:text-[#ffffff] transition-colors">
-                  Hero Actions
+                <Link to="/platform/ai-automation-agents" className="hover:text-[#ffffff] transition-colors">
+                  AI Automation & Agents
                 </Link>
               </li>
               <li>
-                <Link to="/platform/hero-experts" className="hover:text-[#ffffff] transition-colors">
-                  Hero Experts
+                <Link to="/platform/llm-integration" className="hover:text-[#ffffff] transition-colors">
+                  LLM Integration & Custom AI
                 </Link>
               </li>
             </ul>
@@ -56,28 +56,28 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDemo }) => {
             <span className="font-mono-tag text-[#979797] block mb-4">Solutions</span>
             <ul className="space-y-2 font-neo text-sm font-medium text-[#979797]">
               <li>
-                <Link to="/solutions/ai-it-management-software" className="hover:text-[#ffffff] transition-colors">
-                  IT Management
+                <Link to="/solutions/ai-llm-integration" className="hover:text-[#ffffff] transition-colors">
+                  AI & LLM Integration
                 </Link>
               </li>
               <li>
-                <Link to="/solutions/ai-accounting-software" className="hover:text-[#ffffff] transition-colors">
-                  Accounting
+                <Link to="/solutions/custom-software-development" className="hover:text-[#ffffff] transition-colors">
+                  Custom Software
                 </Link>
               </li>
               <li>
-                <Link to="/solutions/ai-hr-software" className="hover:text-[#ffffff] transition-colors">
-                  Human Resources
+                <Link to="/solutions/academic-projects" className="hover:text-[#ffffff] transition-colors">
+                  Academic Projects
                 </Link>
               </li>
               <li>
-                <Link to="/solutions/ai-finance-software" className="hover:text-[#ffffff] transition-colors">
-                  Finance
+                <Link to="/solutions/business-it-solutions" className="hover:text-[#ffffff] transition-colors">
+                  Business IT Solutions
                 </Link>
               </li>
               <li>
-                <Link to="/solutions/ai-procurement-software" className="hover:text-[#ffffff] transition-colors">
-                  Procurement
+                <Link to="/solutions/mobile-app-development" className="hover:text-[#ffffff] transition-colors">
+                  Mobile App Development
                 </Link>
               </li>
             </ul>
@@ -115,7 +115,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDemo }) => {
           </div>
 
           <div>
-            <span className="font-mono-tag text-[#979797] block mb-4">Plans</span>
+            <span className="font-mono-tag text-[#979797] block mb-4">Try It Out</span>
             <ul className="space-y-2 font-neo text-sm font-medium text-[#979797]">
               <li>
                 <Link to="/plans" className="hover:text-[#ffffff] transition-colors">
@@ -124,22 +124,22 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDemo }) => {
               </li>
               <li>
                 <Link to="/partnership" className="hover:text-[#ffffff] transition-colors">
-                  Partnership
+                  Partner With Us
                 </Link>
               </li>
               <li>
                 <Link to="/agent-sandbox" className="hover:text-[#ffffff] transition-colors">
-                  Agent Sandbox
+                  AI Chatbot Sandbox
                 </Link>
               </li>
               <li>
                 <Link to="/roi-calculator" className="hover:text-[#ffffff] transition-colors">
-                  ROI Estimator
+                  Cost Estimator
                 </Link>
               </li>
               <li>
                 <Link to="/readiness-assessment" className="hover:text-[#ffffff] transition-colors">
-                  Readiness Assessment
+                  AI Readiness Quiz
                 </Link>
               </li>
             </ul>
@@ -150,12 +150,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDemo }) => {
             <ul className="space-y-2 font-neo text-sm font-medium text-[#979797]">
               <li>
                 <Link to="/company" className="hover:text-[#ffffff] transition-colors">
-                  Why Dayos
+                  Why NMT Solutions
                 </Link>
               </li>
               <li>
                 <Link to="/partners" className="hover:text-[#ffffff] transition-colors">
-                  Our Partners
+                  Technologies We Use
                 </Link>
               </li>
               <li>
@@ -165,7 +165,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDemo }) => {
               </li>
               <li>
                 <Link to="/releases" className="hover:text-[#ffffff] transition-colors">
-                  Releases
+                  Milestones
                 </Link>
               </li>
             </ul>
@@ -173,20 +173,20 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDemo }) => {
         </div>
 
         <div className="py-8 border-b border-[#2f2f2f]">
-          <span className="font-mono-tag text-[#979797] block mb-3">Have questions or want to chat?</span>
+          <span className="font-mono-tag text-[#979797] block mb-3">Have a project in mind?</span>
           <a
-            href="mailto:hello@dayos.com"
+            href="mailto:hr@nmtsolution.com"
             className="voltage-highlight font-mono text-sm tracking-wide hover:underline inline-block mr-4"
           >
-            hello@dayos.com
+            hr@nmtsolution.com
           </a>
           <span className="font-neo text-xs text-[#979797] leading-relaxed">
-            Join our Slack community for support.
+            Project inquiries. For careers, see the Careers page.
           </span>
         </div>
 
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between font-mono text-xs text-[#979797] gap-4">
-          <span>Dayos © 2026 — All rights reserved</span>
+          <span>NMT Solutions © 2026 — All rights reserved</span>
           <div className="flex items-center gap-4">
             <Link to="/terms-of-service" className="hover:text-[#ffffff] transition-colors">
               Terms of Service
@@ -195,7 +195,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDemo }) => {
               Privacy Statement
             </Link>
           </div>
-          <span>3 Temasek Ave, Level 18, Centennial Tower, Singapore 039190</span>
         </div>
       </div>
     </footer>

@@ -1,6 +1,6 @@
 {
-  "name": "Dayos — AI for Business",
-  "description": "Brutalist editorial platform and interactive AI system showcase for enterprise agent deployment, readiness assessment, and ROI calculation.",
+  "name": "NMT Solutions — AI, Software & IT Solutions",
+  "description": "Brutalist editorial platform for NMT Solutions: AI & LLM integration, custom software, academic projects, business IT solutions, and mobile app development, with an interactive AI chatbot sandbox, cost estimator, and readiness quiz.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

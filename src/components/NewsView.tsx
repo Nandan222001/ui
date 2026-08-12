@@ -12,8 +12,8 @@ export const NewsView: React.FC = () => {
             Company news and press coverage.
           </h1>
           <p className="type-body-headline text-[#444444] max-w-2xl mt-8">
-            Announcements, milestones, and press mentions, collected in one
-            place.
+            Announcements, milestones, and press mentions from NMT Solutions,
+            collected in one place.
           </p>
         </div>
       </section>
@@ -29,29 +29,28 @@ export const NewsView: React.FC = () => {
             <p className="type-body-large text-[#444444] max-w-2xl">
               We're a small, heads-down team and haven't published anything
               in this section yet. When there's real news to share, milestones,
-              funding, product launches, or press coverage, it'll show up
-              here. In the meantime, reach out directly using the contacts
-              below.
+              new projects, or press coverage, it'll show up here. In the
+              meantime, reach out directly using the contacts below.
             </p>
             <div className="flex flex-col sm:flex-row gap-x-8 gap-y-3 mt-8">
               <a
-                href="mailto:press@dayos.com"
+                href="mailto:hr@nmtsolution.com"
                 className="inline-flex items-center gap-2 font-neo font-medium text-base underline underline-offset-4"
               >
                 <Mail className="w-4 h-4" />
-                press@dayos.com
+                hr@nmtsolution.com
                 <span className="font-mono-tag text-[#979797] no-underline">
-                  press inquiries
+                  general inquiries
                 </span>
               </a>
               <a
-                href="mailto:support@dayos.com"
+                href="mailto:hr@nmtsolution.com"
                 className="inline-flex items-center gap-2 font-neo font-medium text-base underline underline-offset-4"
               >
                 <Mail className="w-4 h-4" />
-                support@dayos.com
+                hr@nmtsolution.com
                 <span className="font-mono-tag text-[#979797] no-underline">
-                  general support
+                  media inquiries
                 </span>
               </a>
             </div>

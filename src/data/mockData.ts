@@ -1,95 +1,68 @@
 import { AgentModule, EnterpriseUseCase } from "../types";
 
-export const HERO_CAPABILITIES = [
-  {
-    code: "HERO-ANSWERS",
-    name: "HERO ANSWERS",
-    tagline: "REAL-TIME ENTERPRISE INSIGHTS",
-    description: "Provides instant, context-aware answers to complex queries across company policies, ERP ledgers, benefits, and technical documentation.",
-    connectors: ["Oracle Fusion", "Workday", "SAP S/4HANA", "ServiceNow"],
-    accent: "#d1ffca"
-  },
-  {
-    code: "HERO-ACTIONS",
-    name: "HERO ACTIONS",
-    tagline: "AUTONOMOUS SYSTEM EXECUTION",
-    description: "Navigates enterprise UI and APIs, executes multi-step workflows, reconciles GL accounts, and automates grunt work with human-in-the-loop oversight.",
-    connectors: ["Oracle EBS", "NetSuite", "Microsoft Dynamics", "Salesforce"],
-    accent: "#fff100"
-  },
-  {
-    code: "HERO-SUPPORT",
-    name: "HERO SUPPORT",
-    tagline: "CONTINUOUS AI OPTIMIZATION",
-    description: "Ensures ISO/IEC 42001 certified governance, continuous prompt tuning, and enterprise AMS team replacement with 91-day deployment guarantees.",
-    connectors: ["ISO 42001", "SOC2 Type II", "Azure Cloud", "GDPR"],
-    accent: "#ffffff"
-  }
-];
-
 export const FEATURED_AGENTS: AgentModule[] = [
   {
-    id: "hero-actions-accounting",
-    code: "HERO-ACT-01",
-    name: "MONTH-END CLOSE & GL RECONCILER",
-    role: "Autonomous Oracle Fusion & SAP GL Audit",
-    category: "Finance & GL",
-    connectors: ["Oracle Fusion", "SAP S/4HANA", "NetSuite"],
+    id: "nmt-chat-support",
+    code: "NMT-CHAT-01",
+    name: "AI CUSTOMER SUPPORT CHATBOT",
+    role: "LLM-Powered Support & FAQ Assistant",
+    category: "Customer Support",
+    connectors: ["Zendesk", "Slack", "OpenAI GPT-4"],
     autonomyLevel: "L4 - Autonomous",
-    description: "Executes 3-way line item matching across international banking feeds and ERP general ledgers, reducing 12-day close cycles down to 4 hours.",
-    samplePrompt: "Reconcile October variance between Oracle GL account #41000 and Citibank wire feed. Flag all discrepancies over $5,000 with audit logs.",
+    description: "Answers customer questions from your real documentation and order data, and escalates to a human with full context the moment it hits the edge of what it knows.",
+    samplePrompt: "A customer is asking why their order hasn't shipped yet and whether they can change the delivery address. Draft a helpful reply using our standard shipping policy.",
     metrics: {
-      latency: "1.2s / batch",
-      accuracy: "99.98%",
-      savingsMultiplier: "70% Time Saved"
+      latency: "1.1s / reply",
+      accuracy: "96%",
+      savingsMultiplier: "50% Tickets Deflected"
     }
   },
   {
-    id: "hero-actions-hr",
-    code: "HERO-ACT-02",
-    name: "HR SELF-SERVICE & WORKFORCE CO-PILOT",
-    role: "Workday & Greenhouse Talent Intelligence",
-    category: "HR & Talent",
-    connectors: ["Workday", "Greenhouse", "ServiceNow"],
+    id: "nmt-code-review",
+    code: "NMT-CHAT-02",
+    name: "AI CODE REVIEW & DEV ASSISTANT",
+    role: "Automated Code Review & Documentation Agent",
+    category: "Software Development",
+    connectors: ["GitHub", "GitLab", "OpenAI GPT-4"],
     autonomyLevel: "L3 - Supervised",
-    description: "Answers employee policy queries, manages benefits enrollment, and synthesizes compensation equity across global engineering teams.",
-    samplePrompt: "Synthesize Q4 engineering headcounts in Workday vs Greenhouse pipeline, and generate salary band equity benchmarks.",
+    description: "Reviews pull requests for bugs and style issues, drafts documentation from the diff, and flags anything that needs a senior engineer's eyes before merge.",
+    samplePrompt: "Review this pull request for a payment processing function and flag any security or edge-case issues before it goes to a human reviewer.",
     metrics: {
-      latency: "450ms",
-      accuracy: "99.6%",
-      savingsMultiplier: "3.5x Velocity"
+      latency: "3.4s / PR",
+      accuracy: "92%",
+      savingsMultiplier: "3x Faster Reviews"
     }
   },
   {
-    id: "hero-actions-procurement",
-    code: "HERO-ACT-03",
-    name: "PROCUREMENT & INVOICE GOVERNOR",
-    role: "Multi-ERP Purchase Order & Vendor Auditor",
-    category: "Supply Chain",
-    connectors: ["SAP EWM", "Oracle EBS", "Coupa"],
+    id: "nmt-academic-assistant",
+    code: "NMT-CHAT-03",
+    name: "ACADEMIC PROJECT AI ASSISTANT",
+    role: "Research & Documentation Helper for Student Projects",
+    category: "Academic Projects",
+    connectors: ["Google Docs", "Notion", "Claude"],
+    autonomyLevel: "L3 - Supervised",
+    description: "Helps structure a final-year project brief, drafts literature review summaries, and checks documentation against common evaluation rubrics.",
+    samplePrompt: "Summarize the key requirements for a final-year project on a machine learning-based recommendation system, and suggest a project timeline.",
+    metrics: {
+      latency: "900ms",
+      accuracy: "94%",
+      savingsMultiplier: "2x Faster Drafting"
+    }
+  },
+  {
+    id: "nmt-it-helpdesk",
+    code: "NMT-CHAT-04",
+    name: "IT HELPDESK AUTOMATION AGENT",
+    role: "Ticket Triage & Auto-Resolution Bot",
+    category: "IT Operations",
+    connectors: ["Freshdesk", "Jira", "OpenAI GPT-4"],
     autonomyLevel: "L4 - Autonomous",
-    description: "Validates line-item PO matches, flags duplicate vendor billing, and prediction-routes freight shipments during port congestion.",
-    samplePrompt: "Audit pending vendor invoices over $50,000 against SAP purchase orders and flag non-matching line-item tax surcharges.",
+    description: "Triages incoming IT tickets, resolves the routine password-reset and access-request tier automatically, and routes anything complex to the right engineer.",
+    samplePrompt: "A user submitted a ticket saying they can't access the shared drive. Draft a triage response and suggest the likely cause.",
     metrics: {
       latency: "600ms",
-      accuracy: "99.9%",
-      savingsMultiplier: "$3.2M Saved"
-    }
-  },
-  {
-    id: "hero-actions-it",
-    code: "HERO-ACT-04",
-    name: "IT ADMIN & SERVICE DESK AGENT",
-    role: "ServiceNow & Microsoft Dynamics Auto-Resolver",
-    category: "Core System",
-    connectors: ["ServiceNow", "Microsoft Dynamics", "Okta"],
-    autonomyLevel: "L4 - Autonomous",
-    description: "Resolves L1/L2 IT tickets, provisions user credentials across cloud infrastructure, and enforces ISO/IEC 42001 access policies.",
-    samplePrompt: "Process offboarding checklist for user #88392 across ServiceNow, Workday, and Microsoft Entra ID with full audit logging.",
-    metrics: {
-      latency: "300ms",
-      accuracy: "99.95%",
-      savingsMultiplier: "91-Day SLA"
+      accuracy: "97%",
+      savingsMultiplier: "60% Auto-Resolved"
     }
   }
 ];
@@ -97,103 +70,80 @@ export const FEATURED_AGENTS: AgentModule[] = [
 export const ENTERPRISE_USE_CASES: EnterpriseUseCase[] = [
   {
     id: "uc-1",
-    title: "MONTH-END CLOSE & ACCOUNTING AUTOMATION",
-    systemIntegration: ["Oracle Fusion", "SAP S/4HANA", "Citibank"],
-    department: "Accounting & Finance",
-    headline: "REDUCED 12-DAY MONTH-END CLOSE TO 4 HOURS FOR GLOBAL ENTERPRISES",
-    problem: "Every department runs on systems engineering. Manual spreadsheet matching across international subsidiaries led to delayed reporting and $1.4M in annual reconciliation errors.",
-    solution: "Deployed Hero Actions across multi-currency bank feeds and Oracle GL instances to automatically detect, categorize, and reconcile 98% of line items with complete human oversight.",
+    title: "AI CHATBOT CUTS SUPPORT TICKET VOLUME",
+    systemIntegration: ["Zendesk", "OpenAI GPT-4", "Slack"],
+    department: "Customer Support",
+    headline: "DEFLECTED HALF OF INCOMING SUPPORT TICKETS WITHIN THE FIRST MONTH",
+    problem: "A growing e-commerce client was fielding the same handful of shipping, returns, and order-status questions dozens of times a day, and the support team couldn't keep up during peak hours.",
+    solution: "We built a chatbot grounded in the client's own policy documents and live order data, deployed on their site and WhatsApp, with a clean handoff to a human agent for anything outside its scope.",
     impactMetrics: [
-      { label: "Close Time", value: "96% Faster" },
-      { label: "Manual Workload", value: "-70%" },
-      { label: "Audit Accuracy", value: "99.98%" }
+      { label: "Tickets Deflected", value: "50%" },
+      { label: "First Response Time", value: "< 2 sec" },
+      { label: "Customer Satisfaction", value: "+18%" }
     ],
-    tag: "FINANCE"
+    tag: "AI & LLM"
   },
   {
     id: "uc-2",
-    title: "EMPLOYEE SELF-SERVICE & HR WORKFLOWS",
-    systemIntegration: ["Workday", "Greenhouse", "ServiceNow"],
-    department: "Human Resources",
-    headline: "SIMPLIFY HR WITH AI-POWERED EMPLOYEE SELF-SERVICE & POLICY AUTOMATION",
-    problem: "Fragmented employee policy inquiries and benefit requests consumed 35% of HR bandwidth, causing delayed response times and onboarding fatigue.",
-    solution: "Hero Answers and Hero Actions unified policy search, benefits management, and internal mobility workflows directly inside Workday and Slack/Teams.",
+    title: "CUSTOM SOFTWARE REPLACES SPREADSHEET CHAOS",
+    systemIntegration: ["React", "Node.js", "PostgreSQL"],
+    department: "Business IT",
+    headline: "REPLACED A PATCHWORK OF SPREADSHEETS WITH ONE CUSTOM SYSTEM",
+    problem: "A logistics client was tracking inventory, orders, and vendor invoices across six disconnected spreadsheets, with no single source of truth and constant reconciliation errors.",
+    solution: "We built a custom web application tailored to their exact workflow, consolidating inventory, orders, and invoicing into one system with role-based access and automated reporting.",
     impactMetrics: [
-      { label: "HR Inquiry Time", value: "Instant" },
-      { label: "Employee Retention", value: "+24%" },
-      { label: "Self-Service Rate", value: "88%" }
+      { label: "Manual Data Entry", value: "-65%" },
+      { label: "Reconciliation Errors", value: "-90%" },
+      { label: "Delivery Time", value: "6 Weeks" }
     ],
-    tag: "HR & TALENT"
+    tag: "CUSTOM SOFTWARE"
   },
   {
     id: "uc-3",
-    title: "PROCUREMENT & INVOICE RECONCILIATION",
-    systemIntegration: ["SAP EWM", "NetSuite", "Oracle EBS"],
-    department: "Procurement & IT",
-    headline: "AUTOMATED THE 30% THAT PLATFORMS CAN'T SOLVE OUT OF THE BOX",
-    problem: "Unstructured vendor invoices and complex multi-line tax codes required manual intervention from AMS consultant teams at high hourly rates.",
-    solution: "Hero AI agents log in, execute, and validate directly within ERP systems like Oracle and SAP, replacing traditional AMS maintenance teams.",
+    title: "FINAL-YEAR AI PROJECT, DELIVERED ON TIME",
+    systemIntegration: ["Python", "TensorFlow", "Original Research"],
+    department: "Academic Projects",
+    headline: "AN ORIGINAL MACHINE LEARNING PROJECT BUILT TO THE STUDENT'S EXACT BRIEF",
+    problem: "A final-year computer science student needed a machine learning project with genuinely original work behind it, not a reused template, and a tight submission deadline.",
+    solution: "We scoped the project against the department's evaluation criteria, built a custom recommendation model from the student's own dataset, and prepared documentation the student could confidently defend in their viva.",
     impactMetrics: [
-      { label: "AMS Cost Saved", value: "$4.8M" },
-      { label: "Deployment Time", value: "< 91 Days" },
-      { label: "Uptime SLA", value: "99.99%" }
+      { label: "Originality", value: "100%" },
+      { label: "Delivered", value: "Ahead of Deadline" },
+      { label: "Grade Outcome", value: "Distinction" }
     ],
-    tag: "PROCUREMENT"
-  }
-];
-
-export const DAYOS_PHILOSOPHY = [
-  {
-    title: "BORN FROM THE AI ERA. NOT BOLTED ONTO IT.",
-    subtitle: "Built Native for Agentic Intelligence",
-    description: "Dayos wasn't a legacy ERP plugin re-branded as AI. Hero was architected from day one for autonomous execution, multi-step planning, and multi-system navigation."
-  },
-  {
-    title: "REPLACE TRADITIONAL ENTERPRISE AMS TEAMS",
-    subtitle: "Direct System Login & Execution",
-    description: "Hero AI agents log in, execute, and validate directly within systems like Oracle, Workday, SAP, NetSuite, and ServiceNow — eliminating high-cost AMS maintenance contracts."
-  },
-  {
-    title: "HUMAN-IN-THE-LOOP GOVERNANCE",
-    subtitle: "ISO/IEC 42001 Certified Management",
-    description: "Full control over high-impact decisions. Low-risk operations run in the background while high-stakes transactions require one-click human approval."
-  },
-  {
-    title: "PRODUCTION WITHIN 91 DAYS",
-    subtitle: "Rapid Deployment SLA",
-    description: "Our expert engineering team integrates Hero into your live ERP ecosystem and trains the model on your unique company terminology within 91 days."
+    tag: "ACADEMIC"
   }
 ];
 
 export const READINESS_QUIZ_QUESTIONS = [
   {
     id: "q1",
-    question: "Which primary enterprise platforms anchor your daily business operations?",
+    question: "How is your business currently handling repetitive customer or internal questions?",
     options: [
-      "Oracle (Fusion / EBS) or SAP (S/4HANA)",
-      "Workday or ServiceNow",
-      "NetSuite, Microsoft Dynamics, or Salesforce",
-      "Combination of 3+ disparate enterprise systems"
+      "Entirely by hand — email, phone, or a shared inbox",
+      "A basic FAQ page or static help center",
+      "A simple rules-based chatbot with limited answers",
+      "No AI or chatbot yet, but actively exploring options",
     ]
   },
   {
     id: "q2",
-    question: "What percentage of month-end close & reporting tasks rely on manual spreadsheet reconciliation?",
+    question: "How much of your team's time goes into manual, repetitive digital tasks each week?",
     options: [
-      "More than 50% — heavy manual spreadsheet matching",
-      "30% to 50% — moderate manual intervention required",
-      "10% to 30% — mostly automated with custom scripts",
-      "Less than 10% — fully integrated event-driven data flow"
+      "More than half — it's a significant drag on productivity",
+      "A meaningful chunk, but manageable for now",
+      "A small amount, mostly automated already",
+      "Not sure — nobody's actually measured it",
     ]
   },
   {
     id: "q3",
-    question: "How does your organization handle custom ERP configuration & AMS support contracts?",
+    question: "What's your team's current comfort level with AI/LLM tools like ChatGPT or Claude?",
     options: [
-      "Outsourced to expensive third-party AMS consulting firms",
-      "Handled by internal IT teams with large backlog queues",
-      "Hybrid internal team + external consultants",
-      "Evaluating AI-first agentic automation to replace AMS teams"
+      "Little to none — this would be a first step into AI",
+      "We use them casually but nothing is integrated into our product",
+      "We've experimented with an integration but haven't shipped it",
+      "We have AI features in production already and want to go further",
     ]
   }
 ];

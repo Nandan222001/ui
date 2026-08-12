@@ -14,13 +14,13 @@ export const DemoCta: React.FC<DemoCtaProps> = ({ onOpenDemo }) => {
           className="text-left bg-[#000000] text-[#ffffff] rounded-[24px] p-8 sm:p-12 flex flex-col justify-between min-h-[280px] hover:bg-[#2f2f2f] transition-colors cursor-pointer"
         >
           <h3 className="type-h3">
-            Schedule
-            <br />a Demo
+            Get a
+            <br />Free Quote
           </h3>
           <div>
             <p className="type-body-medium text-[#979797] mb-6 max-w-xs">
-              Let's transform the way work works. Book an intro to see our
-              demo in action.
+              Tell us about your project — academic or business — and get a
+              clear scope with transparent pricing.
             </p>
             <span className="inline-flex items-center gap-2 bg-[#ffffff] text-[#000000] px-5 py-3 rounded-lg font-neo font-medium text-sm">
               Get started
@@ -35,8 +35,9 @@ export const DemoCta: React.FC<DemoCtaProps> = ({ onOpenDemo }) => {
             <br />us
           </h3>
           <p className="type-body-medium text-[#444444] max-w-xs">
-            Learn more about our company's journey in redefining how good
-            work gets done.
+            NMT Solutions bridges the gap between ideas and digital reality —
+            100+ engineers building original software, AI integrations, and
+            academic projects the right way.
           </p>
         </div>
       </div>

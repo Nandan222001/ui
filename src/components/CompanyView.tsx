@@ -10,36 +10,37 @@ interface CompanyViewProps {
 
 const AXIOMS = [
   {
-    title: "Every business is a special case.",
+    title: "Original work, every time.",
     description:
-      "No two companies share the same processes, history, or regulatory footprint. Standard software was never going to fit all of them equally well.",
+      "No reused templates, no recycled boilerplate passed off as new. Every project, whether it's a client product or a final-year submission, is built from the requirement up, because originality isn't optional for either kind of client.",
   },
   {
-    title: "Enterprise software targets the middle.",
+    title: "AI is core, not bolted on.",
     description:
-      "Systems built for the largest buyer base are engineered to the median requirement, not to any single company's edge cases.",
+      "Chatbots, virtual assistants, and LLM-powered features aren't a separate offering we sell alongside the real work. They're built into how we approach almost every engagement now, from OpenAI, Anthropic, and Google models to the RAG pipelines and automation agents around them.",
   },
   {
-    title: "The gap doesn't close on its own.",
+    title: "Delivery dates and prices are commitments.",
     description:
-      "The distance between what's unique to you and what standard platforms can configure stays roughly constant, no matter how many features ship.",
+      "Timelines slip and budgets creep when scope and pricing were never pinned down honestly. We'd rather be precise upfront than apologetic later.",
   },
   {
-    title: "The truth lives inside your walls.",
+    title: "Breadth lives in-house.",
     description:
-      "Transaction history, configuration state, and process logic sit behind your firewall. No public model gets to see it.",
+      "A team of 100+ engineers means we don't outsource pieces of a project to whoever's available. Web, mobile, AI, and infrastructure work sit under one roof, with 10+ years of combined experience behind the decisions.",
   },
   {
-    title: "New tools need new plumbing.",
+    title: "Support doesn't stop at handoff.",
     description:
-      "When the mechanism that closes the gap changes, from human labor to software, the architecture underneath has to change with it.",
+      "Larger engagements need more than code. We stay involved through planning, investment strategy, and risk management guidance, not just the sprint that ships the feature.",
   },
 ];
 
-const PARTNERS = [
-  { name: "Oracle", detail: "Cloud Build & Cloud Service Partner" },
-  { name: "SAP", detail: "Service Partner" },
-  { name: "Workday", detail: "Silver Innovation & Sales Partner" },
+const STATS = [
+  { value: "100+", label: "Software engineers on the team" },
+  { value: "10+", label: "Years of combined engineering experience" },
+  { value: "100%", label: "Custom, original project work" },
+  { value: "5", label: "Core service specialties, AI-led" },
 ];
 
 export const CompanyView: React.FC<CompanyViewProps> = ({ onOpenDemo }) => {
@@ -49,16 +50,16 @@ export const CompanyView: React.FC<CompanyViewProps> = ({ onOpenDemo }) => {
       <section className="w-full bg-[#e5e5e5] text-[#000000]">
         <div className="site-grid section-block">
           <Reveal>
-            <span className="mint-tag mb-6">AI-NATIVE SERVICE COMPANY</span>
+            <span className="mint-tag mb-6">IT SERVICES & AI SOLUTIONS</span>
             <h1 className="type-h1 max-w-4xl">
-              Born from one idea: revolutionize how good work gets done.
+              Bridging the gap between your idea and its digital reality.
             </h1>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="type-body-headline text-[#444444] max-w-2xl mt-8">
-              We don't sell managed services to the enterprise. We build the
-              AI that does the work, deployed directly inside Oracle,
-              Workday, SAP, NetSuite, and Dynamics.
+              NMT Solutions builds AI and LLM integrations, custom software,
+              academic projects, business IT solutions, and mobile apps, with
+              AI as the specialty leading everything else we do.
             </p>
           </Reveal>
         </div>
@@ -70,7 +71,7 @@ export const CompanyView: React.FC<CompanyViewProps> = ({ onOpenDemo }) => {
           <Reveal className="mb-12">
             <span className="font-mono-tag text-[#979797] block mb-4">FIRST PRINCIPLES</span>
             <h2 className="type-h2 max-w-3xl">
-              Five ideas everything else at Dayos is built on.
+              Five ideas everything else at NMT Solutions is built on.
             </h2>
           </Reveal>
 
@@ -93,49 +94,34 @@ export const CompanyView: React.FC<CompanyViewProps> = ({ onOpenDemo }) => {
         <div className="site-grid section-block">
           <Reveal>
             <p className="type-quote max-w-4xl">
-              "Hero is the first closing mechanism in thirty years that isn't
-              capped by vendor configuration limits, isn't dependent on a
-              shrinking pool of systems engineers, and isn't limited to what a
-              public model can guess about your business."
+              "We're not a template shop and we're not a staffing pool. We're
+              an in-house team of 100+ engineers who'd rather build one
+              original, AI-native solution for you than reassemble the same
+              generic one for everybody."
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* Partners + HQ */}
+      {/* Stats / highlights */}
       <section className="w-full bg-[#e5e5e5] text-[#000000]">
-        <div className="site-grid section-block grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-7">
-            <Reveal>
-              <span className="font-mono-tag text-[#979797] block mb-4">ECOSYSTEM PARTNERS</span>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                {PARTNERS.map((partner) => (
-                  <div
-                    key={partner.name}
-                    className="bg-[#ffffff] rounded-[24px] p-6 border border-[#c6c6c6]/60"
-                  >
-                    <h3 className="type-h4 mb-2">{partner.name}</h3>
-                    <p className="type-body-medium text-[#444444]">{partner.detail}</p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-          </div>
+        <div className="site-grid section-block">
+          <Reveal className="mb-10">
+            <span className="font-mono-tag text-[#979797] block mb-4">BY THE NUMBERS</span>
+            <h2 className="type-h2 max-w-3xl">
+              What working with us actually looks like.
+            </h2>
+          </Reveal>
 
-          <div className="lg:col-span-5">
-            <Reveal delay={0.1}>
-              <span className="font-mono-tag text-[#979797] block mb-4">WHERE WE OPERATE</span>
-              <div className="bg-[#ffffff] rounded-[24px] p-6 sm:p-8 border border-[#c6c6c6]/60 h-full">
-                <p className="type-body-large text-[#444444] mb-4">
-                  Headquartered in Singapore's Centennial Tower, with a Delaware
-                  entity serving customers across the Americas.
-                </p>
-                <p className="type-body-large text-[#444444]">
-                  Our team spans six continents by design, so someone is always
-                  awake when your close cycle needs to run.
-                </p>
-              </div>
-            </Reveal>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {STATS.map((stat, idx) => (
+              <Reveal key={stat.label} delay={idx * 0.08}>
+                <div className="bg-[#ffffff] rounded-[24px] p-6 sm:p-8 border border-[#c6c6c6]/60 h-full">
+                  <p className="type-h2 mb-2">{stat.value}</p>
+                  <p className="type-body-medium text-[#444444]">{stat.label}</p>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -144,32 +130,35 @@ export const CompanyView: React.FC<CompanyViewProps> = ({ onOpenDemo }) => {
       <section className="w-full bg-[#000000] text-[#ffffff]">
         <div className="site-grid section-block">
           <Reveal className="mb-12">
-            <span className="font-mono-tag text-[#979797] block mb-4">WORKING AT DAYOS</span>
+            <span className="font-mono-tag text-[#979797] block mb-4">WORKING AT NMT SOLUTIONS</span>
             <h2 className="type-h2 max-w-3xl">
-              We pay in growth, ownership, and coverage that travels with you.
+              We pay in real AI exposure, growth, and genuinely varied work.
             </h2>
           </Reveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             <Reveal>
-              <h3 className="type-h4 mb-3">Compounding AI exposure</h3>
+              <h3 className="type-h4 mb-3">Hands-on AI project exposure</h3>
               <p className="type-body-medium text-[#979797]">
-                Every engineer works directly on production agents running
-                inside real enterprise systems, not internal tooling.
+                Engineers work directly on live chatbots, LLM integrations,
+                and automation agents shipped to real clients, not internal
+                experiments that never leave the lab.
               </p>
             </Reveal>
             <Reveal delay={0.08}>
-              <h3 className="type-h4 mb-3">Profit-sharing</h3>
+              <h3 className="type-h4 mb-3">Room to grow fast</h3>
               <p className="type-body-medium text-[#979797]">
-                When Hero saves a customer money, the team that shipped it
-                shares in the upside.
+                As a growing 100+ person team, there's real headroom to move
+                into new specialties, especially as AI and LLM work expands
+                across every service line.
               </p>
             </Reveal>
             <Reveal delay={0.16}>
-              <h3 className="type-h4 mb-3">Healthcare, worldwide</h3>
+              <h3 className="type-h4 mb-3">Work that never gets repetitive</h3>
               <p className="type-body-medium text-[#979797]">
-                Coverage built for a distributed team, wherever our engineers
-                choose to be based.
+                One sprint might be a business automation platform, the next
+                a final-year academic project or a mobile app, so the variety
+                stays high by design.
               </p>
             </Reveal>
           </div>
@@ -193,13 +182,13 @@ export const CompanyView: React.FC<CompanyViewProps> = ({ onOpenDemo }) => {
         <div className="site-grid section-block grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
           <Reveal className="lg:col-span-8">
             <h2 className="type-h2">
-              Just getting by shouldn't be good enough.
+              Just shipping something shouldn't be good enough.
             </h2>
           </Reveal>
           <p className="lg:col-span-4 type-body-large text-[#444444]">
-            Dayos builds an agent tailored to your enterprise ecosystem,
-            cutting cost and freeing your people to do the work only they can
-            do.
+            NMT Solutions builds original software, AI features, and IT
+            solutions around what you actually need, delivered on time, priced
+            transparently, and supported well past launch.
           </p>
         </div>
       </section>
@@ -211,12 +200,12 @@ export const CompanyView: React.FC<CompanyViewProps> = ({ onOpenDemo }) => {
             className="w-full text-left bg-[#000000] text-[#ffffff] rounded-[24px] p-8 sm:p-12 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 hover:bg-[#2f2f2f] transition-colors cursor-pointer"
           >
             <h3 className="type-h3">
-              See it running
+              Have a project
               <br />
-              on your data.
+              in mind?
             </h3>
             <span className="inline-flex items-center gap-2 bg-[#ffffff] text-[#000000] px-5 py-3 rounded-lg font-neo font-medium text-sm shrink-0">
-              Schedule a Demo
+              Get a Free Quote
               <ArrowUpRight className="w-4 h-4" />
             </span>
           </button>
