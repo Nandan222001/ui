@@ -1,30 +1,25 @@
 import React, { useState } from "react";
-import { ViewMode } from "../types";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 
 interface NavbarProps {
-  activeView: ViewMode;
-  onSelectView: (view: ViewMode) => void;
   onOpenDemo: () => void;
 }
 
-const NAV_ITEMS: { view: ViewMode; label: string; pulse?: boolean }[] = [
-  { view: "showroom", label: "SHOWROOM" },
-  { view: "agent-sandbox", label: "AGENT SANDBOX", pulse: true },
-  { view: "roi-calculator", label: "ROI ESTIMATOR" },
-  { view: "readiness-assessment", label: "READINESS DIAGNOSTIC" },
-  { view: "use-cases", label: "SOLUTIONS" },
+const NAV_ITEMS: { to: string; label: string; pulse?: boolean }[] = [
+  { to: "/", label: "SHOWROOM" },
+  { to: "/agent-sandbox", label: "AGENT SANDBOX", pulse: true },
+  { to: "/roi-calculator", label: "ROI ESTIMATOR" },
+  { to: "/readiness-assessment", label: "READINESS DIAGNOSTIC" },
+  { to: "/use-cases", label: "SOLUTIONS" },
 ];
 
-export const Navbar: React.FC<NavbarProps> = ({
-  activeView,
-  onSelectView,
-  onOpenDemo,
-}) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSelect = (view: ViewMode) => {
-    onSelectView(view);
+  const goHome = () => {
+    navigate("/");
     setIsMenuOpen(false);
   };
 
@@ -33,7 +28,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="h-20 sm:h-24 lg:h-32 px-4 sm:px-6 lg:px-20 flex items-center justify-between gap-3">
         {/* Brand Logo */}
         <div
-          onClick={() => handleSelect("showroom")}
+          onClick={goHome}
           className="cursor-pointer flex items-center gap-2 sm:gap-3 group shrink-0"
         >
           <div className="w-9 h-9 sm:w-10 sm:h-10 bg-[#000000] text-[#ffffff] flex items-center justify-center font-condensed text-xl sm:text-2xl font-bold rounded-lg group-hover:bg-[#2f2f2f] transition-colors">
@@ -55,20 +50,23 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Nav Pill Container - White Floating Capsule (desktop only) */}
         <nav className="hidden lg:flex items-center bg-[#ffffff] rounded-[48px] px-3 py-2 border border-[#c6c6c6]/40 shadow-none gap-1">
           {NAV_ITEMS.map((item) => (
-            <button
-              key={item.view}
-              onClick={() => handleSelect(item.view)}
-              className={`px-5 py-2.5 rounded-full text-sm font-neo font-medium flex items-center gap-2 transition-all ${
-                activeView === item.view
-                  ? "bg-[#000000] text-[#ffffff]"
-                  : "text-[#444444] hover:text-[#000000] hover:bg-[#f3f3f3]"
-              }`}
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.to === "/"}
+              className={({ isActive }) =>
+                `px-5 py-2.5 rounded-full text-sm font-neo font-medium flex items-center gap-2 transition-all ${
+                  isActive
+                    ? "bg-[#000000] text-[#ffffff]"
+                    : "text-[#444444] hover:text-[#000000] hover:bg-[#f3f3f3]"
+                }`
+              }
             >
               <span>{item.label}</span>
               {item.pulse && (
                 <span className="w-1.5 h-1.5 rounded-full bg-[#fff100] animate-pulse"></span>
               )}
-            </button>
+            </NavLink>
           ))}
         </nav>
 
@@ -100,20 +98,24 @@ export const Navbar: React.FC<NavbarProps> = ({
       {isMenuOpen && (
         <div className="lg:hidden px-4 sm:px-6 pb-6 flex flex-col gap-1.5 bg-[#e5e5e5] border-t border-[#c6c6c6]/60">
           {NAV_ITEMS.map((item) => (
-            <button
-              key={item.view}
-              onClick={() => handleSelect(item.view)}
-              className={`mt-1.5 first:mt-4 px-4 py-3.5 rounded-xl text-left text-sm font-neo font-medium flex items-center justify-between transition-colors ${
-                activeView === item.view
-                  ? "bg-[#000000] text-[#ffffff]"
-                  : "bg-[#ffffff] text-[#444444] border border-[#c6c6c6]/40"
-              }`}
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.to === "/"}
+              onClick={() => setIsMenuOpen(false)}
+              className={({ isActive }) =>
+                `mt-1.5 first:mt-4 px-4 py-3.5 rounded-xl text-left text-sm font-neo font-medium flex items-center justify-between transition-colors ${
+                  isActive
+                    ? "bg-[#000000] text-[#ffffff]"
+                    : "bg-[#ffffff] text-[#444444] border border-[#c6c6c6]/40"
+                }`
+              }
             >
               <span>{item.label}</span>
               {item.pulse && (
                 <span className="w-1.5 h-1.5 rounded-full bg-[#fff100] animate-pulse"></span>
               )}
-            </button>
+            </NavLink>
           ))}
         </div>
       )}

@@ -1,21 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Reveal } from "./Reveal";
 
 const SOLUTIONS = [
   {
     name: "Answers",
+    slug: "hero-answers",
     description:
       "Agents that provide real-time, analyst-level insights across your critical business data without waiting for reports or manual analysis.",
     video: "/media/ai_solutions-loop.webm",
   },
   {
     name: "Actions",
+    slug: "hero-actions",
     description:
       "AI agents that take action inside your ERP. Configuration changes, journal entries, procurement matching, and month-end close. Hero doesn't recommend what to do. It does it.",
     video: "/media/x_as_a_service-loop.webm",
   },
   {
     name: "Experts",
+    slug: "hero-experts",
     description:
       "AI handles the repetitive work. We route the rest to the best engineers globally. Human-assisted tickets are billed based on complexity on a sliding scale. Replace or extend your current AMS provider.",
     video: "/media/professional_services-loop.webm",
@@ -40,7 +44,7 @@ export const SolutionsEntry: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-16 lg:gap-24">
           {SOLUTIONS.map((sol) => (
-            <div key={sol.name} className="group cursor-pointer">
+            <Link key={sol.name} to={`/platform/${sol.slug}`} className="group cursor-pointer">
               {/* Real site: media-wrap has overflow:visible — the clip is
                   shifted -20% and spills past its own square, not clipped */}
               <div className="w-full aspect-square overflow-visible mb-6">
@@ -57,7 +61,7 @@ export const SolutionsEntry: React.FC = () => {
               <p className="type-body-medium text-[#979797]">
                 {sol.description}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

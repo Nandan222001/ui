@@ -1,13 +1,12 @@
 import React from "react";
-import { ViewMode } from "../types";
+import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 
 interface FooterProps {
-  onSelectView: (view: ViewMode) => void;
   onOpenDemo: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onSelectView, onOpenDemo }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenDemo }) => {
   return (
     <footer className="w-full bg-[#000000] text-[#ffffff]">
       <div className="site-grid pt-16 pb-10">
@@ -31,40 +30,81 @@ export const Footer: React.FC<FooterProps> = ({ onSelectView, onOpenDemo }) => {
           </button>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 py-12 border-b border-[#2f2f2f]">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-8 py-12 border-b border-[#2f2f2f]">
           <div>
             <span className="font-mono-tag text-[#979797] block mb-4">Platform</span>
             <ul className="space-y-2 font-neo text-sm font-medium text-[#979797]">
               <li>
-                <button onClick={() => onSelectView("showroom")} className="hover:text-[#ffffff] transition-colors cursor-pointer">
-                  Showroom
-                </button>
+                <Link to="/platform/hero-answers" className="hover:text-[#ffffff] transition-colors">
+                  Hero Answers
+                </Link>
               </li>
               <li>
-                <button onClick={() => onSelectView("agent-sandbox")} className="hover:text-[#ffffff] transition-colors cursor-pointer">
+                <Link to="/platform/hero-actions" className="hover:text-[#ffffff] transition-colors">
                   Hero Actions
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => onSelectView("use-cases")} className="hover:text-[#ffffff] transition-colors cursor-pointer">
-                  Solutions
-                </button>
+                <Link to="/platform/hero-experts" className="hover:text-[#ffffff] transition-colors">
+                  Hero Experts
+                </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <span className="font-mono-tag text-[#979797] block mb-4">Resources</span>
+            <span className="font-mono-tag text-[#979797] block mb-4">Solutions</span>
             <ul className="space-y-2 font-neo text-sm font-medium text-[#979797]">
               <li>
-                <button onClick={() => onSelectView("roi-calculator")} className="hover:text-[#ffffff] transition-colors cursor-pointer">
-                  ROI Estimator
-                </button>
+                <Link to="/solutions/ai-accounting-software" className="hover:text-[#ffffff] transition-colors">
+                  Accounting
+                </Link>
               </li>
               <li>
-                <button onClick={() => onSelectView("readiness-assessment")} className="hover:text-[#ffffff] transition-colors cursor-pointer">
+                <Link to="/solutions/ai-finance-software" className="hover:text-[#ffffff] transition-colors">
+                  Finance
+                </Link>
+              </li>
+              <li>
+                <Link to="/solutions/ai-hr-software" className="hover:text-[#ffffff] transition-colors">
+                  Human Resources
+                </Link>
+              </li>
+              <li>
+                <Link to="/solutions/ai-procurement-software" className="hover:text-[#ffffff] transition-colors">
+                  Procurement
+                </Link>
+              </li>
+              <li>
+                <Link to="/solutions/ai-it-management-software" className="hover:text-[#ffffff] transition-colors">
+                  Information Technology
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <span className="font-mono-tag text-[#979797] block mb-4">Interactive Tools</span>
+            <ul className="space-y-2 font-neo text-sm font-medium text-[#979797]">
+              <li>
+                <Link to="/agent-sandbox" className="hover:text-[#ffffff] transition-colors">
+                  Agent Sandbox
+                </Link>
+              </li>
+              <li>
+                <Link to="/roi-calculator" className="hover:text-[#ffffff] transition-colors">
+                  ROI Estimator
+                </Link>
+              </li>
+              <li>
+                <Link to="/readiness-assessment" className="hover:text-[#ffffff] transition-colors">
                   Readiness Assessment
-                </button>
+                </Link>
+              </li>
+              <li>
+                <Link to="/use-cases" className="hover:text-[#ffffff] transition-colors">
+                  Use Case Library
+                </Link>
               </li>
             </ul>
           </div>
@@ -72,8 +112,16 @@ export const Footer: React.FC<FooterProps> = ({ onSelectView, onOpenDemo }) => {
           <div>
             <span className="font-mono-tag text-[#979797] block mb-4">Company</span>
             <ul className="space-y-2 font-neo text-sm font-medium text-[#979797]">
-              <li className="hover:text-[#ffffff] transition-colors">Why Dayos</li>
-              <li className="hover:text-[#ffffff] transition-colors">Careers</li>
+              <li>
+                <Link to="/company" className="hover:text-[#ffffff] transition-colors">
+                  Why Dayos
+                </Link>
+              </li>
+              <li>
+                <Link to="/careers" className="hover:text-[#ffffff] transition-colors">
+                  Careers
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -93,6 +141,14 @@ export const Footer: React.FC<FooterProps> = ({ onSelectView, onOpenDemo }) => {
 
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between font-mono text-xs text-[#979797] gap-4">
           <span>Dayos © 2026 — All rights reserved</span>
+          <div className="flex items-center gap-4">
+            <Link to="/terms-of-service" className="hover:text-[#ffffff] transition-colors">
+              Terms of Service
+            </Link>
+            <Link to="/privacy-statement" className="hover:text-[#ffffff] transition-colors">
+              Privacy Statement
+            </Link>
+          </div>
           <span>3 Temasek Ave, Level 18, Centennial Tower, Singapore 039190</span>
         </div>
       </div>

@@ -1,34 +1,40 @@
 import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal } from "./Reveal";
 
 const DEPARTMENTS = [
   {
     name: "Accounting",
+    slug: "ai-accounting-software",
     description:
       "Empower your team with AI to reduce manual workloads, manage month-end close, and achieve more with fewer resources.",
     image: "/images/image_3.webp",
   },
   {
     name: "Human Resources",
+    slug: "ai-hr-software",
     description:
       "Simplify HR with employee self-service powered by AI. Answer policy questions, manage benefits, and ensure satisfaction across the board.",
     image: "/images/image_2.webp",
   },
   {
     name: "Procurement",
+    slug: "ai-procurement-software",
     description:
       "Prevent costly errors before they happen. Agentic AI analyzes procurement data, flags duplicates, and connects the dots between contracts, invoices, and payments.",
     image: "/images/image_8.webp",
   },
   {
     name: "Information Technology",
+    slug: "ai-it-management-software",
     description:
       "Reduce rising SaaS and labor costs with efficient agentic workflows that deliver quality support and help you be a better business partner.",
     image: "/images/image_4.webp",
   },
   {
     name: "Finance",
+    slug: "ai-finance-software",
     description:
       "Agentic AI eliminates errors by integrating headcount, cost centers, and product data into a reliable, repeatable process—no more manual data collection or spreadsheets.",
     image: "/images/image_7.webp",
@@ -85,8 +91,9 @@ export const DepartmentsShowcase: React.FC = () => {
           className="flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory"
         >
           {DEPARTMENTS.map((dept) => (
-            <div
+            <Link
               key={dept.name}
+              to={`/solutions/${dept.slug}`}
               className="snap-start shrink-0 w-[80%] sm:w-[40%] lg:w-[22%] bg-[#ffffff] rounded-[24px] overflow-hidden border border-[#c6c6c6]/40"
             >
               <div className="w-full aspect-[4/3] overflow-hidden">
@@ -108,7 +115,7 @@ export const DepartmentsShowcase: React.FC = () => {
                   <ArrowUpRight className="w-4 h-4" />
                 </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
