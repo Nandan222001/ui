@@ -20,6 +20,16 @@ import { CompanyView } from "./components/CompanyView";
 import { CareersView } from "./components/CareersView";
 import { TermsView } from "./components/TermsView";
 import { PrivacyView } from "./components/PrivacyView";
+import { PlansView } from "./components/PlansView";
+import { PartnershipView } from "./components/PartnershipView";
+import { PartnersView } from "./components/PartnersView";
+import { SupportView } from "./components/SupportView";
+import { ReleasesView } from "./components/ReleasesView";
+import { ResourcesView } from "./components/ResourcesView";
+import { CaseStudiesView } from "./components/CaseStudiesView";
+import { CaseStudyDetailView } from "./components/CaseStudyDetailView";
+import { BlogView } from "./components/BlogView";
+import { NewsView } from "./components/NewsView";
 import { NotFoundView } from "./components/NotFoundView";
 import { DemoModal } from "./components/DemoModal";
 import { Footer } from "./components/Footer";
@@ -79,6 +89,17 @@ export default function App() {
           <Route path="/careers" element={<CareersView onOpenDemo={onOpenDemo} />} />
           <Route path="/terms-of-service" element={<TermsView />} />
           <Route path="/privacy-statement" element={<PrivacyView />} />
+
+          <Route path="/plans" element={<PlansView onOpenDemo={onOpenDemo} />} />
+          <Route path="/partnership" element={<PartnershipView onOpenDemo={onOpenDemo} />} />
+          <Route path="/partners" element={<PartnersView onOpenDemo={onOpenDemo} />} />
+          <Route path="/support" element={<SupportView onOpenDemo={onOpenDemo} />} />
+          <Route path="/releases" element={<ReleasesView />} />
+          <Route path="/resources" element={<ResourcesView />} />
+          <Route path="/case-studies" element={<CaseStudiesView />} />
+          <Route path="/case-studies/:slug" element={<CaseStudyDetailView onOpenDemo={onOpenDemo} />} />
+          <Route path="/blog" element={<BlogView />} />
+          <Route path="/news" element={<NewsView />} />
 
           <Route path="*" element={<NotFoundView />} />
         </Routes>
