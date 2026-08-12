@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 
 interface NavbarProps {
   onOpenDemo: () => void;
@@ -17,11 +17,11 @@ const NAV_ITEMS: NavItem[] = [
   { to: "/use-cases", label: "USE CASES" },
 ];
 
-// Mobile menu shows everything, grouped the same way as the footer, so the
-// rest of the site (Platform, Solutions, Resources, Company) isn't only
-// reachable by scrolling all the way down.
-const MOBILE_NAV_GROUPS: { title: string | null; items: NavItem[] }[] = [
-  { title: null, items: NAV_ITEMS },
+// Everything beyond the core 5 interactive tools, grouped the same way as
+// the footer. Shown in the desktop nav via the "MORE" dropdown, and in the
+// mobile menu appended after the primary items, so none of it is only
+// reachable by scrolling all the way down to the footer.
+const EXTRA_NAV_GROUPS: { title: string; items: NavItem[] }[] = [
   {
     title: "PLATFORM",
     items: [
@@ -62,6 +62,11 @@ const MOBILE_NAV_GROUPS: { title: string | null; items: NavItem[] }[] = [
   },
 ];
 
+const MOBILE_NAV_GROUPS: { title: string | null; items: NavItem[] }[] = [
+  { title: null, items: NAV_ITEMS },
+  ...EXTRA_NAV_GROUPS,
+];
+
 // Reads the background color directly behind the floating nav bar and
 // flips the wordmark to white when that section is dark, mirroring
 // dayos.com's own transparent, color-inverting header.
@@ -84,15 +89,36 @@ function backgroundLuminance(x: number, y: number): number | null {
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
   const [onDark, setOnDark] = useState(false);
   const barRef = useRef<HTMLDivElement>(null);
   const wordmarkRef = useRef<HTMLSpanElement>(null);
+  const moreRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
   const goHome = () => {
     navigate("/");
     setIsMenuOpen(false);
+    setIsMoreOpen(false);
   };
+
+  useEffect(() => {
+    if (!isMoreOpen) return;
+    const onPointerDown = (e: PointerEvent) => {
+      if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
+        setIsMoreOpen(false);
+      }
+    };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsMoreOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isMoreOpen]);
 
   useEffect(() => {
     let raf = 0;
@@ -165,7 +191,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
         </div>
 
         {/* Nav Pill Container - White Floating Capsule (desktop only) */}
-        <nav className="hidden lg:flex items-center bg-[#ffffff] rounded-[48px] px-3 py-2 border border-[#c6c6c6]/40 shadow-none gap-1">
+        <nav className="hidden xl:flex items-center bg-[#ffffff] rounded-[48px] px-3 py-2 border border-[#c6c6c6]/40 shadow-none gap-1">
           {NAV_ITEMS.map((item) => (
             <NavLink
               key={item.to}
@@ -185,6 +211,56 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
               )}
             </NavLink>
           ))}
+
+          {/* Everything else — Platform, Solutions, Resources, Company —
+              lives here instead of only being reachable via the footer. */}
+          <div ref={moreRef} className="relative">
+            <button
+              onClick={() => setIsMoreOpen((open) => !open)}
+              className={`px-5 py-2.5 rounded-full text-sm font-neo font-medium flex items-center gap-1.5 transition-all cursor-pointer ${
+                isMoreOpen
+                  ? "bg-[#000000] text-[#ffffff]"
+                  : "text-[#444444] hover:text-[#000000] hover:bg-[#f3f3f3]"
+              }`}
+              aria-expanded={isMoreOpen}
+              aria-haspopup="true"
+            >
+              <span>MORE</span>
+              <ChevronDown
+                className={`w-3.5 h-3.5 transition-transform ${isMoreOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+
+            {isMoreOpen && (
+              <div className="absolute top-full right-0 mt-3 w-[min(90vw,760px)] bg-[#ffffff] rounded-[24px] border border-[#c6c6c6]/40 p-6 grid grid-cols-4 gap-6">
+                {EXTRA_NAV_GROUPS.map((group) => (
+                  <div key={group.title}>
+                    <span className="font-mono-tag text-[#979797] block mb-3">
+                      {group.title}
+                    </span>
+                    <div className="flex flex-col gap-1">
+                      {group.items.map((item) => (
+                        <NavLink
+                          key={item.to}
+                          to={item.to}
+                          onClick={() => setIsMoreOpen(false)}
+                          className={({ isActive }) =>
+                            `py-1.5 text-sm font-neo font-medium transition-colors ${
+                              isActive
+                                ? "text-[#000000]"
+                                : "text-[#444444] hover:text-[#000000]"
+                            }`
+                          }
+                        >
+                          {item.label}
+                        </NavLink>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </nav>
 
         {/* Right Side */}
@@ -202,7 +278,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
           {/* Mobile menu toggle */}
           <button
             onClick={() => setIsMenuOpen((open) => !open)}
-            className="lg:hidden w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#ffffff] border border-[#c6c6c6] flex items-center justify-center text-[#000000] cursor-pointer shrink-0"
+            className="xl:hidden w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#ffffff] border border-[#c6c6c6] flex items-center justify-center text-[#000000] cursor-pointer shrink-0"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
           >
@@ -213,7 +289,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
 
       {/* Mobile Menu Panel */}
       {isMenuOpen && (
-        <div className="lg:hidden px-4 sm:px-6 pb-6 bg-[#e5e5e5] border-t border-[#c6c6c6]/60 max-h-[calc(100dvh-5rem)] overflow-y-auto">
+        <div className="xl:hidden px-4 sm:px-6 pb-6 bg-[#e5e5e5] border-t border-[#c6c6c6]/60 max-h-[calc(100dvh-5rem)] overflow-y-auto">
           {MOBILE_NAV_GROUPS.map((group, groupIdx) => (
             <div key={group.title ?? "primary"} className={groupIdx === 0 ? "mt-4" : "mt-6"}>
               {group.title && (
