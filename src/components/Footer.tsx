@@ -34,7 +34,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectView, onOpenDemo }) => {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 py-12 border-b border-[#2f2f2f]">
           <div>
             <span className="font-mono-tag text-[#979797] block mb-4">Platform</span>
-            <ul className="space-y-2 font-neo text-sm text-[#979797]">
+            <ul className="space-y-2 font-neo text-sm font-medium text-[#979797]">
               <li>
                 <button onClick={() => onSelectView("showroom")} className="hover:text-[#ffffff] transition-colors cursor-pointer">
                   Showroom
@@ -55,7 +55,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectView, onOpenDemo }) => {
 
           <div>
             <span className="font-mono-tag text-[#979797] block mb-4">Resources</span>
-            <ul className="space-y-2 font-neo text-sm text-[#979797]">
+            <ul className="space-y-2 font-neo text-sm font-medium text-[#979797]">
               <li>
                 <button onClick={() => onSelectView("roi-calculator")} className="hover:text-[#ffffff] transition-colors cursor-pointer">
                   ROI Estimator
@@ -71,7 +71,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectView, onOpenDemo }) => {
 
           <div>
             <span className="font-mono-tag text-[#979797] block mb-4">Company</span>
-            <ul className="space-y-2 font-neo text-sm text-[#979797]">
+            <ul className="space-y-2 font-neo text-sm font-medium text-[#979797]">
               <li className="hover:text-[#ffffff] transition-colors">Why Dayos</li>
               <li className="hover:text-[#ffffff] transition-colors">Careers</li>
             </ul>

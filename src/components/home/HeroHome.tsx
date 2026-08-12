@@ -33,7 +33,7 @@ export const HeroHome: React.FC = () => {
             fades out via a bottom mask instead of a hard crop */}
         <div className="lg:col-span-5 relative w-full flex justify-center">
           <div
-            className="w-[115%] sm:w-full lg:absolute lg:w-[68vw] lg:left-0 lg:top-1/2 lg:-translate-y-1/2 aspect-square"
+            className="w-[115%] sm:w-full lg:absolute lg:w-[68vw] lg:left-[-18vw] lg:top-[calc(50%-100px)] lg:-translate-y-1/2 aspect-square"
             style={{
               maskImage: "linear-gradient(180deg, #000 80%, transparent 93%)",
               WebkitMaskImage: "linear-gradient(180deg, #000 80%, transparent 93%)",
