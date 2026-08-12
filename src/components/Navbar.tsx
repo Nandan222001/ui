@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 
@@ -14,8 +14,31 @@ const NAV_ITEMS: { to: string; label: string; pulse?: boolean }[] = [
   { to: "/use-cases", label: "SOLUTIONS" },
 ];
 
+// Reads the background color directly behind the floating nav bar and
+// flips the wordmark to white when that section is dark, mirroring
+// dayos.com's own transparent, color-inverting header.
+function backgroundLuminance(x: number, y: number): number | null {
+  let el = document.elementFromPoint(x, y) as HTMLElement | null;
+  while (el) {
+    const bg = getComputedStyle(el).backgroundColor;
+    const match = bg.match(/rgba?\(\s*(\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\s*\)/);
+    if (match) {
+      const alpha = match[4] !== undefined ? parseFloat(match[4]) : 1;
+      if (alpha > 0.4) {
+        const [, r, g, b] = match;
+        return (0.2126 * Number(r) + 0.7152 * Number(g) + 0.0722 * Number(b)) / 255;
+      }
+    }
+    el = el.parentElement;
+  }
+  return null;
+}
+
 export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [onDark, setOnDark] = useState(false);
+  const barRef = useRef<HTMLDivElement>(null);
+  const wordmarkRef = useRef<HTMLSpanElement>(null);
   const navigate = useNavigate();
 
   const goHome = () => {
@@ -23,9 +46,46 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
     setIsMenuOpen(false);
   };
 
+  useEffect(() => {
+    let raf = 0;
+
+    const sample = () => {
+      raf = 0;
+      const bar = barRef.current;
+      const wordmark = wordmarkRef.current;
+      if (!bar || !wordmark) return;
+      // Probe directly behind the wordmark itself (not the viewport center) —
+      // sections can split into differently-colored halves (e.g. a black
+      // card next to a white one), so only the logo's own position tells us
+      // what color it actually needs to be legible against.
+      const wordmarkRect = wordmark.getBoundingClientRect();
+      const probeX = wordmarkRect.left + wordmarkRect.width / 2;
+      const probeY = bar.getBoundingClientRect().bottom + 2;
+      const luminance = backgroundLuminance(probeX, probeY);
+      setOnDark(luminance !== null && luminance < 0.5);
+    };
+
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(sample);
+    };
+
+    sample();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
-    <header className="w-full bg-[#e5e5e5] sticky top-0 z-40 transition-colors">
-      <div className="h-20 sm:h-24 lg:h-32 px-4 sm:px-6 lg:px-20 flex items-center justify-between gap-3">
+    <header className="w-full fixed top-0 left-0 z-40">
+      <div
+        ref={barRef}
+        className="h-20 sm:h-24 lg:h-32 px-4 sm:px-6 lg:px-20 flex items-center justify-between gap-3"
+      >
         {/* Brand Logo */}
         <div
           onClick={goHome}
@@ -36,12 +96,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
           </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5">
-              <span className="font-condensed text-2xl sm:text-3xl font-bold tracking-tight text-[#000000] leading-none">
+              <span
+                ref={wordmarkRef}
+                className={`font-condensed text-2xl sm:text-3xl font-bold tracking-tight leading-none transition-colors duration-300 ${
+                  onDark ? "text-[#ffffff]" : "text-[#000000]"
+                }`}
+              >
                 DAYOS
               </span>
               <span className="w-2.5 h-2.5 rounded-full bg-[#d1ffca] inline-block"></span>
             </div>
-            <span className="hidden sm:block font-mono text-[10px] text-[#444444] uppercase tracking-wider font-semibold">
+            <span
+              className={`hidden sm:block font-mono text-[10px] uppercase tracking-wider font-semibold transition-colors duration-300 ${
+                onDark ? "text-[#979797]" : "text-[#444444]"
+              }`}
+            >
               AI FOR BUSINESS
             </span>
           </div>

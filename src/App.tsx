@@ -43,13 +43,14 @@ export default function App() {
       {/* Top Floating Navbar */}
       <Navbar onOpenDemo={onOpenDemo} />
 
-      {/* Main Content Area */}
-      <main className="flex-1">
+      {/* Main Content Area. Padded to clear the fixed navbar, except the
+          homepage hero, which bleeds up underneath it like dayos.com. */}
+      <main className="flex-1 pt-20 sm:pt-24 lg:pt-32">
         <Routes>
           <Route
             path="/"
             element={
-              <>
+              <div className="-mt-20 sm:-mt-24 lg:-mt-32">
                 <HeroHome />
                 <ManifestoColumns />
                 <RevolutionStatement />
@@ -59,7 +60,7 @@ export default function App() {
                 <IntegrationsGrid />
                 <DepartmentsShowcase />
                 <DemoCta onOpenDemo={onOpenDemo} />
-              </>
+              </div>
             }
           />
 
