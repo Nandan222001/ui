@@ -9,13 +9,11 @@ export const HeroHome: React.FC = () => {
         <div className="lg:col-span-7">
           <Reveal>
             <h1 className="type-h1 text-[#000000]">
-              Built On
+              Ideas In.
               <br />
-              AI.
+              Software
               <br />
-              Not Bolted
-              <br />
-              On After.
+              Out.
             </h1>
           </Reveal>
 

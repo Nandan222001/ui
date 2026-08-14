@@ -11,13 +11,12 @@ type NavItem = { to: string; label: string; pulse?: boolean };
 // Desktop pill only shows this core set — the app's own interactive tools.
 const NAV_ITEMS: NavItem[] = [
   { to: "/", label: "HOME" },
-  { to: "/agent-sandbox", label: "AI CHATBOT SANDBOX", pulse: true },
   { to: "/roi-calculator", label: "COST ESTIMATOR" },
   { to: "/readiness-assessment", label: "AI READINESS QUIZ" },
   { to: "/use-cases", label: "USE CASES" },
 ];
 
-// Everything beyond the core 5 interactive tools, grouped the same way as
+// Everything beyond the core interactive tools, grouped the same way as
 // the footer. Shown in the desktop nav via the "MORE" dropdown, and in the
 // mobile menu appended after the primary items, so none of it is only
 // reachable by scrolling all the way down to the footer.
