@@ -16,9 +16,9 @@ export const CaseStudiesView: React.FC = () => {
           </Reveal>
           <Reveal delay={0.15}>
             <p className="type-body-headline text-[#444444] max-w-2xl mt-8">
-              Our business solutions and services are built to accelerate
-              growth by meeting customers exactly where their needs are.
-              Here's a look at what that looks like once it's running.
+              A look at real engagements across AI and LLM integration,
+              custom software, academic projects, and business IT work,
+              from the problem we walked into to what shipped.
             </p>
           </Reveal>
         </div>

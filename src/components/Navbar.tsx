@@ -22,7 +22,7 @@ const NAV_ITEMS: NavItem[] = [
 // reachable by scrolling all the way down to the footer.
 const EXTRA_NAV_GROUPS: { title: string; items: NavItem[] }[] = [
   {
-    title: "PLATFORM",
+    title: "AI CAPABILITIES",
     items: [
       { to: "/platform/ai-chatbots-assistants", label: "AI Chatbots & Assistants" },
       { to: "/platform/ai-automation-agents", label: "AI Automation & Agents" },

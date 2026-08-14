@@ -185,7 +185,7 @@ export const AgentSandboxView: React.FC<AgentSandboxViewProps> = ({
 
             <div className="mt-4 flex justify-between items-center">
               <span className="font-mono-tag text-[#979797]">
-                [ SERVER-SIDE GEMINI 3.6-FLASH ENGINE ]
+                [ LIVE DEMO — POWERED BY GOOGLE GEMINI ]
               </span>
 
               <button

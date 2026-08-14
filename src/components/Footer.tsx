@@ -32,7 +32,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDemo }) => {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 py-12 border-b border-[#2f2f2f]">
           <div>
-            <span className="font-mono-tag text-[#979797] block mb-4">Platform</span>
+            <span className="font-mono-tag text-[#979797] block mb-4">AI Capabilities</span>
             <ul className="space-y-2 font-neo text-sm font-medium text-[#979797]">
               <li>
                 <Link to="/platform/ai-chatbots-assistants" className="hover:text-[#ffffff] transition-colors">

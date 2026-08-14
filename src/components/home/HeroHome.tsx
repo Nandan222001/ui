@@ -27,20 +27,19 @@ export const HeroHome: React.FC = () => {
           </Reveal>
         </div>
 
-        {/* Hero video — no card/box on the real site: it's scaled up well
-            past its column, bleeds off the right edge of the viewport, and
-            fades out via a bottom mask instead of a hard crop */}
+        {/* Hero video — the AI-solutions loop asset, an abstract 3D
+            still-life with no third-party branding baked in */}
         <div className="lg:col-span-5 relative w-full flex justify-center">
           <div
-            className="w-[115%] sm:w-full lg:absolute lg:w-[68vw] lg:left-[-18vw] lg:top-[calc(50%-100px)] lg:-translate-y-1/2 aspect-square"
+            className="w-[85%] sm:w-[70%] lg:w-full max-w-md aspect-square"
             style={{
-              maskImage: "linear-gradient(180deg, #000 80%, transparent 93%)",
-              WebkitMaskImage: "linear-gradient(180deg, #000 80%, transparent 93%)",
+              maskImage: "linear-gradient(180deg, #000 85%, transparent 97%)",
+              WebkitMaskImage: "linear-gradient(180deg, #000 85%, transparent 97%)",
             }}
           >
             <video
               className="w-full h-full object-contain"
-              src="/media/1721996743-hero-latest.webm"
+              src="/media/ai_solutions-loop.webm"
               autoPlay
               muted
               loop
