@@ -1,11 +1,13 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
+import { ViewMode } from "../../types";
 
 interface DemoCtaProps {
   onOpenDemo: () => void;
+  onSelectView: (view: ViewMode) => void;
 }
 
-export const DemoCta: React.FC<DemoCtaProps> = ({ onOpenDemo }) => {
+export const DemoCta: React.FC<DemoCtaProps> = ({ onOpenDemo, onSelectView }) => {
   return (
     <section className="w-full bg-[#e5e5e5] text-[#000000]">
       <div className="site-grid section-block grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -29,7 +31,10 @@ export const DemoCta: React.FC<DemoCtaProps> = ({ onOpenDemo }) => {
           </div>
         </button>
 
-        <div className="bg-[#ffffff] text-[#000000] rounded-[24px] p-8 sm:p-12 flex flex-col justify-between min-h-[280px] border border-[#c6c6c6]/40">
+        <button
+          onClick={() => onSelectView("about")}
+          className="text-left bg-[#ffffff] text-[#000000] rounded-[24px] p-8 sm:p-12 flex flex-col justify-between min-h-[280px] border border-[#c6c6c6]/40 hover:bg-[#f3f3f3] transition-colors cursor-pointer"
+        >
           <h3 className="type-h3">
             About
             <br />us
@@ -38,7 +43,7 @@ export const DemoCta: React.FC<DemoCtaProps> = ({ onOpenDemo }) => {
             Learn more about our company's journey in redefining how good
             work gets done.
           </p>
-        </div>
+        </button>
       </div>
     </section>
   );

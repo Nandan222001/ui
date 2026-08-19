@@ -1,9 +1,11 @@
-export type ViewMode = 
-  | "showroom" 
-  | "agent-sandbox" 
-  | "roi-calculator" 
-  | "readiness-assessment" 
-  | "use-cases";
+export type ViewMode =
+  | "showroom"
+  | "agent-sandbox"
+  | "roi-calculator"
+  | "readiness-assessment"
+  | "use-cases"
+  | "about"
+  | "contact";
 
 export interface DemoModalState {
   isOpen: boolean;

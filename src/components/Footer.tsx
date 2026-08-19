@@ -72,7 +72,16 @@ export const Footer: React.FC<FooterProps> = ({ onSelectView, onOpenDemo }) => {
           <div>
             <span className="font-mono-tag text-[#979797] block mb-4">Company</span>
             <ul className="space-y-2 font-neo text-sm font-medium text-[#979797]">
-              <li className="hover:text-[#ffffff] transition-colors">Why Dayos</li>
+              <li>
+                <button onClick={() => onSelectView("about")} className="hover:text-[#ffffff] transition-colors cursor-pointer">
+                  Why Dayos
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onSelectView("contact")} className="hover:text-[#ffffff] transition-colors cursor-pointer">
+                  Contact Us
+                </button>
+              </li>
               <li className="hover:text-[#ffffff] transition-colors">Careers</li>
             </ul>
           </div>

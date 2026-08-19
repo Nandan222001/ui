@@ -165,6 +165,91 @@ export const DAYOS_PHILOSOPHY = [
   }
 ];
 
+export const COMPANY_STATS = [
+  { value: "91", suffix: "Days", label: "Live production deployment SLA" },
+  { value: "99.98", suffix: "%", label: "Average agent audit accuracy" },
+  { value: "4.8", suffix: "M", label: "Saved for a single AMS replacement" },
+  { value: "24", suffix: "/7", label: "Human-in-the-loop governance desk" }
+];
+
+export const DEPLOYMENT_PROCESS = [
+  {
+    step: "01",
+    title: "Discover",
+    description: "We map your highest-cost manual workflows across Finance, HR, Supply Chain, and IT — and rank them by time-to-value."
+  },
+  {
+    step: "02",
+    title: "Architect",
+    description: "Solution engineers design the agent stack against your live ERP/HCM instances, connectors, and existing approval chains."
+  },
+  {
+    step: "03",
+    title: "Deploy",
+    description: "Hero goes live inside your systems within 91 days, running supervised until accuracy and audit thresholds are proven."
+  },
+  {
+    step: "04",
+    title: "Govern",
+    description: "ISO/IEC 42001 certified oversight keeps every autonomous action logged, reversible, and reviewable by your team."
+  }
+];
+
+export const CERTIFICATIONS = [
+  "ISO/IEC 42001",
+  "SOC2 Type II",
+  "GDPR",
+  "Human-in-the-Loop Governance"
+];
+
+export const CONTACT_CHANNELS = [
+  {
+    label: "General & Sales Inquiries",
+    email: "hello@dayos.com",
+    description: "New to Dayos? Talk to our solution engineering team about your ERP stack and rollout timeline."
+  },
+  {
+    label: "Enterprise Support & Governance",
+    email: "support@dayos.com",
+    description: "Existing deployments — escalate agent behavior, audit logs, or ISO/IEC 42001 governance questions."
+  },
+  {
+    label: "Careers & Partnerships",
+    email: "careers@dayos.com",
+    description: "Join the team building agentic AI for the enterprise, or explore a systems-integration partnership."
+  }
+];
+
+export const OFFICE_LOCATIONS = [
+  {
+    city: "Singapore (HQ)",
+    address: "3 Temasek Ave, Level 18, Centennial Tower, Singapore 039190"
+  },
+  {
+    city: "Remote Engineering Pods",
+    address: "Distributed solution engineers embedded across EMEA & APAC deployment time zones"
+  }
+];
+
+export const CONTACT_FAQS = [
+  {
+    question: "How fast can Hero go live in our environment?",
+    answer: "Most deployments reach supervised production within 91 days, covering discovery, architecture, and staged rollout against your live ERP/HCM instances."
+  },
+  {
+    question: "Do agents get direct write access to our systems?",
+    answer: "Only within the guardrails you define. Low-risk operations run autonomously; high-stakes transactions require one-click human approval before execution."
+  },
+  {
+    question: "What compliance standards does Dayos meet?",
+    answer: "Dayos is ISO/IEC 42001 certified for AI management and SOC2 Type II audited, with GDPR-aligned data handling across every connector."
+  },
+  {
+    question: "Can Hero replace our AMS support contract?",
+    answer: "Yes. Hero agents log in, execute, and validate directly inside systems like Oracle, SAP, Workday, and NetSuite, replacing the maintenance work AMS teams currently bill for."
+  }
+];
+
 export const READINESS_QUIZ_QUESTIONS = [
   {
     id: "q1",

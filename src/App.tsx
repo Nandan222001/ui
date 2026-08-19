@@ -14,6 +14,8 @@ import { AgentSandboxView } from "./components/AgentSandboxView";
 import { RoiCalculatorView } from "./components/RoiCalculatorView";
 import { ReadinessAssessmentView } from "./components/ReadinessAssessmentView";
 import { UseCasesView } from "./components/UseCasesView";
+import { AboutView } from "./components/AboutView";
+import { ContactView } from "./components/ContactView";
 import { DemoModal } from "./components/DemoModal";
 import { Footer } from "./components/Footer";
 
@@ -45,7 +47,13 @@ export default function App() {
             <UseCaseCarousel />
             <IntegrationsGrid />
             <DepartmentsShowcase />
-            <DemoCta onOpenDemo={() => setIsDemoOpen(true)} />
+            <DemoCta
+              onOpenDemo={() => setIsDemoOpen(true)}
+              onSelectView={(view) => {
+                setActiveView(view);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+            />
           </>
         )}
 
@@ -69,6 +77,18 @@ export default function App() {
 
         {activeView === "use-cases" && (
           <UseCasesView
+            onOpenDemo={() => setIsDemoOpen(true)}
+          />
+        )}
+
+        {activeView === "about" && (
+          <AboutView
+            onOpenDemo={() => setIsDemoOpen(true)}
+          />
+        )}
+
+        {activeView === "contact" && (
+          <ContactView
             onOpenDemo={() => setIsDemoOpen(true)}
           />
         )}

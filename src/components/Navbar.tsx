@@ -93,6 +93,28 @@ export const Navbar: React.FC<NavbarProps> = ({
         >
           SOLUTIONS
         </button>
+
+        <button
+          onClick={() => onSelectView("about")}
+          className={`px-5 py-2.5 rounded-full text-sm font-neo font-medium transition-all ${
+            activeView === "about"
+              ? "bg-[#000000] text-[#ffffff]"
+              : "text-[#444444] hover:text-[#000000] hover:bg-[#f3f3f3]"
+          }`}
+        >
+          ABOUT
+        </button>
+
+        <button
+          onClick={() => onSelectView("contact")}
+          className={`px-5 py-2.5 rounded-full text-sm font-neo font-medium transition-all ${
+            activeView === "contact"
+              ? "bg-[#000000] text-[#ffffff]"
+              : "text-[#444444] hover:text-[#000000] hover:bg-[#f3f3f3]"
+          }`}
+        >
+          CONTACT
+        </button>
       </nav>
 
       {/* Right Side CTA */}
@@ -122,6 +144,22 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             ROI
+          </button>
+          <button
+            onClick={() => onSelectView("about")}
+            className={`px-3 py-1.5 rounded-full text-xs font-neo font-medium ${
+              activeView === "about" ? "bg-[#000000] text-[#ffffff]" : "text-[#444444]"
+            }`}
+          >
+            About
+          </button>
+          <button
+            onClick={() => onSelectView("contact")}
+            className={`px-3 py-1.5 rounded-full text-xs font-neo font-medium ${
+              activeView === "contact" ? "bg-[#000000] text-[#ffffff]" : "text-[#444444]"
+            }`}
+          >
+            Contact
           </button>
         </div>
 
