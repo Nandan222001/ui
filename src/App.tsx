@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { ViewMode } from "./types";
+import React, { useEffect, useState } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { HeroHome } from "./components/home/HeroHome";
 import { ManifestoColumns } from "./components/home/ManifestoColumns";
@@ -14,100 +14,102 @@ import { AgentSandboxView } from "./components/AgentSandboxView";
 import { RoiCalculatorView } from "./components/RoiCalculatorView";
 import { ReadinessAssessmentView } from "./components/ReadinessAssessmentView";
 import { UseCasesView } from "./components/UseCasesView";
-import { AboutView } from "./components/AboutView";
-import { ContactView } from "./components/ContactView";
+import { PlatformPillarView } from "./components/platform/PlatformPillarView";
+import { SolutionDetailView } from "./components/solutions/SolutionDetailView";
+import { CompanyView } from "./components/CompanyView";
+import { CareersView } from "./components/CareersView";
+import { TermsView } from "./components/TermsView";
+import { PrivacyView } from "./components/PrivacyView";
+import { PlansView } from "./components/PlansView";
+import { PartnershipView } from "./components/PartnershipView";
+import { PartnersView } from "./components/PartnersView";
+import { SupportView } from "./components/SupportView";
+import { ReleasesView } from "./components/ReleasesView";
+import { ResourcesView } from "./components/ResourcesView";
+import { CaseStudiesView } from "./components/CaseStudiesView";
+import { CaseStudyDetailView } from "./components/CaseStudyDetailView";
+import { BlogView } from "./components/BlogView";
+import { NewsView } from "./components/NewsView";
+import { NotFoundView } from "./components/NotFoundView";
 import { DemoModal } from "./components/DemoModal";
 import { Footer } from "./components/Footer";
 
+const ScrollToTop: React.FC = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+  }, [pathname]);
+  return null;
+};
+
 export default function App() {
-  const [activeView, setActiveView] = useState<ViewMode>("showroom");
   const [isDemoOpen, setIsDemoOpen] = useState<boolean>(false);
+  const onOpenDemo = () => setIsDemoOpen(true);
 
   return (
     <div className="min-h-screen bg-[#e5e5e5] text-[#000000] flex flex-col font-neo antialiased">
+      <ScrollToTop />
+
       {/* Top Floating Navbar */}
-      <Navbar
-        activeView={activeView}
-        onSelectView={(view) => {
-          setActiveView(view);
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }}
-        onOpenDemo={() => setIsDemoOpen(true)}
-      />
+      <Navbar onOpenDemo={onOpenDemo} />
 
-      {/* Main Content Area Based On View Mode */}
+      {/* Main Content Area. Navbar is sticky, so it reserves its own space
+          in normal flow — no manual offset needed here. */}
       <main className="flex-1">
-        {activeView === "showroom" && (
-          <>
-            <HeroHome />
-            <ManifestoColumns />
-            <RevolutionStatement />
-            <IntroducingHero onOpenDemo={() => setIsDemoOpen(true)} />
-            <SolutionsEntry />
-            <UseCaseCarousel />
-            <IntegrationsGrid />
-            <DepartmentsShowcase />
-            <DemoCta
-              onOpenDemo={() => setIsDemoOpen(true)}
-              onSelectView={(view) => {
-                setActiveView(view);
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-            />
-          </>
-        )}
-
-        {activeView === "agent-sandbox" && (
-          <AgentSandboxView
-            onOpenDemo={() => setIsDemoOpen(true)}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <HeroHome />
+                <ManifestoColumns />
+                <RevolutionStatement />
+                <IntroducingHero onOpenDemo={onOpenDemo} />
+                <SolutionsEntry />
+                <UseCaseCarousel />
+                <IntegrationsGrid />
+                <DepartmentsShowcase />
+                <DemoCta onOpenDemo={onOpenDemo} />
+              </>
+            }
           />
-        )}
 
-        {activeView === "roi-calculator" && (
-          <RoiCalculatorView
-            onOpenDemo={() => setIsDemoOpen(true)}
+          <Route path="/agent-sandbox" element={<AgentSandboxView onOpenDemo={onOpenDemo} />} />
+          <Route path="/roi-calculator" element={<RoiCalculatorView onOpenDemo={onOpenDemo} />} />
+          <Route
+            path="/readiness-assessment"
+            element={<ReadinessAssessmentView onOpenDemo={onOpenDemo} />}
           />
-        )}
+          <Route path="/use-cases" element={<UseCasesView onOpenDemo={onOpenDemo} />} />
 
-        {activeView === "readiness-assessment" && (
-          <ReadinessAssessmentView
-            onOpenDemo={() => setIsDemoOpen(true)}
-          />
-        )}
+          <Route path="/platform/:slug" element={<PlatformPillarView onOpenDemo={onOpenDemo} />} />
+          <Route path="/solutions/:slug" element={<SolutionDetailView onOpenDemo={onOpenDemo} />} />
 
-        {activeView === "use-cases" && (
-          <UseCasesView
-            onOpenDemo={() => setIsDemoOpen(true)}
-          />
-        )}
+          <Route path="/company" element={<CompanyView onOpenDemo={onOpenDemo} />} />
+          <Route path="/careers" element={<CareersView onOpenDemo={onOpenDemo} />} />
+          <Route path="/terms-of-service" element={<TermsView />} />
+          <Route path="/privacy-statement" element={<PrivacyView />} />
 
-        {activeView === "about" && (
-          <AboutView
-            onOpenDemo={() => setIsDemoOpen(true)}
-          />
-        )}
+          <Route path="/plans" element={<PlansView onOpenDemo={onOpenDemo} />} />
+          <Route path="/partnership" element={<PartnershipView onOpenDemo={onOpenDemo} />} />
+          <Route path="/partners" element={<PartnersView onOpenDemo={onOpenDemo} />} />
+          <Route path="/support" element={<SupportView onOpenDemo={onOpenDemo} />} />
+          <Route path="/releases" element={<ReleasesView />} />
+          <Route path="/resources" element={<ResourcesView />} />
+          <Route path="/case-studies" element={<CaseStudiesView />} />
+          <Route path="/case-studies/:slug" element={<CaseStudyDetailView onOpenDemo={onOpenDemo} />} />
+          <Route path="/blog" element={<BlogView />} />
+          <Route path="/news" element={<NewsView />} />
 
-        {activeView === "contact" && (
-          <ContactView
-            onOpenDemo={() => setIsDemoOpen(true)}
-          />
-        )}
+          <Route path="*" element={<NotFoundView />} />
+        </Routes>
       </main>
 
       {/* Footer */}
-      <Footer
-        onSelectView={(view) => {
-          setActiveView(view);
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }}
-        onOpenDemo={() => setIsDemoOpen(true)}
-      />
+      <Footer onOpenDemo={onOpenDemo} />
 
       {/* Schedule Demo Modal */}
-      <DemoModal
-        isOpen={isDemoOpen}
-        onClose={() => setIsDemoOpen(false)}
-      />
+      <DemoModal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} />
     </div>
   );
 }

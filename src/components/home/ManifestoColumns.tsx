@@ -3,19 +3,19 @@ import { Reveal } from "./Reveal";
 
 const COLUMNS = [
   {
-    title: "AI.",
+    title: "IDEA.",
     description:
-      "Two million computer science students graduate every year. AI has dramatically lowered the cost and speed of code deployment.",
+      "Every project starts as a concept — a student's final-year proposal, a founder's product vision, a process a business needs rebuilt. The idea is never the hard part.",
   },
   {
     title: "GAP.",
     description:
-      "Legacy ERP software solves 70%. The other 30% requires systems engineers who take a decade to train. Near-zero are entering the market.",
+      "Turning that idea into working software takes engineers who understand the requirements and the technology — original code, not recycled templates, and AI integrated properly, not bolted on.",
   },
   {
     title: "CLOSED.",
     description:
-      "Hero closes the gap with software, not labor. A new agent every year, against the highest-cost workflow your team still does by hand.",
+      "NMT Solutions closes the gap with 100+ engineers, 10+ years of combined experience, and AI at the center of how we build — from chatbots to full platforms, on time and on budget.",
   },
 ];
 

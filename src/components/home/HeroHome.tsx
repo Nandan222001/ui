@@ -9,21 +9,22 @@ export const HeroHome: React.FC = () => {
         <div className="lg:col-span-7">
           <Reveal>
             <h1 className="type-h1 text-[#000000]">
-              Born From
+              Built On
               <br />
-              The AI era.
+              AI.
               <br />
               Not Bolted
               <br />
-              Onto It.
+              On After.
             </h1>
           </Reveal>
 
           <Reveal delay={0.15}>
             <p className="type-body-headline text-[#000000] max-w-lg mt-10">
-              We don't sell managed services to the enterprise. We provide the
-              AI that does the work. Production-ready in 2 weeks. A new agent
-              every year, lowering your support cost the longer you run Hero.
+              NMT Solutions is an AI-first software studio that turns ideas
+              into digital reality. We build LLM-powered chatbots, automation
+              agents, and custom software with AI at the core from day one,
+              not stapled on at the end.
             </p>
           </Reveal>
         </div>

@@ -20,7 +20,7 @@ export const UseCasesView: React.FC<UseCasesViewProps> = ({ onOpenDemo }) => {
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-[#c6c6c6] gap-4">
         <div>
           <span className="mint-tag mb-2">
-            ENTERPRISE DEPLOYMENT ARCHITECTURES
+            REAL PROJECT EXAMPLES
           </span>
           <h1 className="type-h3">
             Proven use case showcase
@@ -28,20 +28,22 @@ export const UseCasesView: React.FC<UseCasesViewProps> = ({ onOpenDemo }) => {
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex gap-2 bg-[#ffffff] p-1.5 rounded-full border border-[#c6c6c6] self-start md:self-auto">
-          {["ALL", "FINANCE", "SUPPLY CHAIN", "HR & TALENT"].map((tag) => (
-            <button
-              key={tag}
-              onClick={() => setSelectedTag(tag)}
-              className={`px-4 py-1.5 rounded-full font-neo text-sm font-medium transition-colors cursor-pointer ${
-                selectedTag === tag
-                  ? "bg-[#000000] text-[#ffffff]"
-                  : "text-[#444444] hover:text-[#000000]"
-              }`}
-            >
-              {tag}
-            </button>
-          ))}
+        <div className="max-w-full overflow-x-auto no-scrollbar self-start md:self-auto">
+          <div className="flex gap-2 bg-[#ffffff] p-1.5 rounded-full border border-[#c6c6c6] w-max">
+            {["ALL", "AI & LLM", "CUSTOM SOFTWARE", "ACADEMIC"].map((tag) => (
+              <button
+                key={tag}
+                onClick={() => setSelectedTag(tag)}
+                className={`px-4 py-1.5 rounded-full font-neo text-sm font-medium transition-colors cursor-pointer whitespace-nowrap shrink-0 ${
+                  selectedTag === tag
+                    ? "bg-[#000000] text-[#ffffff]"
+                    : "text-[#444444] hover:text-[#000000]"
+                }`}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -90,7 +92,7 @@ export const UseCasesView: React.FC<UseCasesViewProps> = ({ onOpenDemo }) => {
 
               <div>
                 <span className="font-mono-tag text-[#000000] block mb-2">
-                  THE DAYOS SOLUTION
+                  THE NMT SOLUTION
                 </span>
                 <p className="type-body-medium font-medium text-[#000000]">
                   {uc.solution}
@@ -113,7 +115,7 @@ export const UseCasesView: React.FC<UseCasesViewProps> = ({ onOpenDemo }) => {
                 onClick={onOpenDemo}
                 className="bg-[#000000] hover:bg-[#2f2f2f] text-[#ffffff] px-5 py-3 rounded-lg font-neo text-sm font-medium flex items-center gap-2 cursor-pointer transition-colors"
               >
-                <span>Request Custom Architecture</span>
+                <span>Request a Similar Project</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-[#d1ffca]" />
               </button>
             </div>

@@ -1,177 +1,328 @@
-import React from "react";
-import { ViewMode } from "../types";
-import { ArrowUpRight, Cpu } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 
 interface NavbarProps {
-  activeView: ViewMode;
-  onSelectView: (view: ViewMode) => void;
   onOpenDemo: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({
-  activeView,
-  onSelectView,
-  onOpenDemo,
-}) => {
+type NavItem = { to: string; label: string; pulse?: boolean };
+
+// Desktop pill only shows this core set — the app's own interactive tools.
+const NAV_ITEMS: NavItem[] = [
+  { to: "/", label: "HOME" },
+  { to: "/agent-sandbox", label: "AI CHATBOT SANDBOX", pulse: true },
+  { to: "/roi-calculator", label: "COST ESTIMATOR" },
+  { to: "/readiness-assessment", label: "AI READINESS QUIZ" },
+  { to: "/use-cases", label: "USE CASES" },
+];
+
+// Everything beyond the core 5 interactive tools, grouped the same way as
+// the footer. Shown in the desktop nav via the "MORE" dropdown, and in the
+// mobile menu appended after the primary items, so none of it is only
+// reachable by scrolling all the way down to the footer.
+const EXTRA_NAV_GROUPS: { title: string; items: NavItem[] }[] = [
+  {
+    title: "PLATFORM",
+    items: [
+      { to: "/platform/ai-chatbots-assistants", label: "AI Chatbots & Assistants" },
+      { to: "/platform/ai-automation-agents", label: "AI Automation & Agents" },
+      { to: "/platform/llm-integration", label: "LLM Integration & Custom AI" },
+    ],
+  },
+  {
+    title: "SOLUTIONS",
+    items: [
+      { to: "/solutions/ai-llm-integration", label: "AI & LLM Integration" },
+      { to: "/solutions/custom-software-development", label: "Custom Software Development" },
+      { to: "/solutions/academic-projects", label: "Academic Projects" },
+      { to: "/solutions/business-it-solutions", label: "Business IT Solutions" },
+      { to: "/solutions/mobile-app-development", label: "Mobile App Development" },
+    ],
+  },
+  {
+    title: "RESOURCES",
+    items: [
+      { to: "/case-studies", label: "Case Studies" },
+      { to: "/blog", label: "Blog" },
+      { to: "/news", label: "News" },
+      { to: "/support", label: "Support Hub" },
+      { to: "/releases", label: "Milestones" },
+    ],
+  },
+  {
+    title: "COMPANY",
+    items: [
+      { to: "/company", label: "Why NMT Solutions" },
+      { to: "/partners", label: "Technologies We Use" },
+      { to: "/careers", label: "Careers" },
+      { to: "/plans", label: "Plans & Pricing" },
+      { to: "/partnership", label: "Partner With Us" },
+    ],
+  },
+];
+
+const MOBILE_NAV_GROUPS: { title: string | null; items: NavItem[] }[] = [
+  { title: null, items: NAV_ITEMS },
+  ...EXTRA_NAV_GROUPS,
+];
+
+// Reads the background color directly behind the floating nav bar and
+// flips the wordmark to white when that section is dark, mirroring
+// dayos.com's own transparent, color-inverting header.
+function backgroundLuminance(x: number, y: number): number | null {
+  let el = document.elementFromPoint(x, y) as HTMLElement | null;
+  while (el) {
+    const bg = getComputedStyle(el).backgroundColor;
+    const match = bg.match(/rgba?\(\s*(\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\s*\)/);
+    if (match) {
+      const alpha = match[4] !== undefined ? parseFloat(match[4]) : 1;
+      if (alpha > 0.4) {
+        const [, r, g, b] = match;
+        return (0.2126 * Number(r) + 0.7152 * Number(g) + 0.0722 * Number(b)) / 255;
+      }
+    }
+    el = el.parentElement;
+  }
+  return null;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ onOpenDemo }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
+  const [onDark, setOnDark] = useState(false);
+  const barRef = useRef<HTMLDivElement>(null);
+  const wordmarkRef = useRef<HTMLSpanElement>(null);
+  const moreRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+
+  const goHome = () => {
+    navigate("/");
+    setIsMenuOpen(false);
+    setIsMoreOpen(false);
+  };
+
+  useEffect(() => {
+    if (!isMoreOpen) return;
+    const onPointerDown = (e: PointerEvent) => {
+      if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
+        setIsMoreOpen(false);
+      }
+    };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsMoreOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isMoreOpen]);
+
+  useEffect(() => {
+    let raf = 0;
+
+    const sample = () => {
+      raf = 0;
+      const bar = barRef.current;
+      const wordmark = wordmarkRef.current;
+      if (!bar || !wordmark) return;
+      // Probe directly behind the wordmark itself (not the viewport center) —
+      // sections can split into differently-colored halves (e.g. a black
+      // card next to a white one), so only the logo's own position tells us
+      // what color it actually needs to be legible against.
+      const wordmarkRect = wordmark.getBoundingClientRect();
+      const probeX = wordmarkRect.left + wordmarkRect.width / 2;
+      const probeY = bar.getBoundingClientRect().bottom + 2;
+      const luminance = backgroundLuminance(probeX, probeY);
+      setOnDark(luminance !== null && luminance < 0.5);
+    };
+
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(sample);
+    };
+
+    sample();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
-    <header className="w-full h-32 bg-[#e5e5e5] px-6 sm:px-20 flex items-center justify-between sticky top-0 z-40 transition-colors">
-      {/* Brand Logo */}
-      <div 
-        onClick={() => onSelectView("showroom")}
-        className="cursor-pointer flex items-center gap-3 group"
+    <header className="w-full sticky top-0 z-40">
+      <div
+        ref={barRef}
+        className="h-20 sm:h-24 lg:h-32 px-4 sm:px-6 lg:px-20 flex items-center justify-between gap-3"
       >
-        <div className="w-10 h-10 bg-[#000000] text-[#ffffff] flex items-center justify-center font-condensed text-2xl font-bold rounded-lg group-hover:bg-[#2f2f2f] transition-colors">
-          D
-        </div>
-        <div className="flex flex-col">
-          <div className="flex items-center gap-1.5">
-            <span className="font-condensed text-3xl font-bold tracking-tight text-[#000000] leading-none">
-              DAYOS
-            </span>
-            <span className="w-2.5 h-2.5 rounded-full bg-[#d1ffca] inline-block"></span>
+        {/* Brand Logo */}
+        <div
+          onClick={goHome}
+          className="cursor-pointer flex items-center gap-2 sm:gap-3 group shrink-0"
+        >
+          <div className="w-9 h-9 sm:w-10 sm:h-10 bg-[#000000] text-[#ffffff] flex items-center justify-center font-condensed text-xl sm:text-2xl font-bold rounded-lg group-hover:bg-[#2f2f2f] transition-colors">
+            N
           </div>
-          <span className="font-mono text-[10px] text-[#444444] uppercase tracking-wider font-semibold">
-            AI FOR BUSINESS
-          </span>
+          <div className="flex flex-col">
+            <div className="flex items-center gap-1.5">
+              <span
+                ref={wordmarkRef}
+                className={`font-condensed text-2xl sm:text-3xl font-bold tracking-tight leading-none transition-colors duration-300 ${
+                  onDark ? "text-[#ffffff]" : "text-[#000000]"
+                }`}
+              >
+                NMT
+              </span>
+              <span className="w-2.5 h-2.5 rounded-full bg-[#d1ffca] inline-block"></span>
+            </div>
+            <span
+              className={`hidden sm:block font-mono text-[10px] uppercase tracking-wider font-semibold transition-colors duration-300 ${
+                onDark ? "text-[#979797]" : "text-[#444444]"
+              }`}
+            >
+              AI-FIRST IT SOLUTIONS
+            </span>
+          </div>
+        </div>
+
+        {/* Nav Pill Container - White Floating Capsule (desktop only) */}
+        <nav className="hidden xl:flex items-center bg-[#ffffff] rounded-[48px] px-3 py-2 border border-[#c6c6c6]/40 shadow-none gap-1">
+          {NAV_ITEMS.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.to === "/"}
+              className={({ isActive }) =>
+                `px-5 py-2.5 rounded-full text-sm font-neo font-medium flex items-center gap-2 transition-all ${
+                  isActive
+                    ? "bg-[#000000] text-[#ffffff]"
+                    : "text-[#444444] hover:text-[#000000] hover:bg-[#f3f3f3]"
+                }`
+              }
+            >
+              <span>{item.label}</span>
+              {item.pulse && (
+                <span className="w-1.5 h-1.5 rounded-full bg-[#fff100] animate-pulse"></span>
+              )}
+            </NavLink>
+          ))}
+
+          {/* Everything else — Platform, Solutions, Resources, Company —
+              lives here instead of only being reachable via the footer. */}
+          <div ref={moreRef} className="relative">
+            <button
+              onClick={() => setIsMoreOpen((open) => !open)}
+              className={`px-5 py-2.5 rounded-full text-sm font-neo font-medium flex items-center gap-1.5 transition-all cursor-pointer ${
+                isMoreOpen
+                  ? "bg-[#000000] text-[#ffffff]"
+                  : "text-[#444444] hover:text-[#000000] hover:bg-[#f3f3f3]"
+              }`}
+              aria-expanded={isMoreOpen}
+              aria-haspopup="true"
+            >
+              <span>MORE</span>
+              <ChevronDown
+                className={`w-3.5 h-3.5 transition-transform ${isMoreOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+
+            {isMoreOpen && (
+              <div className="absolute top-full right-0 mt-3 w-[min(90vw,760px)] bg-[#ffffff] rounded-[24px] border border-[#c6c6c6]/40 p-6 grid grid-cols-4 gap-6">
+                {EXTRA_NAV_GROUPS.map((group) => (
+                  <div key={group.title}>
+                    <span className="font-mono-tag text-[#979797] block mb-3">
+                      {group.title}
+                    </span>
+                    <div className="flex flex-col gap-1">
+                      {group.items.map((item) => (
+                        <NavLink
+                          key={item.to}
+                          to={item.to}
+                          onClick={() => setIsMoreOpen(false)}
+                          className={({ isActive }) =>
+                            `py-1.5 text-sm font-neo font-medium transition-colors ${
+                              isActive
+                                ? "text-[#000000]"
+                                : "text-[#444444] hover:text-[#000000]"
+                            }`
+                          }
+                        >
+                          {item.label}
+                        </NavLink>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </nav>
+
+        {/* Right Side */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          {/* Get a Free Quote Button (Filled Dark Button) */}
+          <button
+            onClick={onOpenDemo}
+            className="bg-[#000000] hover:bg-[#2f2f2f] text-[#ffffff] px-3.5 sm:px-5 py-2.5 sm:py-3 rounded-lg text-xs sm:text-sm font-neo font-medium flex items-center gap-1.5 sm:gap-2 transition-colors cursor-pointer whitespace-nowrap"
+          >
+            <span className="sm:hidden">Quote</span>
+            <span className="hidden sm:inline">Get a Free Quote</span>
+            <ArrowUpRight className="w-4 h-4 text-[#d1ffca] shrink-0" />
+          </button>
+
+          {/* Mobile menu toggle */}
+          <button
+            onClick={() => setIsMenuOpen((open) => !open)}
+            className="xl:hidden w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#ffffff] border border-[#c6c6c6] flex items-center justify-center text-[#000000] cursor-pointer shrink-0"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
       </div>
 
-      {/* Nav Pill Container - White Floating Capsule */}
-      <nav className="hidden lg:flex items-center bg-[#ffffff] rounded-[48px] px-3 py-2 border border-[#c6c6c6]/40 shadow-none gap-1">
-        <button
-          onClick={() => onSelectView("showroom")}
-          className={`px-5 py-2.5 rounded-full text-sm font-neo font-medium transition-all ${
-            activeView === "showroom"
-              ? "bg-[#000000] text-[#ffffff]"
-              : "text-[#444444] hover:text-[#000000] hover:bg-[#f3f3f3]"
-          }`}
-        >
-          SHOWROOM
-        </button>
-
-        <button
-          onClick={() => onSelectView("agent-sandbox")}
-          className={`px-5 py-2.5 rounded-full text-sm font-neo font-medium flex items-center gap-2 transition-all ${
-            activeView === "agent-sandbox"
-              ? "bg-[#000000] text-[#ffffff]"
-              : "text-[#444444] hover:text-[#000000] hover:bg-[#f3f3f3]"
-          }`}
-        >
-          <span>AGENT SANDBOX</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#fff100] animate-pulse"></span>
-        </button>
-
-        <button
-          onClick={() => onSelectView("roi-calculator")}
-          className={`px-5 py-2.5 rounded-full text-sm font-neo font-medium transition-all ${
-            activeView === "roi-calculator"
-              ? "bg-[#000000] text-[#ffffff]"
-              : "text-[#444444] hover:text-[#000000] hover:bg-[#f3f3f3]"
-          }`}
-        >
-          ROI ESTIMATOR
-        </button>
-
-        <button
-          onClick={() => onSelectView("readiness-assessment")}
-          className={`px-5 py-2.5 rounded-full text-sm font-neo font-medium transition-all ${
-            activeView === "readiness-assessment"
-              ? "bg-[#000000] text-[#ffffff]"
-              : "text-[#444444] hover:text-[#000000] hover:bg-[#f3f3f3]"
-          }`}
-        >
-          READINESS DIAGNOSTIC
-        </button>
-
-        <button
-          onClick={() => onSelectView("use-cases")}
-          className={`px-5 py-2.5 rounded-full text-sm font-neo font-medium transition-all ${
-            activeView === "use-cases"
-              ? "bg-[#000000] text-[#ffffff]"
-              : "text-[#444444] hover:text-[#000000] hover:bg-[#f3f3f3]"
-          }`}
-        >
-          SOLUTIONS
-        </button>
-
-        <button
-          onClick={() => onSelectView("about")}
-          className={`px-5 py-2.5 rounded-full text-sm font-neo font-medium transition-all ${
-            activeView === "about"
-              ? "bg-[#000000] text-[#ffffff]"
-              : "text-[#444444] hover:text-[#000000] hover:bg-[#f3f3f3]"
-          }`}
-        >
-          ABOUT
-        </button>
-
-        <button
-          onClick={() => onSelectView("contact")}
-          className={`px-5 py-2.5 rounded-full text-sm font-neo font-medium transition-all ${
-            activeView === "contact"
-              ? "bg-[#000000] text-[#ffffff]"
-              : "text-[#444444] hover:text-[#000000] hover:bg-[#f3f3f3]"
-          }`}
-        >
-          CONTACT
-        </button>
-      </nav>
-
-      {/* Right Side CTA */}
-      <div className="flex items-center gap-3">
-        {/* Mobile menu pill toggle */}
-        <div className="flex lg:hidden overflow-x-auto gap-1 bg-[#ffffff] p-1.5 rounded-full border border-[#c6c6c6]">
-          <button
-            onClick={() => onSelectView("showroom")}
-            className={`px-3 py-1.5 rounded-full text-xs font-neo font-medium ${
-              activeView === "showroom" ? "bg-[#000000] text-[#ffffff]" : "text-[#444444]"
-            }`}
-          >
-            Showroom
-          </button>
-          <button
-            onClick={() => onSelectView("agent-sandbox")}
-            className={`px-3 py-1.5 rounded-full text-xs font-neo font-medium ${
-              activeView === "agent-sandbox" ? "bg-[#000000] text-[#ffffff]" : "text-[#444444]"
-            }`}
-          >
-            Sandbox
-          </button>
-          <button
-            onClick={() => onSelectView("roi-calculator")}
-            className={`px-3 py-1.5 rounded-full text-xs font-neo font-medium ${
-              activeView === "roi-calculator" ? "bg-[#000000] text-[#ffffff]" : "text-[#444444]"
-            }`}
-          >
-            ROI
-          </button>
-          <button
-            onClick={() => onSelectView("about")}
-            className={`px-3 py-1.5 rounded-full text-xs font-neo font-medium ${
-              activeView === "about" ? "bg-[#000000] text-[#ffffff]" : "text-[#444444]"
-            }`}
-          >
-            About
-          </button>
-          <button
-            onClick={() => onSelectView("contact")}
-            className={`px-3 py-1.5 rounded-full text-xs font-neo font-medium ${
-              activeView === "contact" ? "bg-[#000000] text-[#ffffff]" : "text-[#444444]"
-            }`}
-          >
-            Contact
-          </button>
+      {/* Mobile Menu Panel */}
+      {isMenuOpen && (
+        <div className="xl:hidden px-4 sm:px-6 pb-6 bg-[#e5e5e5] border-t border-[#c6c6c6]/60 max-h-[calc(100dvh-5rem)] overflow-y-auto">
+          {MOBILE_NAV_GROUPS.map((group, groupIdx) => (
+            <div key={group.title ?? "primary"} className={groupIdx === 0 ? "mt-4" : "mt-6"}>
+              {group.title && (
+                <span className="font-mono-tag text-[#979797] block mb-2 px-1">
+                  {group.title}
+                </span>
+              )}
+              <div className="flex flex-col gap-1.5">
+                {group.items.map((item) => (
+                  <NavLink
+                    key={item.to}
+                    to={item.to}
+                    end={item.to === "/"}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={({ isActive }) =>
+                      `px-4 py-3.5 rounded-xl text-left text-sm font-neo font-medium flex items-center justify-between transition-colors ${
+                        isActive
+                          ? "bg-[#000000] text-[#ffffff]"
+                          : "bg-[#ffffff] text-[#444444] border border-[#c6c6c6]/40"
+                      }`
+                    }
+                  >
+                    <span>{item.label}</span>
+                    {item.pulse && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#fff100] animate-pulse"></span>
+                    )}
+                  </NavLink>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
-
-        {/* Schedule Demo Button (Filled Dark Button) */}
-        <button
-          onClick={onOpenDemo}
-          className="bg-[#000000] hover:bg-[#2f2f2f] text-[#ffffff] px-5 py-3 rounded-lg text-sm font-neo font-medium flex items-center gap-2 transition-colors cursor-pointer"
-        >
-          <span>Schedule a Demo</span>
-          <ArrowUpRight className="w-4 h-4 text-[#d1ffca]" />
-        </button>
-      </div>
+      )}
     </header>
   );
 };

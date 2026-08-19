@@ -2,14 +2,14 @@ import React, { useRef } from "react";
 import { Reveal } from "./Reveal";
 
 const INTEGRATIONS = [
-  { name: "Oracle", logo: "/images/oracle-white.svg" },
-  { name: "SAP", logo: "/images/sap-white.svg" },
-  { name: "Workday", logo: "/images/workday-white.svg" },
-  { name: "ServiceNow", logo: "/images/servicenow-white.svg" },
-  { name: "Coupa", logo: "/images/coupa-white.svg" },
-  { name: "Atlassian Jira", logo: "/images/jira-white.svg" },
-  { name: "Anaplan", logo: "/images/anaplan-white.svg" },
-  { name: "Slack", logo: "/images/slack-white.svg" },
+  { name: "OpenAI" },
+  { name: "Anthropic" },
+  { name: "Google Gemini" },
+  { name: "LangChain" },
+  { name: "React" },
+  { name: "Node.js" },
+  { name: "AWS" },
+  { name: "Slack" },
 ];
 
 const HOVER_COLORS = ["#00fd74", "#ff7ef2", "#00d1ff", "#ff6838", "#b874fc"];
@@ -56,13 +56,13 @@ export const IntegrationsGrid: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-12">
           <Reveal className="lg:col-span-6">
             <h2 className="type-h2">
-              Finally, AI that understands your back office.
+              The AI and engineering stack behind everything we build.
             </h2>
           </Reveal>
           <p className="lg:col-span-6 lg:col-start-7 type-body-headline text-[#000000] opacity-50 self-end">
-            We operate your systems, not just connect to them. 20+ years of
-            implementation experience across Oracle, Workday, and SAP encoded
-            into agents that execute inside your system of record.
+            We build with the leading LLM providers and a modern engineering
+            stack, so the chatbots, apps, and systems we ship are fast,
+            reliable, and built to last.
           </p>
         </div>
 
@@ -76,11 +76,9 @@ export const IntegrationsGrid: React.FC = () => {
               <div
                 className="absolute inset-0 transition-colors duration-200 group-hover:[background-color:var(--hover-color)]"
               />
-              <img
-                src={item.logo}
-                alt={item.name}
-                className="absolute inset-0 m-auto max-h-[33%] max-w-[70%] transition-all duration-200 group-hover:invert"
-              />
+              <span className="absolute inset-0 flex items-center justify-center px-4 type-h4 text-[#ffffff] text-center transition-colors duration-200 group-hover:text-[#000000]">
+                {item.name}
+              </span>
             </TiltCard>
           ))}
         </div>

@@ -5,21 +5,21 @@ import { HoverLoopButton } from "./HoverLoopButton";
 
 const CASE_STUDIES = [
   {
-    title: "Go Beyond KTLO with Hero Pro.",
+    title: "Cut Support Tickets in Half with an AI Chatbot.",
     description:
-      "Keeping the lights on is the baseline. Hero takes it further. Every twelve months, autonomous agent build ships a new custom agent against your biggest manual workflow. Your support footprint shrinks every year you run Hero.",
-    image: "/images/accounting-generalLedger.webp",
-  },
-  {
-    title: "Streamline Manual Processes with Agentic Workflows.",
-    description:
-      "Named the Top Strategic Tech Trend of 2025 by Gartner, Dayos leads the way in Agentic AI for enterprise business apps.",
+      "We built an LLM-powered chatbot grounded in a client's own policies and live order data. Ticket volume dropped 50% within a month of launch.",
     image: "/images/it-integrate.webp",
   },
   {
-    title: "Reduce month-end close time by 20% with Agentic AI.",
+    title: "Replace Spreadsheet Chaos with Custom Software.",
     description:
-      "Experience an accelerated close process and cost savings beyond your ERP system with our AI month-end close agent.",
+      "Six disconnected spreadsheets became one custom-built system mapped to the client's real workflow, cutting manual data entry by roughly two-thirds.",
+    image: "/images/accounting-generalLedger.webp",
+  },
+  {
+    title: "Ship a Mobile App with a Built-In AI Assistant.",
+    description:
+      "iOS and Android from a single codebase, with an LLM-powered assistant grounded in the client's own content, live at launch rather than bolted on later.",
     image: "/images/accounting-accountsReceivable.webp",
   },
 ];
@@ -45,8 +45,8 @@ export const UseCaseCarousel: React.FC = () => {
               Explore our Use Case Library.
             </h2>
             <p className="type-body-large text-[#444444] max-w-md">
-              Deploy AI quickly with our use case library. No more worries
-              about where or how to start.
+              Real projects across AI, custom software, and mobile. No more
+              worries about where or how to start.
             </p>
           </Reveal>
 

@@ -17,41 +17,40 @@ export const IntroducingHero: React.FC<IntroducingHeroProps> = ({ onOpenDemo }) 
         <div className="lg:col-span-7 order-1 lg:order-2">
           <img
             src="/images/image.webp"
-            alt="Hero platform"
+            alt="AI platform illustration"
             className="w-full lg:w-[110%] object-contain"
           />
         </div>
 
         <div className="lg:col-span-5 order-2 lg:order-1">
-          <span className="font-mono-tag text-[#979797] block mb-6">INTRODUCING HERO</span>
+          <span className="font-mono-tag text-[#979797] block mb-6">AI &amp; LLM INTEGRATION</span>
 
           <Reveal>
             <h2 className="type-h2 mb-8">
-              Built to do the work, not simply recommend it.
+              We build the AI, not just talk about it.
             </h2>
           </Reveal>
 
           <p className="type-body-large text-[#ffffff] mb-6">
-            Hero deploys AI agents that connect directly to your ERP through
-            native APIs, read real data, apply business logic, and execute
-            transactions with human approval. It logs in, does the work, and
-            validates the output. This is a direct replacement for AMS
-            contracts, not a tool layered on top.
+            Our team designs and ships chatbots, virtual assistants, and
+            automation agents powered by OpenAI, Anthropic, and Google's
+            models — wired into your product with retrieval-augmented
+            pipelines, not a generic widget bolted onto your site.
           </p>
 
           <p className="type-body-large text-[#ffffff] mb-10">
-            Hero is self-learning. Every ticket, every reconciliation, every
-            close pattern trains the platform on your environment. Every
-            twelve months, an autonomous agent builds and delivers a net-new
-            custom agent targeting your highest-cost manual workflow. Year
-            three runs on a fraction of year one's support footprint.
+            Every engagement pairs AI engineering with full-stack
+            development, so what you get is production-ready, tested, and
+            maintained — whether it's a customer-facing assistant, an
+            internal automation agent, or a custom LLM integration built for
+            your exact workflow.
           </p>
 
           <HoverLoopButton
             onClick={onOpenDemo}
             className="bg-[#ffffff] text-[#000000] px-6 py-4 rounded-lg font-neo font-medium text-base"
           >
-            <span>Book an intro</span>
+            <span>Get a Free Quote</span>
             <ArrowUpRight className="w-4 h-4" />
           </HoverLoopButton>
         </div>

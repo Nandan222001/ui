@@ -9,13 +9,13 @@ interface RoiCalculatorViewProps {
 export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
   onOpenDemo,
 }) => {
-  const [industry, setIndustry] = useState<string>("Financial Services & Banking");
-  const [department, setDepartment] = useState<string>("Finance & Treasury");
+  const [industry, setIndustry] = useState<string>("Small Business / Startup");
+  const [department, setDepartment] = useState<string>("AI Chatbot / LLM Integration");
   const [workflowDescription, setWorkflowDescription] = useState<string>(
-    "Manual monthly account reconciliation across 15 subsidiary banks, requiring 40 analyst hours per close cycle to match GL entries against wire feeds."
+    "Support team manually answers the same 20+ repetitive customer questions every day by email, with no chatbot or automation in place."
   );
-  const [teamSize, setTeamSize] = useState<string>("20 team members");
-  const [currentCost, setCurrentCost] = useState<string>("$45,000 / month");
+  const [teamSize, setTeamSize] = useState<string>("5 team members");
+  const [currentCost, setCurrentCost] = useState<string>("$3,000 / month");
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [auditResult, setAuditResult] = useState<UsecaseAuditResponse | null>(null);
@@ -57,10 +57,10 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
       <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#c6c6c6]">
         <div>
           <span className="mint-tag mb-2">
-            AI WORKFLOW ARCHITECT & ROI ESTIMATOR
+            AI PROJECT COST ESTIMATOR
           </span>
           <h1 className="type-h3">
-            Calculate enterprise agent savings
+            Estimate your project's cost & savings
           </h1>
         </div>
       </div>
@@ -75,36 +75,36 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
           <form onSubmit={handleCalculateRoi} className="space-y-4">
             <div>
               <label className="font-mono-tag text-[#000000] block mb-1">
-                INDUSTRY SECTOR
+                BUSINESS TYPE
               </label>
               <select
                 value={industry}
                 onChange={(e) => setIndustry(e.target.value)}
                 className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 type-body-medium text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000]"
               >
-                <option>Financial Services & Banking</option>
-                <option>Healthcare & Life Sciences</option>
-                <option>Supply Chain & Logistics</option>
-                <option>Manufacturing & Industrial</option>
-                <option>Enterprise Software & SaaS</option>
-                <option>Retail & E-commerce</option>
+                <option>Small Business / Startup</option>
+                <option>E-commerce & Retail</option>
+                <option>Healthcare & Wellness</option>
+                <option>Education / Academic</option>
+                <option>Enterprise / Corporate</option>
+                <option>Logistics & Supply Chain</option>
               </select>
             </div>
 
             <div>
               <label className="font-mono-tag text-[#000000] block mb-1">
-                TARGET DEPARTMENT
+                PROJECT TYPE
               </label>
               <select
                 value={department}
                 onChange={(e) => setDepartment(e.target.value)}
                 className="w-full bg-[#f3f3f3] border border-[#c6c6c6] rounded-xl p-3 type-body-medium text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#000000]"
               >
-                <option>Finance & Treasury</option>
-                <option>Supply Chain & Operations</option>
-                <option>Human Resources & Talent</option>
-                <option>Sales Operations & CRM</option>
-                <option>Legal & Compliance</option>
+                <option>AI Chatbot / LLM Integration</option>
+                <option>Custom Software Development</option>
+                <option>Academic Project</option>
+                <option>Business IT Solutions</option>
+                <option>Mobile App Development</option>
               </select>
             </div>
 
@@ -121,7 +121,7 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="font-mono-tag text-[#000000] block mb-1">
                   TEAM SIZE
@@ -159,7 +159,7 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
                 </>
               ) : (
                 <>
-                  <span>Generate AI ROI Audit</span>
+                  <span>Estimate My Project Cost</span>
                   <Calculator className="w-4 h-4 text-[#d1ffca]" />
                 </>
               )}
@@ -174,13 +174,13 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
               {/* Header */}
               <div className="flex items-center justify-between pb-4 border-b border-[#f3f3f3]">
                 <div>
-                  <span className="mint-tag mb-1">AUDIT COMPLETE</span>
+                  <span className="mint-tag mb-1">ESTIMATE READY</span>
                   <h3 className="font-neo font-bold uppercase tracking-tight text-2xl text-[#000000]">
                     {auditResult.title}
                   </h3>
                 </div>
                 <div className="text-right">
-                  <span className="font-mono-tag text-[#979797] block">READINESS SCORE</span>
+                  <span className="font-mono-tag text-[#979797] block">PROJECT FIT SCORE</span>
                   <span className="font-neo font-bold text-2xl text-[#000000]">
                     {auditResult.readinessScore}/100
                   </span>
@@ -188,7 +188,7 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
               </div>
 
               {/* Highlight Cards */}
-              <div className="grid grid-cols-3 gap-4 bg-[#f3f3f3] p-4 rounded-2xl border border-[#c6c6c6]/50">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-[#f3f3f3] p-4 rounded-2xl border border-[#c6c6c6]/50">
                 <div>
                   <span className="font-mono-tag text-[#979797] block">PROJECTED ROI</span>
                   <span className="font-neo font-bold text-2xl text-[#000000]">
@@ -197,7 +197,7 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
                 </div>
                 <div>
                   <span className="font-mono-tag text-[#979797] block">EST. MONTHLY SAVINGS</span>
-                  <span className="font-neo font-bold text-2xl text-[#000000]">
+                  <span className="font-neo font-bold text-2xl text-[#000000] break-words">
                     {auditResult.monthlySavingsEst}
                   </span>
                 </div>
@@ -222,7 +222,7 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
               {/* Recommended Agent Modules */}
               <div>
                 <span className="font-mono-tag text-[#000000] block mb-3">
-                  RECOMMENDED AGENT ARCHITECTURE
+                  RECOMMENDED SOLUTION COMPONENTS
                 </span>
                 <div className="space-y-3">
                   {auditResult.agentModules.map((m, idx) => (
@@ -267,13 +267,13 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
               {/* CTA */}
               <div className="pt-4 border-t border-[#f3f3f3] flex justify-between items-center">
                 <span className="font-mono-tag text-[#979797]">
-                  DAYOS ENTERPRISE DEPLOYMENT READY
+                  NMT SOLUTIONS — READY WHEN YOU ARE
                 </span>
                 <button
                   onClick={onOpenDemo}
                   className="bg-[#000000] hover:bg-[#2f2f2f] text-[#ffffff] px-5 py-2.5 rounded-lg font-neo text-sm font-medium flex items-center gap-2 cursor-pointer"
                 >
-                  <span>Schedule Deployment Call</span>
+                  <span>Schedule a Call</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-[#d1ffca]" />
                 </button>
               </div>
@@ -282,13 +282,13 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
             <div className="bg-[#ffffff] rounded-[24px] p-8 border border-[#c6c6c6] flex flex-col items-center justify-center text-center h-full min-h-[420px]">
               <Calculator className="w-12 h-12 text-[#979797] mb-4" />
               <h3 className="font-neo font-bold uppercase tracking-tight text-2xl text-[#000000] mb-2">
-                Awaiting audit parameters
+                Awaiting your project details
               </h3>
               <p className="type-body-medium text-[#444444] max-w-md mb-6">
-                Fill out your department's workflow specifications on the left to generate a personalized AI agent architecture report with cost savings and implementation roadmap.
+                Fill out your project details on the left to generate a personalized cost and savings estimate with an implementation roadmap.
               </p>
               <div className="mint-tag">
-                GEMINI 3.6-FLASH AUDIT ENGINE ACTIVE
+                GEMINI 3.6-FLASH ESTIMATOR ACTIVE
               </div>
             </div>
           )}

@@ -38,19 +38,19 @@ async function startServer() {
 
       const response = await ai.models.generateContent({
         model: "gemini-3.6-flash",
-        contents: `Analyze the following enterprise workflow for AI agent automation for the Dayos platform:
-Industry: ${industry || "General Enterprise"}
-Department: ${department || "Operations"}
-Current Workflow / Pain Points: ${workflowDescription || "Manual data reconciliation and reporting across ERPs"}
-Team Size: ${teamSize || "25 people"}
-Current Monthly Operations Cost: ${currentCost || "$50,000"}
+        contents: `Analyze the following business workflow or project for AI/software automation, for NMT Solutions (an AI, custom software, and IT solutions company):
+Industry: ${industry || "General Business"}
+Project Type: ${department || "AI Chatbot / LLM Integration"}
+Current Workflow / Pain Points: ${workflowDescription || "Manual, repetitive customer support and data entry work"}
+Team Size: ${teamSize || "10 people"}
+Current Monthly Operations Cost: ${currentCost || "$5,000"}
 
-Provide a comprehensive, high-authority brutalist enterprise audit report in JSON format with:
+Provide a clear, confident project scoping report in JSON format with:
 1. Executive Summary
-2. Recommended AI Agent Architecture (Agent Name, Capabilities, Trigger Mechanism, Data Connectors e.g. SAP/Oracle/Workday/Salesforce)
+2. Recommended Solution Architecture (Component Name, Capabilities, Trigger Mechanism, Tools/Integrations e.g. OpenAI/Anthropic/Slack/Zendesk)
 3. Projected Time & Cost Savings (Hours saved per week, Monthly savings $, Estimated ROI %)
 4. Implementation Milestones (Phase 1 to Phase 4 timeline)
-5. Risk & Security Governance Notes`,
+5. Risk & Data Security Notes`,
         config: {
           responseMimeType: "application/json",
           responseSchema: {
@@ -112,17 +112,18 @@ Provide a comprehensive, high-authority brutalist enterprise audit report in JSO
       const ai = getGeminiClient();
 
       const systemInstructions: Record<string, string> = {
-        "erp-auditor": "You are DAYOS ERP-01, an autonomous SAP/Oracle GL reconciliation agent. You speak in concise, technical, enterprise-grade terminology with structured markdown, bold key values, and clear audit trail verification step numbers.",
-        "supply-predict": "You are DAYOS SCM-04, a predictive supply chain routing agent. You analyze inventory levels, logistics bottlenecks, supplier risk scores, and autonomous reorder thresholds.",
-        "hr-synthesizer": "You are DAYOS HR-02, a Workday/Greenhouse workforce intelligence agent. You synthesize talent density, compensation equity, and cross-department staffing requirements.",
-        "custom": "You are DAYOS-CORE, an enterprise multi-agent coordinator for enterprise systems."
+        "nmt-chat-support": "You are NMT-CHAT-01, an AI customer support chatbot for an e-commerce or service business. You answer clearly and helpfully in plain language, referencing standard policy where relevant, and note when a question should be escalated to a human.",
+        "nmt-code-review": "You are NMT-CHAT-02, an AI code review assistant. You review code for bugs, security issues, and style problems, explain your reasoning clearly, and flag anything that needs a senior engineer's judgment before merge.",
+        "nmt-academic-assistant": "You are NMT-CHAT-03, an AI assistant for academic and final-year student projects. You help structure project briefs, summarize research, and check work against common evaluation criteria, encouraging original thinking rather than doing the work verbatim.",
+        "nmt-it-helpdesk": "You are NMT-CHAT-04, an IT helpdesk automation agent. You triage incoming IT tickets, suggest likely causes and fixes for common issues, and note when a ticket needs to be routed to a human engineer.",
+        "custom": "You are an NMT Solutions AI assistant, coordinating across chatbot, automation, and software support tasks for a client business."
       };
 
       const instruction = systemInstructions[agentType] || systemInstructions["custom"];
 
       const response = await ai.models.generateContent({
         model: "gemini-3.6-flash",
-        contents: `User Query / Enterprise Event: ${userQuery}\nContext Data: ${JSON.stringify(contextData || {})}`,
+        contents: `User Query / Event: ${userQuery}\nContext Data: ${JSON.stringify(contextData || {})}`,
         config: {
           systemInstruction: instruction,
           temperature: 0.3
@@ -144,13 +145,13 @@ Provide a comprehensive, high-authority brutalist enterprise audit report in JSO
 
       const response = await ai.models.generateContent({
         model: "gemini-3.6-flash",
-        contents: `Evaluate this enterprise AI readiness assessment response set: ${JSON.stringify(answers)}.
-Generate a comprehensive readiness diagnosis containing:
-- Readiness tier (e.g. "FOUNDATIONAL", "SCALING", "ENTERPRISE-READY")
+        contents: `Evaluate this business's AI/chatbot readiness assessment response set: ${JSON.stringify(answers)}.
+Generate a clear readiness diagnosis containing:
+- Readiness tier (e.g. "GETTING STARTED", "READY TO PILOT", "READY TO SCALE")
 - Numerical readiness score (0 - 100)
 - Core Strengths (array of strings)
-- Critical Vulnerabilities / Bottlenecks (array of strings)
-- Recommended First Deployment Action Item
+- Key Gaps / Things to Address First (array of strings)
+- Recommended First Project to Start With
 - Concise Executive Summary`,
         config: {
           responseMimeType: "application/json",
