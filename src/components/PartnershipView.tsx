@@ -12,21 +12,21 @@ const FOCUS_AREAS = ["AI & LLM Integration", "Custom Software", "Mobile Apps"];
 const BENEFITS = [
   {
     stat: "$0",
-    label: "No cost to join",
+    label: "No cost to explore this",
     detail:
-      "There's no signup fee and no minimum volume commitment. You refer work when it makes sense for you, nothing more.",
+      "Reaching out costs nothing and commits you to nothing. We talk through whether a referral makes sense case by case.",
   },
   {
     stat: "%",
-    label: "Referral fee on closed projects",
+    label: "Referral terms, worked out per project",
     detail:
-      "Earn a competitive referral fee or revenue share on any project that closes, paid out once the client signs on.",
+      "If a referred project closes, we agree on a referral fee or revenue share with you directly, scoped to that engagement.",
   },
   {
     stat: "WL",
-    label: "White-label delivery available",
+    label: "White-label delivery, if you want it",
     detail:
-      "We can deliver quietly in the background under your brand, or as a co-branded team, whichever fits the client.",
+      "Depending on the project, we can deliver quietly under your brand or as a co-branded team, whichever fits the client.",
   },
   {
     stat: "1:1",
@@ -62,23 +62,23 @@ const COMPARISON = [
 const STEPS = [
   {
     n: "01",
-    title: "Apply",
+    title: "Reach out",
     detail: "Tell us a little about your agency, consultancy, or freelance practice and the kind of work you typically see.",
   },
   {
     n: "02",
-    title: "Refer a project",
+    title: "Bring us a project",
     detail: "Send over a client or project, especially anything involving AI/LLM work, that falls outside what you handle in-house.",
   },
   {
     n: "03",
-    title: "We deliver",
-    detail: "Our team builds it white-labeled under your brand, or co-branded alongside you, your call on how it's presented.",
+    title: "We scope it together",
+    detail: "We talk through delivery, whether it's white-labeled under your brand or co-branded alongside you, and agree on terms before anything starts.",
   },
   {
     n: "04",
-    title: "Get paid",
-    detail: "Once the project closes, you receive your referral fee or revenue share for the work delivered.",
+    title: "We deliver, you get paid",
+    detail: "Once the project closes, you receive the referral fee or revenue share agreed on for that engagement.",
   },
 ];
 
@@ -89,15 +89,15 @@ const FAQ = [
   },
   {
     q: "How and when do I get paid?",
-    a: "You earn a referral fee or revenue share once a referred project closes and is invoiced. We'll agree on the specifics upfront for each engagement.",
+    a: "If a referred project closes, we agree on a referral fee or revenue share for that specific engagement before work starts, and pay out once it's invoiced.",
   },
   {
     q: "Can I white-label the delivery?",
-    a: "Yes. We can deliver entirely under your brand, or as a co-branded team if you'd rather your client know NMT is involved. It's your choice per project.",
+    a: "In most cases, yes. We can deliver under your brand, or as a co-branded team if you'd rather your client know NMT is involved. It's something we work out per project.",
   },
   {
-    q: "Is there a cost to join?",
-    a: "No. There's no signup fee, no minimum commitment, and no obligation to refer any set amount of work. You bring us projects only when it makes sense.",
+    q: "Is there a cost to reach out?",
+    a: "No. There's no signup fee and no obligation to refer any set amount of work. You bring us projects only when it makes sense, and we'll talk through terms from there.",
   },
 ];
 
@@ -286,7 +286,7 @@ export const PartnershipView: React.FC<PartnershipViewProps> = ({ onOpenDemo }) 
               as="span"
               className="bg-[#ffffff] text-[#000000] px-5 py-3 rounded-lg font-neo font-medium text-sm shrink-0"
             >
-              <span>Apply to Partner</span>
+              <span>Start the Conversation</span>
               <ArrowUpRight className="w-4 h-4" />
             </HoverLoopButton>
           </button>

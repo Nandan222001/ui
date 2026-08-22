@@ -288,7 +288,7 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
                 Fill out your project details on the left to generate a personalized cost and savings estimate with an implementation roadmap.
               </p>
               <div className="mint-tag">
-                GEMINI 3.6-FLASH ESTIMATOR ACTIVE
+                LIVE AI ESTIMATOR ACTIVE
               </div>
             </div>
           )}

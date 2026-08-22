@@ -54,20 +54,24 @@ export const CareersView: React.FC<CareersViewProps> = () => {
     <div>
       {/* Hero */}
       <section className="w-full bg-[#e5e5e5] text-[#000000]">
-        <div className="site-grid section-block">
-          <Reveal>
-            <span className="mint-tag mb-6">CAREERS</span>
-            <h1 className="type-h1 max-w-4xl">
-              Join a growing team building real AI, software, and IT projects.
-            </h1>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <p className="type-body-headline text-[#444444] max-w-2xl mt-8">
-              NMT Solutions is a 100+ engineer team delivering AI integrations,
-              custom software, academic projects, business IT solutions, and
-              mobile apps for clients who expect original work, not templates.
-            </p>
-          </Reveal>
+        <div className="site-grid section-block grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div className="lg:col-span-7">
+            <Reveal>
+              <span className="mint-tag mb-6">CAREERS</span>
+              <h1 className="type-h1">
+                Join a growing team building real AI, software, and IT projects.
+              </h1>
+            </Reveal>
+          </div>
+          <div className="lg:col-span-5">
+            <Reveal delay={0.15}>
+              <p className="type-body-headline text-[#444444] lg:mt-4">
+                NMT Solutions is a 100+ engineer team delivering AI integrations,
+                custom software, academic projects, business IT solutions, and
+                mobile apps for clients who expect original work, not templates.
+              </p>
+            </Reveal>
+          </div>
         </div>
       </section>
 
