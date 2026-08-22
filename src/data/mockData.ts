@@ -112,6 +112,51 @@ export const ENTERPRISE_USE_CASES: EnterpriseUseCase[] = [
       { label: "Grade Outcome", value: "Distinction" }
     ],
     tag: "ACADEMIC"
+  },
+  {
+    id: "uc-4",
+    title: "MANUAL APPROVAL WORKFLOW REPLACED WITH AUTOMATION",
+    systemIntegration: ["Custom Workflow Engine", "Slack/Email Alerts", "Internal Dashboard"],
+    department: "Business IT",
+    headline: "CUT APPROVAL TURNAROUND FROM DAYS TO HOURS",
+    problem: "A logistics company's purchase-order approvals moved through email chains and spreadsheets, with no visibility into what was stuck where or who needed to sign off next.",
+    solution: "We built a lightweight internal workflow tool that routes each request to the right approver automatically, sends reminders on stalled items, and gives finance a live dashboard of what's pending.",
+    impactMetrics: [
+      { label: "Approval Turnaround", value: "-70%" },
+      { label: "Stalled Requests", value: "-80%" },
+      { label: "Rollout Time", value: "3 Weeks" }
+    ],
+    tag: "BUSINESS IT"
+  },
+  {
+    id: "uc-5",
+    title: "MOBILE APP LAUNCHES WITH A BUILT-IN AI ASSISTANT",
+    systemIntegration: ["React Native", "OpenAI GPT-4", "Push Notifications"],
+    department: "Mobile App",
+    headline: "AI ASSISTANT LIVE AT LAUNCH, NOT BOLTED ON LATER",
+    problem: "A wellness startup wanted a mobile app with an in-app assistant that could answer product questions and guide onboarding, but had no engineering team of their own to build either the app or the AI layer.",
+    solution: "We built the iOS and Android app from a single codebase and wired in an LLM-powered assistant grounded in the client's own content from day one, so it shipped with launch instead of arriving in a future update.",
+    impactMetrics: [
+      { label: "Platforms", value: "iOS & Android" },
+      { label: "Onboarding Drop-off", value: "-35%" },
+      { label: "Time to Launch", value: "10 Weeks" }
+    ],
+    tag: "MOBILE APP"
+  },
+  {
+    id: "uc-6",
+    title: "INTERNAL KNOWLEDGE ASSISTANT CUTS ONBOARDING TIME",
+    systemIntegration: ["Internal Docs", "Slack", "Anthropic Claude"],
+    department: "Internal Tools",
+    headline: "NEW HIRES STOPPED PINGING SENIOR STAFF FOR ANSWERS ALREADY IN THE DOCS",
+    problem: "A software team's internal documentation was scattered across wikis, PDFs, and old Slack threads, so new hires spent their first weeks interrupting senior engineers for answers that already existed somewhere.",
+    solution: "We built an internal assistant grounded in the company's actual documentation and Slack history, so any employee can ask a plain-language question and get an answer sourced from real internal content, with a link back to where it came from.",
+    impactMetrics: [
+      { label: "Questions to Senior Staff", value: "-55%" },
+      { label: "Time to First Answer", value: "< 5 sec" },
+      { label: "Rollout", value: "2 Weeks" }
+    ],
+    tag: "AI & LLM"
   }
 ];
 

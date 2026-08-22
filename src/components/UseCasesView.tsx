@@ -1,10 +1,26 @@
 import React, { useState } from "react";
 import { ENTERPRISE_USE_CASES } from "../data/mockData";
+import { EnterpriseUseCase } from "../types";
 import { ArrowUpRight, Layers, CheckCircle2 } from "lucide-react";
 
 interface UseCasesViewProps {
   onOpenDemo: () => void;
 }
+
+const FILTER_TAGS = [
+  "ALL",
+  "AI & LLM",
+  "CUSTOM SOFTWARE",
+  "ACADEMIC",
+  "BUSINESS IT",
+  "MOBILE APP",
+];
+
+const getRelatedUseCases = (uc: EnterpriseUseCase): EnterpriseUseCase[] => {
+  const sameTag = ENTERPRISE_USE_CASES.filter((o) => o.id !== uc.id && o.tag === uc.tag);
+  const others = ENTERPRISE_USE_CASES.filter((o) => o.id !== uc.id && o.tag !== uc.tag);
+  return [...sameTag, ...others].slice(0, 3);
+};
 
 export const UseCasesView: React.FC<UseCasesViewProps> = ({ onOpenDemo }) => {
   const [selectedTag, setSelectedTag] = useState<string>("ALL");
@@ -13,6 +29,15 @@ export const UseCasesView: React.FC<UseCasesViewProps> = ({ onOpenDemo }) => {
     selectedTag === "ALL"
       ? ENTERPRISE_USE_CASES
       : ENTERPRISE_USE_CASES.filter((u) => u.tag === selectedTag);
+
+  const goToUseCase = (id: string) => {
+    setSelectedTag("ALL");
+    setTimeout(() => {
+      document
+        .getElementById(`usecase-${id}`)
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  };
 
   return (
     <div className="site-grid py-12 min-h-[calc(100vh-8rem)]">
@@ -30,7 +55,7 @@ export const UseCasesView: React.FC<UseCasesViewProps> = ({ onOpenDemo }) => {
         {/* Filter Tabs */}
         <div className="max-w-full overflow-x-auto no-scrollbar self-start md:self-auto">
           <div className="flex gap-2 bg-[#ffffff] p-1.5 rounded-full border border-[#c6c6c6] w-max">
-            {["ALL", "AI & LLM", "CUSTOM SOFTWARE", "ACADEMIC"].map((tag) => (
+            {FILTER_TAGS.map((tag) => (
               <button
                 key={tag}
                 onClick={() => setSelectedTag(tag)}
@@ -52,7 +77,8 @@ export const UseCasesView: React.FC<UseCasesViewProps> = ({ onOpenDemo }) => {
         {filteredUseCases.map((uc) => (
           <div
             key={uc.id}
-            className="bg-[#ffffff] rounded-[32px] p-6 sm:p-10 border border-[#c6c6c6] space-y-6"
+            id={`usecase-${uc.id}`}
+            className="bg-[#ffffff] rounded-[32px] p-6 sm:p-10 border border-[#c6c6c6] space-y-6 scroll-mt-24"
           >
             <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-[#f3f3f3] gap-4">
               <div>
@@ -118,6 +144,28 @@ export const UseCasesView: React.FC<UseCasesViewProps> = ({ onOpenDemo }) => {
                 <span>Request a Similar Project</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-[#d1ffca]" />
               </button>
+            </div>
+
+            {/* Related use cases */}
+            <div className="pt-6 border-t border-[#f3f3f3]">
+              <span className="font-mono-tag text-[#979797] block mb-3">
+                RELATED USE CASES
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {getRelatedUseCases(uc).map((related) => (
+                  <button
+                    key={related.id}
+                    onClick={() => goToUseCase(related.id)}
+                    title={related.title}
+                    className="max-w-full font-mono-tag bg-[#f3f3f3] hover:bg-[#e5e5e5] text-[#000000] px-3 py-1.5 rounded-full border border-[#c6c6c6]/50 cursor-pointer transition-colors flex items-center gap-2"
+                  >
+                    <span className="shrink-0">{related.tag}</span>
+                    <span className="truncate normal-case font-medium">
+                      {related.title}
+                    </span>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         ))}
