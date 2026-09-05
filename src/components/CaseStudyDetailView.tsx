@@ -24,27 +24,36 @@ export const CaseStudyDetailView: React.FC<CaseStudyDetailViewProps> = ({ onOpen
     <div>
       {/* Hero */}
       <section className="w-full bg-[#e5e5e5] text-[#000000]">
-        <div className="site-grid section-block">
-          <Reveal>
-            <Link
-              to="/case-studies"
-              className="inline-flex items-center gap-2 font-neo text-sm font-medium text-[#444444] hover:text-[#000000] transition-colors mb-6"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              All case studies
-            </Link>
-            <div className="flex flex-wrap gap-2 mb-6">
-              <span className="mint-tag">{study.industry}</span>
-              <span className="mint-tag">{study.platformType}</span>
-            </div>
-            <h1 className="type-h1 max-w-4xl">{study.title}</h1>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <p className="type-body-headline text-[#444444] max-w-2xl mt-8">
-              {study.description}
-            </p>
-            <span className="font-mono-tag text-[#979797] block mt-6">{study.date}</span>
-          </Reveal>
+        <div className="site-grid section-block grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="lg:col-span-7">
+            <Reveal>
+              <Link
+                to="/case-studies"
+                className="inline-flex items-center gap-2 font-neo text-sm font-medium text-[#444444] hover:text-[#000000] transition-colors mb-6"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                All case studies
+              </Link>
+              <div className="flex flex-wrap gap-2 mb-6">
+                <span className="mint-tag">{study.industry}</span>
+                <span className="mint-tag">{study.platformType}</span>
+              </div>
+              <h1 className="type-h1 max-w-4xl">{study.title}</h1>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <p className="type-body-headline text-[#444444] max-w-2xl mt-8">
+                {study.description}
+              </p>
+              <span className="font-mono-tag text-[#979797] block mt-6">{study.date}</span>
+            </Reveal>
+          </div>
+          <div className="lg:col-span-5">
+            <Reveal delay={0.1}>
+              <div className="rounded-[24px] overflow-hidden bg-[#f3f3f3] aspect-square">
+                <img src={study.image} alt={study.title} className="w-full h-full object-cover" />
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 

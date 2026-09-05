@@ -15,11 +15,13 @@ export const IntroducingHero: React.FC<IntroducingHeroProps> = ({ onOpenDemo }) 
             remaining 7/12 (and its own media even bleeds slightly past
             that column edge) */}
         <div className="lg:col-span-7 order-1 lg:order-2">
-          <img
-            src="/images/image.webp"
-            alt="AI platform illustration"
-            className="w-full lg:w-[110%] object-contain"
-          />
+          <div className="rounded-[24px] overflow-hidden bg-[#2f2f2f] aspect-square lg:aspect-[4/3]">
+            <img
+              src="/images/image_8.webp"
+              alt=""
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
 
         <div className="lg:col-span-5 order-2 lg:order-1">
