@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { UsecaseAuditResponse } from "../types";
+import { api } from "../lib/api";
 import { Calculator, ArrowUpRight, CheckCircle2, Loader2, Sparkles, TrendingUp, Clock, ShieldAlert } from "lucide-react";
 
 interface RoiCalculatorViewProps {
@@ -25,23 +26,14 @@ export const RoiCalculatorView: React.FC<RoiCalculatorViewProps> = ({
     setIsLoading(true);
 
     try {
-      const res = await fetch("/api/gemini/analyze-usecase", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          industry,
-          department,
-          workflowDescription,
-          teamSize,
-          currentCost,
-        }),
+      // Backend call (Express + Supabase service): validated, rate-limited, audited.
+      const data = await api.ai.analyzeUseCase({
+        industry,
+        department,
+        workflowDescription,
+        teamSize,
+        currentCost,
       });
-
-      if (!res.ok) {
-        throw new Error("Failed to calculate ROI report");
-      }
-
-      const data = await res.json();
       setAuditResult(data);
     } catch (err: any) {
       console.error(err);

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { api } from "../lib/api";
 import { X, CheckCircle2, ArrowUpRight } from "lucide-react";
 
 interface DemoModalProps {
@@ -11,13 +12,33 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [projectType, setProjectType] = useState("AI Chatbot / LLM Integration");
+  const [consentGiven, setConsentGiven] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Real submission to the backend: validated, rate-limited, consent recorded,
+  // phone-free (data minimisation) — the backend audits every lead.
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitError(null);
+    setIsSubmitting(true);
+    try {
+      await api.leads.submit({
+        companyName: company,
+        contactName: fullName,
+        email,
+        interest: projectType,
+        consentGiven: true,
+      });
+      setSubmitted(true);
+    } catch (err: any) {
+      setSubmitError(err?.message || "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -125,12 +146,39 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                 </select>
               </div>
 
+              <div className="flex items-start gap-2 pt-1">
+                <input
+                  id="lead-consent"
+                  type="checkbox"
+                  required
+                  checked={consentGiven}
+                  onChange={(e) => setConsentGiven(e.target.checked)}
+                  className="mt-1 w-4 h-4 accent-[#000000] cursor-pointer"
+                />
+                <label
+                  htmlFor="lead-consent"
+                  className="font-mono-tag text-[#444444] leading-relaxed cursor-pointer"
+                >
+                  I agree to NMT Solutions processing these details to respond to
+                  my request, as described in the Privacy Policy.
+                </label>
+              </div>
+
+              {submitError && (
+                <p className="font-mono-tag text-red-600 text-xs">{submitError}</p>
+              )}
+
               <button
                 type="submit"
-                className="w-full bg-[#000000] hover:bg-[#2f2f2f] text-[#ffffff] py-4 rounded-xl font-neo text-sm font-medium flex items-center justify-center gap-2 transition-colors cursor-pointer mt-4"
+                disabled={isSubmitting || !consentGiven}
+                className="w-full bg-[#000000] hover:bg-[#2f2f2f] disabled:opacity-50 text-[#ffffff] py-4 rounded-xl font-neo text-sm font-medium flex items-center justify-center gap-2 transition-colors cursor-pointer mt-4"
               >
-                <span>Send My Request</span>
-                <ArrowUpRight className="w-4 h-4 text-[#d1ffca]" />
+                {isSubmitting ? "Sending..." : (
+                  <>
+                    <span>Send My Request</span>
+                    <ArrowUpRight className="w-4 h-4 text-[#d1ffca]" />
+                  </>
+                )}
               </button>
             </form>
           </div>

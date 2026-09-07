@@ -17,6 +17,13 @@ export default defineConfig(() => {
       hmr: process.env.DISABLE_HMR !== 'true',
       // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
+      // Forward backend API calls to the Express + Supabase service in ../backend.
+      proxy: {
+        '/api/v1': {
+          target: process.env.BACKEND_ORIGIN ?? 'http://127.0.0.1:4000',
+          changeOrigin: true,
+        },
+      },
     },
   };
 });

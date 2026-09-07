@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FEATURED_AGENTS } from "../data/mockData";
 import { AgentModule } from "../types";
+import { api } from "../lib/api";
 import { Play, Terminal, ArrowUpRight, CheckCircle2, Loader2, Sparkles } from "lucide-react";
 
 interface AgentSandboxViewProps {
@@ -38,25 +39,17 @@ export const AgentSandboxView: React.FC<AgentSandboxViewProps> = ({
     const startTime = Date.now();
 
     try {
-      const res = await fetch("/api/gemini/agent-playground", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          agentType: activeAgent.id,
-          userQuery,
-          contextData: {
-            agentCode: activeAgent.code,
-            connectors: activeAgent.connectors,
-            autonomyLevel: activeAgent.autonomyLevel,
-          },
-        }),
+      // Backend call (Express + Supabase service): validated, rate-limited, audited.
+      const data = await api.ai.agentPlayground({
+        agentType: activeAgent.id,
+        userQuery,
+        contextData: {
+          agentCode: activeAgent.code,
+          connectors: activeAgent.connectors,
+          autonomyLevel: activeAgent.autonomyLevel,
+        },
       });
 
-      if (!res.ok) {
-        throw new Error("Failed to execute agent task");
-      }
-
-      const data = await res.json();
       setAgentOutput(data.output || "Task completed successfully with no output.");
       setExecutionTime(Date.now() - startTime);
     } catch (err: any) {

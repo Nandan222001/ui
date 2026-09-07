@@ -1,11 +1,92 @@
 import express from "express";
+import http from "http";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, Type } from "@google/genai";
 
+// Origin of the standalone backend (d:\htdocs\UI\backend).
+const BACKEND_ORIGIN = process.env.BACKEND_ORIGIN ?? "http://127.0.0.1:4000";
+const BACKEND_HOST = new URL(BACKEND_ORIGIN).host;
+// Safety cap for buffered proxy bodies (the backend enforces 100kb itself).
+const MAX_PROXY_BODY_BYTES = 1024 * 1024;
+
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = Number(process.env.PORT ?? 3000);
+
+  // Proxy /api/v1 to the secured backend service. Registered BEFORE
+  // express.json() so the raw body stream stays intact for forwarding.
+  // Implementation notes:
+  // - The body is buffered and the outgoing request is ended explicitly
+  //   (robust against client keep-alive/stream quirks).
+  // - Hop-by-hop headers (connection, keep-alive, transfer-encoding, upgrade)
+  //   are stripped in both directions — forwarding them corrupts framing.
+  app.use("/api/v1", (req, res) => {
+    const chunks: Buffer[] = [];
+    let tooLarge = false;
+    let answered = false;
+
+    const respondBadGateway = () => {
+      if (answered) return;
+      answered = true;
+      res.status(502).json({
+        success: false,
+        error: {
+          code: "BACKEND_UNAVAILABLE",
+          message: "Backend service is not reachable.",
+        },
+      });
+    };
+
+    req.on("data", (chunk: Buffer) => {
+      if (tooLarge) return;
+      chunks.push(chunk);
+      let total = 0;
+      for (const c of chunks) total += c.length;
+      if (total > MAX_PROXY_BODY_BYTES) {
+        tooLarge = true;
+        chunks.length = 0;
+      }
+    });
+    req.on("error", respondBadGateway);
+    req.on("end", () => {
+      if (answered) return;
+      if (tooLarge) {
+        answered = true;
+        res.status(413).json({
+          success: false,
+          error: { code: "PAYLOAD_TOO_LARGE", message: "Request body too large." },
+        });
+        return;
+      }
+
+      const body = Buffer.concat(chunks);
+      const headers: http.OutgoingHttpHeaders = { ...req.headers };
+      delete headers.connection;
+      delete headers["keep-alive"];
+      delete headers["transfer-encoding"];
+      delete headers.upgrade;
+      headers.host = BACKEND_HOST;
+      if (body.length > 0) headers["content-length"] = String(body.length);
+      else delete headers["content-length"];
+
+      const proxyReq = http.request(
+        `${BACKEND_ORIGIN}${req.originalUrl}`,
+        { method: req.method, headers },
+        (proxyRes) => {
+          const outHeaders: http.OutgoingHttpHeaders = { ...proxyRes.headers };
+          delete outHeaders.connection;
+          delete outHeaders["keep-alive"];
+          delete outHeaders["transfer-encoding"];
+          res.writeHead(proxyRes.statusCode ?? 502, outHeaders);
+          proxyRes.pipe(res);
+        }
+      );
+      proxyReq.on("error", respondBadGateway);
+      if (body.length > 0) proxyReq.write(body);
+      proxyReq.end();
+    });
+  });
 
   app.use(express.json());
 

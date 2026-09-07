@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { READINESS_QUIZ_QUESTIONS } from "../data/mockData";
 import { ReadinessAuditResponse } from "../types";
+import { api } from "../lib/api";
 import { CheckCircle2, ShieldAlert, ArrowUpRight, Loader2, Award, Zap } from "lucide-react";
 
 interface ReadinessAssessmentViewProps {
@@ -27,17 +28,8 @@ export const ReadinessAssessmentView: React.FC<ReadinessAssessmentViewProps> = (
         selectedOption: q.options[selectedAnswers[q.id] || 0],
       }));
 
-      const res = await fetch("/api/gemini/readiness-audit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ answers: answersPayload }),
-      });
-
-      if (!res.ok) {
-        throw new Error("Failed to evaluate readiness");
-      }
-
-      const data = await res.json();
+      // Backend call (Express + Supabase service): validated, rate-limited, audited.
+      const data = await api.ai.readinessAudit(answersPayload);
       setAuditResponse(data);
     } catch (err: any) {
       console.error(err);
