@@ -85,16 +85,23 @@ export const BlogView: React.FC = () => {
     <div>
       {/* Hero */}
       <section className="w-full bg-[#e5e5e5] text-[#000000]">
-        <div className="site-grid section-block">
-          <span className="mint-tag mb-6">BLOG</span>
-          <h1 className="type-h1 max-w-4xl">
-            Notes from the people building your next project.
-          </h1>
-          <p className="type-body-headline text-[#444444] max-w-2xl mt-8">
-            Thoughts on AI, custom software, and mobile apps, written by the
-            engineers who actually ship them, for founders, businesses, and
-            students alike.
-          </p>
+        <div className="site-grid section-block grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="lg:col-span-7">
+            <span className="mint-tag mb-6">BLOG</span>
+            <h1 className="type-h1 max-w-4xl">
+              Notes from the people building your next project.
+            </h1>
+            <p className="type-body-headline text-[#444444] max-w-2xl mt-8">
+              Thoughts on AI, custom software, and mobile apps, written by the
+              engineers who actually ship them, for founders, businesses, and
+              students alike.
+            </p>
+          </div>
+          <div className="lg:col-span-5">
+            <div className="rounded-[24px] overflow-hidden bg-[#f3f3f3] aspect-square">
+              <img src="/images/image_2.webp" alt="" className="w-full h-full object-cover" />
+            </div>
+          </div>
         </div>
       </section>
 

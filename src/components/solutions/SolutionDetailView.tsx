@@ -24,16 +24,25 @@ export const SolutionDetailView: React.FC<SolutionDetailViewProps> = ({ onOpenDe
     <div>
       {/* Hero */}
       <section className="w-full bg-[#e5e5e5] text-[#000000]">
-        <div className="site-grid section-block">
-          <Reveal>
-            <span className="mint-tag mb-6">{solution.tagline}</span>
-            <h1 className="type-h1 max-w-4xl">{solution.name}</h1>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <p className="type-body-headline text-[#444444] max-w-2xl mt-8">
-              {solution.description}
-            </p>
-          </Reveal>
+        <div className="site-grid section-block grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="lg:col-span-7">
+            <Reveal>
+              <span className="mint-tag mb-6">{solution.tagline}</span>
+              <h1 className="type-h1 max-w-4xl">{solution.name}</h1>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <p className="type-body-headline text-[#444444] max-w-2xl mt-8">
+                {solution.description}
+              </p>
+            </Reveal>
+          </div>
+          <div className="lg:col-span-5">
+            <Reveal delay={0.1}>
+              <div className="rounded-[24px] overflow-hidden bg-[#f3f3f3] aspect-square">
+                <img src="/images/image_8.webp" alt="" className="w-full h-full object-cover" />
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 

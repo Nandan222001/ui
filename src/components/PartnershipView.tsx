@@ -106,31 +106,47 @@ export const PartnershipView: React.FC<PartnershipViewProps> = ({ onOpenDemo }) 
     <div>
       {/* Hero */}
       <section className="w-full bg-[#e5e5e5] text-[#000000]">
-        <div className="site-grid section-block">
-          <Reveal>
-            <span className="mint-tag mb-6">PARTNER WITH US</span>
-            <h1 className="type-h1 max-w-5xl">
-              Extend what you can offer your clients.
-            </h1>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <p className="type-body-headline text-[#444444] max-w-2xl mt-8">
-              Agencies, consultancies, and freelancers refer us the projects
-              outside their specialty, especially AI and LLM work, and we
-              deliver it under your name or alongside you. You keep the
-              client, we handle the build.
-            </p>
-          </Reveal>
-          <Reveal delay={0.25} className="mt-10 flex flex-wrap gap-3">
-            {FOCUS_AREAS.map((eco) => (
-              <span
-                key={eco}
-                className="font-mono-tag bg-[#ffffff] text-[#000000] px-4 py-2 rounded-full border border-[#c6c6c6]/60"
-              >
-                {eco}
-              </span>
-            ))}
-          </Reveal>
+        <div className="site-grid section-block grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="lg:col-span-7">
+            <Reveal>
+              <span className="mint-tag mb-6">PARTNER WITH US</span>
+              <h1 className="type-h1 max-w-5xl">
+                Extend what you can offer your clients.
+              </h1>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <p className="type-body-headline text-[#444444] max-w-2xl mt-8">
+                Agencies, consultancies, and freelancers refer us the projects
+                outside their specialty, especially AI and LLM work, and we
+                deliver it under your name or alongside you. You keep the
+                client, we handle the build.
+              </p>
+            </Reveal>
+            <Reveal delay={0.25} className="mt-10 flex flex-wrap gap-3">
+              {FOCUS_AREAS.map((eco) => (
+                <span
+                  key={eco}
+                  className="font-mono-tag bg-[#ffffff] text-[#000000] px-4 py-2 rounded-full border border-[#c6c6c6]/60"
+                >
+                  {eco}
+                </span>
+              ))}
+            </Reveal>
+          </div>
+          <div className="lg:col-span-5">
+            <Reveal delay={0.1}>
+              <div className="rounded-[24px] overflow-hidden bg-[#f3f3f3] aspect-square">
+                <video
+                  className="w-full h-full object-cover"
+                  src="/media/ai_solutions-loop.webm"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                />
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
