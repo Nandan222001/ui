@@ -30,7 +30,13 @@ export const ReadinessAssessmentView: React.FC<ReadinessAssessmentViewProps> = (
       const res = await fetch("/api/gemini/readiness-audit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ answers: answersPayload }),
+        body: JSON.stringify({
+          answers: answersPayload,
+          answerRefs: READINESS_QUIZ_QUESTIONS.map((q) => ({
+            questionId: q.id,
+            optionIndex: selectedAnswers[q.id] || 0,
+          })),
+        }),
       });
 
       if (!res.ok) {

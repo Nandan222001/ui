@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, Type } from "@google/genai";
+import { getDb, persist } from "./server/db";
 
 async function startServer() {
   const app = express();
@@ -28,6 +29,23 @@ async function startServer() {
   // Healthcheck API
   app.get("/api/health", (_req, res) => {
     res.json({ status: "ok", timestamp: new Date().toISOString() });
+  });
+
+  // Demo / quote requests (stored in contacts + demo_requests)
+  app.post("/api/demo-requests", async (req, res) => {
+    const { fullName, email, company, projectType } = req.body ?? {};
+    if (typeof email !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return res.status(400).json({ error: "A valid email is required." });
+    }
+    if (!getDb()) return res.status(503).json({ error: "Database is not configured." });
+    const id = await persist("submit_demo_request", {
+      p_email: email,
+      p_full_name: fullName ?? null,
+      p_company: company ?? null,
+      p_project_type: projectType ?? null,
+    });
+    if (!id) return res.status(500).json({ error: "Could not save your request." });
+    res.status(201).json({ id });
   });
 
   // 1. Analyze Use Case & Calculate ROI
@@ -98,7 +116,12 @@ Provide a clear, confident project scoping report in JSON format with:
         }
       });
 
-      res.json(JSON.parse(response.text || "{}"));
+      const result = JSON.parse(response.text || "{}");
+      const id = await persist("save_usecase_analysis", {
+        p_input: { industry, department, workflowDescription, teamSize, currentCost },
+        p_result: result,
+      });
+      res.json({ ...result, id });
     } catch (err: any) {
       console.error("Error analyzing usecase:", err);
       res.status(500).json({ error: err.message || "Failed to generate audit report" });
@@ -130,6 +153,12 @@ Provide a clear, confident project scoping report in JSON format with:
         }
       });
 
+      await persist("save_playground_run", {
+        p_agent_id: agentType,
+        p_query: String(userQuery ?? ""),
+        p_context: contextData ?? null,
+        p_output: response.text ?? null,
+      });
       res.json({ output: response.text });
     } catch (err: any) {
       console.error("Error in agent playground:", err);
@@ -140,7 +169,7 @@ Provide a clear, confident project scoping report in JSON format with:
   // 3. Enterprise Readiness Audit Quiz Evaluation
   app.post("/api/gemini/readiness-audit", async (req, res) => {
     try {
-      const { answers } = req.body;
+      const { answers, answerRefs } = req.body;
       const ai = getGeminiClient();
 
       const response = await ai.models.generateContent({
@@ -170,7 +199,9 @@ Generate a clear readiness diagnosis containing:
         }
       });
 
-      res.json(JSON.parse(response.text || "{}"));
+      const result = JSON.parse(response.text || "{}");
+      const id = await persist("save_readiness_audit", { p_answers: answerRefs ?? [], p_result: result });
+      res.json({ ...result, id });
     } catch (err: any) {
       console.error("Error in readiness audit:", err);
       res.status(500).json({ error: err.message || "Failed to evaluate readiness audit" });
