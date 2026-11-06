@@ -23,19 +23,19 @@ out.push(`insert into autonomy_levels(label, rank) values ${levels.map((l) => `(
 
 FEATURED_AGENTS.forEach((a, i) => {
   out.push(`insert into agents(id, code, name, role, category_id, autonomy_level_id, description, sample_prompt, latency, accuracy, savings_multiplier, sort_order) values (${q(a.id)}, ${q(a.code)}, ${q(a.name)}, ${q(a.role)}, (select id from agent_categories where name=${q(a.category)}), (select id from autonomy_levels where label=${q(a.autonomyLevel)}), ${q(a.description)}, ${q(a.samplePrompt)}, ${q(a.metrics.latency)}, ${q(a.metrics.accuracy)}, ${q(a.metrics.savingsMultiplier)}, ${i});`);
-  for (const c of a.connectors) out.push(`insert into agent_connectors values (${q(a.id)}, (select id from connectors where name=${q(c)}));`);
+  a.connectors.forEach((c, p) => out.push(`insert into agent_connectors(agent_id, connector_id, position) values (${q(a.id)}, (select id from connectors where name=${q(c)}), ${p});`));
 });
 
 ENTERPRISE_USE_CASES.forEach((u, i) => {
   out.push(`insert into use_cases(id, title, department_id, tag_id, headline, problem, solution, sort_order) values (${q(u.id)}, ${q(u.title)}, (select id from departments where name=${q(u.department)}), (select id from tags where name=${q(u.tag)}), ${q(u.headline)}, ${q(u.problem)}, ${q(u.solution)}, ${i});`);
-  for (const c of u.systemIntegration) out.push(`insert into use_case_connectors values (${q(u.id)}, (select id from connectors where name=${q(c)}));`);
+  u.systemIntegration.forEach((c, p) => out.push(`insert into use_case_connectors(use_case_id, connector_id, position) values (${q(u.id)}, (select id from connectors where name=${q(c)}), ${p});`));
   u.impactMetrics.forEach((m, p) => out.push(`insert into use_case_metrics values (${q(u.id)}, ${p}, ${q(m.label)}, ${q(m.value)});`));
 });
 
-for (const c of CASE_STUDIES) {
-  out.push(`insert into case_studies(slug, title, description, industry_id, platform_type_id, image_url, published_on, metric_label, metric_value) values (${q(c.slug)}, ${q(c.title)}, ${q(c.description)}, (select id from industries where name=${q(c.industry)}), (select id from platform_types where name=${q(c.platformType)}), ${q(c.image)}, ${q(c.date)}, ${q(c.metric?.label)}, ${q(c.metric?.value)});`);
+CASE_STUDIES.forEach((c, i) => {
+  out.push(`insert into case_studies(slug, title, description, industry_id, platform_type_id, image_url, published_on, metric_label, metric_value, sort_order) values (${q(c.slug)}, ${q(c.title)}, ${q(c.description)}, (select id from industries where name=${q(c.industry)}), (select id from platform_types where name=${q(c.platformType)}), ${q(c.image)}, ${q(c.date)}, ${q(c.metric?.label)}, ${q(c.metric?.value)}, ${i});`);
   c.sections.forEach((s, p) => out.push(`insert into case_study_sections values (${q(c.slug)}, ${p}, ${q(s.heading)}, ${q(s.body)});`));
-}
+});
 
 const offerings = [
   ...PLATFORM_PILLARS.map((o) => ({ kind: "platform", ...o })),
@@ -47,12 +47,12 @@ offerings.forEach((o, i) => {
   (o.stats ?? []).forEach((s, p) => out.push(`insert into offering_stats values (${q(o.kind)}, ${q(o.slug)}, ${p}, ${q(s.label)}, ${q(s.value)});`));
 });
 
-for (const r of RELEASES) {
-  out.push(`with r as (insert into releases(version, codename, released_on, summary) values (${q(r.version)}, ${q(r.codename)}, ${q(r.date)}, ${q(r.summary)}) returning id) insert into release_items select r.id, v.kind::release_item_kind, v.pos, v.body from r, (values ${[
+RELEASES.forEach((r, i) => {
+  out.push(`with r as (insert into releases(version, codename, released_on, summary, sort_order) values (${q(r.version)}, ${q(r.codename)}, ${q(r.date)}, ${q(r.summary)}, ${i}) returning id) insert into release_items select r.id, v.kind::release_item_kind, v.pos, v.body from r, (values ${[
     ...r.highlights.map((h, p) => `('highlight', ${p}, ${q(h)})`),
     ...(r.knownIssues ?? []).map((h, p) => `('known_issue', ${p}, ${q(h)})`),
   ].join(", ")}) as v(kind, pos, body);`);
-}
+});
 
 READINESS_QUIZ_QUESTIONS.forEach((qq, i) => {
   out.push(`insert into quiz_questions values (${q(qq.id)}, ${i}, ${q(qq.question)});`);
