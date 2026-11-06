@@ -15,9 +15,26 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [error, setError] = useState<string | null>(null);
+  const [sending, setSending] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/demo-requests", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fullName, email, company, projectType }),
+      });
+      if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || "Request failed");
+      setSubmitted(true);
+    } catch (err: any) {
+      setError(err.message || "Something went wrong. Please try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -125,11 +142,13 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                 </select>
               </div>
 
+              {error && <p className="type-body-medium text-[#b00020]">{error}</p>}
               <button
                 type="submit"
-                className="w-full bg-[#000000] hover:bg-[#2f2f2f] text-[#ffffff] py-4 rounded-xl font-neo text-sm font-medium flex items-center justify-center gap-2 transition-colors cursor-pointer mt-4"
+                disabled={sending}
+                className="w-full bg-[#000000] disabled:opacity-60 hover:bg-[#2f2f2f] text-[#ffffff] py-4 rounded-xl font-neo text-sm font-medium flex items-center justify-center gap-2 transition-colors cursor-pointer mt-4"
               >
-                <span>Send My Request</span>
+                <span>{sending ? "Sending..." : "Send My Request"}</span>
                 <ArrowUpRight className="w-4 h-4 text-[#d1ffca]" />
               </button>
             </form>
